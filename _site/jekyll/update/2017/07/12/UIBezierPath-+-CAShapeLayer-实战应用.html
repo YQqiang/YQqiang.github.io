@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>UIBezierPath + CAShapeLayer 实战应用</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/jekyll/update/2017/07/12/UIBezierPath-+-CAShapeLayer-%E5%AE%9E%E6%88%98%E5%BA%94%E7%94%A8.html">
+  <link rel="alternate" type="application/rss+xml" title="逆行云" href="/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+    
+    
+    <a class="site-title" href="/">逆行云</a>
+  
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+            
+            
+          
+            
+            
+            <a class="page-link" href="/about/">About</a>
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+        </div>
+      </nav>
+    
+  </div>
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">UIBezierPath + CAShapeLayer 实战应用</h1>
+    <p class="post-meta">
+      <time datetime="2017-07-12T10:17:31+08:00" itemprop="datePublished">
+        
+        Jul 12, 2017
+      </time>
+      </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><img src="http://upload-images.jianshu.io/upload_images/3538284-e19704ddc2fece86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="时效截图" /></p>
+
+<hr />
+<h1 id="2017724更新">2017.7.24更新</h1>
+<h4 id="1-虚线方法多次调用会重复绘制">1. 虚线方法多次调用会重复绘制</h4>
+<p>解决办法: 使用runtime给类目增加一个属性数组保存绘制的虚线; 在绘制之前移除上一个虚线<code class="highlighter-rouge">layer</code></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)addLineOfDashWithRect:(CGRect)rect lineHeight: (CGFloat)lineHeight lineWidth:(CGFloat)lineWidth lineSpacing:(CGFloat)lineSpacing lineColor:(UIColor *)lineColor lineDirection:(BOOL)isHorizonal {
+    if (![self lineOfDashArray]) {
+        [self setLineOfDashArray:[NSMutableArray array]];
+    }
+    NSMutableArray *lineOfDashs = [self lineOfDashArray];
+    [lineOfDashs enumerateObjectsUsingBlock:^(CALayer *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj removeFromSuperlayer];
+    }];
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    [shapeLayer setBounds:self.bounds];
+    [shapeLayer setPosition:CGPointMake(CGRectGetWidth(self.frame) * 0.5 + CGRectGetMinX(rect), CGRectGetHeight(self.frame) * 0.5 + CGRectGetMinY(rect))];
+    [shapeLayer setFillColor:[UIColor clearColor].CGColor];
+    //  设置虚线颜色为blackColor
+    [shapeLayer setStrokeColor:lineColor.CGColor];
+    //  设置虚线高度
+    [shapeLayer setLineWidth:lineHeight];
+    [shapeLayer setLineJoin:kCALineJoinRound];
+    //  设置线宽，线间距
+    [shapeLayer setLineDashPattern:[NSArray arrayWithObjects:[NSNumber numberWithInt:lineWidth], [NSNumber numberWithInt:lineSpacing], nil]];
+    //  设置路径
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, 0, 0);
+    
+    if (isHorizonal) {
+        CGPathAddLineToPoint(path, NULL,CGRectGetWidth(rect), 0);
+    } else {
+        CGPathAddLineToPoint(path, NULL, 0, CGRectGetHeight(rect));
+    }
+    [shapeLayer setPath:path];
+    [lineOfDashs addObject:shapeLayer];
+    CGPathRelease(path);
+    //  把绘制好的虚线添加上来
+    [self.layer addSublayer:shapeLayer];
+}
+
+- (void)setLineOfDashArray:(NSMutableArray *)lineOfDashArray {
+    objc_setAssociatedObject(self, &amp;LineOfDashArrayKey, lineOfDashArray, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSMutableArray *)lineOfDashArray {
+    return objc_getAssociatedObject(self, &amp;LineOfDashArrayKey);
+}
+
+</code></pre>
+</div>
+
+<h4 id="2-给顶部进度视图完成的部分扩展点击事件以及增加选中已完成部分的标识">2. 给顶部进度视图完成的部分扩展点击事件以及增加选中已完成部分的标识</h4>
+<h6 id="代码地址"><a href="https://github.com/YQqiang/ProgressTopBar">代码地址</a></h6>
+
+<hr />
+
+<blockquote>
+  <p>测试阶段完成, 后面进入新功能的迭代;
+[电站接入]功能的重新设计, 部分效果如上图所示.</p>
+</blockquote>
+
+<h2 id="分析">分析</h2>
+<p>经过对效果图的分析, 决定先把能够复用的部分封装起来</p>
+<ul>
+  <li>顶部代表当前进度的视图, 使用贝塞尔曲线绘制</li>
+  <li>视图左右两边的圆弧也使用贝塞尔曲线绘制, 并封装成类目方法</li>
+  <li>绘制虚线</li>
+</ul>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/3538284-075e95e59f4e1d55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="任务1" /></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/3538284-34a7a85cecb3828b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="任务2" /></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/3538284-480f86074b2df2e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="任务3" /></p>
+
+<h2 id="代码实现">代码实现</h2>
+<h4 id="1顶部代表进度的视图">1.顶部代表进度的视图</h4>
+<p>1.1 视图分解
+顶部视图可以看成是由5个item组成, 只需要绘制出一个item, 然后再基于该item进行二次封装即可
+<img src="http://upload-images.jianshu.io/upload_images/3538284-16ffffa409dcf65a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="分解顶部视图" />
+1.2 绘制单个item
+<img src="http://upload-images.jianshu.io/upload_images/3538284-dd1f37a3da101fd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="分解单个item" />
+绘制思路: 
+① :    使用贝塞尔曲线绘制部分圆弧;
+②③ :使用二次贝塞尔曲线绘制圆弧
+④ :    使用贝塞尔曲线路径绘制对勾
+⑤ :   使用CAGradientLayer实现颜色渐变
+绘制代码如下:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)createUI {
+    self.backgroundColor = [UIColor whiteColor];
+    CGFloat space = 4;
+    CGFloat lineHeight = 3;
+    CGFloat width = CGRectGetWidth(self.frame);
+    CGFloat radius = (width - 2 * space) * 0.16;
+    CGFloat controlPointY = 3.3;
+    CGFloat startAngle = M_PI * 0.2;
+    CGFloat endAngle = M_PI - startAngle;
+    
+    UIColor *doneColor = RGB(0, 158, 238);
+    UIColor *doingColor = RGB(247, 141, 97);
+    //    UIColor *lightDoneColor = RGB(105, 153, 171);
+    UIColor *lightDoingColor = RGB(184, 147, 127);
+    UIColor *unDoColor = RGB(212, 213, 214);
+    
+    UIColor *overalColor = doneColor;
+    UIColor *leadingGradientColor = nil;
+    UIColor *trailingGradientColor = nil;
+    
+    switch (self.processState) {
+        case UnProcessState:
+            overalColor = unDoColor;
+            break;
+        case UnProcessRightRornerRadiusState:
+            overalColor = unDoColor;
+            break;
+        case ProcessingLeading:
+            overalColor = doingColor;
+            leadingGradientColor = doingColor;
+            trailingGradientColor = unDoColor;
+            break;
+        case ProcessingMiddle:
+            overalColor = doingColor;
+            leadingGradientColor = lightDoingColor;
+            trailingGradientColor = unDoColor;
+            break;
+        case ProcessingTrialing:
+            overalColor = doingColor;
+            break;
+        case ProcessFirtDone:
+            overalColor = doneColor;
+            trailingGradientColor = lightDoingColor;
+            break;
+        case ProcessedLeading:
+            overalColor = doneColor;
+            break;
+        case ProcessedMiddle:
+            overalColor = doneColor;
+            break;
+        case ProcessedTrialing:
+            overalColor = doneColor;
+            trailingGradientColor = lightDoingColor;
+            break;
+        case ProcessFirtDoing:
+            overalColor = doingColor;
+            trailingGradientColor = unDoColor;
+            break;
+        case ProcessLastDone:
+            overalColor = doingColor;
+            leadingGradientColor = lightDoingColor;
+            break;
+        default:
+            break;
+    }
+    // 路径
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(width * 0.5, lineHeight) radius: radius startAngle:startAngle endAngle:endAngle clockwise:YES];
+    [path addQuadCurveToPoint:CGPointMake((width - 2 * space) * 0.185 + space, lineHeight) controlPoint:CGPointMake(width * 0.3, controlPointY)];
+    // 左圆角
+    if (self.processState == ProcessFirtDoing || self.processState == ProcessedLeading || self.processState == ProcessFirtDone) {
+        [path addLineToPoint:CGPointMake(space, lineHeight)];
+        [path addQuadCurveToPoint:CGPointMake(space, 0) controlPoint:CGPointMake(0 - space, lineHeight * 0.5)];
+    } else {
+        [path addLineToPoint:CGPointMake(0, lineHeight)];
+        [path addLineToPoint:CGPointMake(0, 0)];
+    }
+    // 右圆角
+    if (self.processState == ProcessLastDone || self.processState == UnProcessRightRornerRadiusState) {
+        [path addLineToPoint:CGPointMake(width - space, 0)];
+        [path addQuadCurveToPoint:CGPointMake(width - space, lineHeight) controlPoint:CGPointMake(width + space, lineHeight * 0.5)];
+    } else {
+        [path addLineToPoint:CGPointMake(width - 0, 0)];
+        [path addLineToPoint:CGPointMake(width - 0, lineHeight)];
+    }
+    [path addLineToPoint:CGPointMake( width - (width - 2 * space) * 0.185 - space, lineHeight)];
+    double endX = cos(startAngle) * radius + (width * 0.5);
+    double endY = sin(startAngle) * radius + lineHeight;
+    [path addQuadCurveToPoint:CGPointMake(endX, endY) controlPoint:CGPointMake(width * 0.7, controlPointY)];
+//    path.lineWidth = 10;
+    // 绘制路径图层
+    CAShapeLayer *backLayer = [CAShapeLayer layer];
+    backLayer.frame = self.bounds;
+    backLayer.fillColor =  overalColor.CGColor;
+    backLayer.strokeColor  = overalColor.CGColor;
+//    backLayer.lineWidth = 2;
+    backLayer.lineCap = @"round";
+    backLayer.lineJoin = @"round";
+    backLayer.path = [path CGPath];
+//    backLayer.strokeEnd = 5;
+    [self.layer addSublayer:backLayer];
+    
+    // 颜色渐变
+    CAGradientLayer *gradientLayer =  [CAGradientLayer layer];
+    gradientLayer.frame = self.bounds;
+    NSMutableArray *colors = [NSMutableArray array];
+    [colors addObject:(id)overalColor.CGColor];
+    if (trailingGradientColor) {
+        [colors addObject:(id)trailingGradientColor.CGColor];
+    } else {
+        [colors addObject:(id)overalColor.CGColor];
+    }
+    if (leadingGradientColor) {
+        [colors insertObject:(id)leadingGradientColor.CGColor atIndex:0];
+    }
+    
+    [gradientLayer setColors:colors];
+    gradientLayer.startPoint = CGPointMake(0, 0);
+    gradientLayer.endPoint = CGPointMake(1, 0);
+    if (colors.count == 2) {
+        gradientLayer.locations = @[@0.7];
+    } else if (colors.count == 3) {
+        gradientLayer.locations = @[@0, @0.5];
+    }
+    [self.layer addSublayer:gradientLayer];
+    [gradientLayer setMask:backLayer];
+    
+    // 黄色圆圈(标识正在处理)
+    if (self.processState == ProcessingTrialing || self.processState == ProcessingMiddle || self.processState == ProcessingLeading || self.processState == ProcessLastDone || self.processState == ProcessFirtDoing) {
+        CGFloat cycleRadius = 3;
+        UIView *cycleView = [[UIView alloc] init];
+        cycleView.backgroundColor = RGB(247, 141, 97);
+        [self addSubview:cycleView];
+        cycleView.frame = CGRectMake(width * 0.5 - cycleRadius, lineHeight + radius + cycleRadius, cycleRadius * 2, cycleRadius * 2);
+        cycleView.layer.cornerRadius = cycleRadius;
+    }
+    
+    self.titleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.titleBtn.titleLabel.font = [UIFont systemFontOfSize:8];
+    [self addSubview:self.titleBtn];
+    [self.titleBtn sizeToFit];
+    CGPoint titleBtnCenter = self.titleBtn.center;
+    titleBtnCenter.x = self.center.x - 5;
+    titleBtnCenter.y = lineHeight + 5;
+    self.titleBtn.center = CGPointMake(width * 0.5, lineHeight + 3);
+    if (self.processState == ProcessedLeading || self.processState == ProcessedMiddle || self.processState == ProcessedTrialing || self.processState == ProcessLastDone) {
+        // 已完成的步骤显示√
+        UIBezierPath *gouPath = [UIBezierPath bezierPath];
+        [gouPath moveToPoint:CGPointMake(12, CGRectGetHeight(self.titleBtn.frame) * 0.5 + 0)];
+        [gouPath addLineToPoint:CGPointMake(CGRectGetWidth(self.titleBtn.frame) * 0.5, CGRectGetHeight(self.titleBtn.frame) - 8)];
+        [gouPath addLineToPoint:CGPointMake(CGRectGetWidth(self.titleBtn.frame) - 10, 8)];
+        CAShapeLayer *gouLayer = [CAShapeLayer layer];
+        gouLayer.path = gouPath.CGPath;
+        gouLayer.frame = self.titleBtn.bounds;
+        gouLayer.lineWidth = 1.5;
+        gouLayer.lineCap = @"round";
+        gouLayer.lineJoin = @"round";
+        gouLayer.fillColor = [UIColor clearColor].CGColor;
+        gouLayer.strokeColor = [UIColor whiteColor].CGColor;
+        [self.titleBtn.layer addSublayer:gouLayer];
+        
+    } else {
+        [self.titleBtn setTitle:self.processValue forState:UIControlStateNormal];
+    }
+}
+</code></pre>
+</div>
+<p>1.3 基于单个item二次封装
+代码如下:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>- (void)creatUI {
+    CGFloat itemWidth = CGRectGetWidth(self.frame) * 0.2;
+    CGFloat itemHeight = CGRectGetHeight(self.frame);
+    ProcessState processState = ProcessedLeading;
+    for (int i = 0; i &lt; 5; i ++) {
+        if (i == self.progressValueType - 1) {
+            processState = ProcessedTrialing;
+        } else if (i &lt; self.progressValueType) {
+            processState = ProcessedMiddle;
+        } else if (i == self.progressValueType) {
+            processState = ProcessingMiddle;
+        } else {
+            processState = UnProcessState;
+        }
+        
+        if (i == 0 &amp;&amp; self.progressValueType != ProgressTypeWith40) {
+            processState = ProcessedLeading;
+        }
+        if (i == 0 &amp;&amp; self.progressValueType == ProgressTypeWith40) {
+            processState = ProcessFirtDone;
+        }
+        if (i == 4) {
+            processState = UnProcessRightRornerRadiusState;
+        }
+        
+        if (self.progressValueType == ProgressTypeWith20 &amp;&amp; i == 0) {
+            processState = ProcessFirtDoing;
+        }
+        if (self.progressValueType == ProgressTypeWith100 &amp;&amp; i == 4) {
+            processState = ProcessLastDone;
+        }
+        CreatePlantProgressItme *item = [[CreatePlantProgressItme alloc] initWithFrame:CGRectMake(i * itemWidth, 0, itemWidth, itemHeight) processState:processState processValue:[NSString stringWithFormat:@"%zd%%", (i + 1) * 20]];
+        [self addSubview:item];
+    }
+}
+</code></pre>
+</div>
+<p>1.4 最终效果</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/3538284-796cf479478aa0c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果" /></p>
+
+<p>1.5 demo地址 <a href="https://github.com/YQqiang/ProgressTopBar">ProgressTopBar</a></p>
+
+<h4 id="2视图左右增加圆弧">2.视图左右增加圆弧</h4>
+<p>2.1 直接上代码:(在UIView类目中添加该方法)</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>/**
+ 视图View两边增加圆弧
+ 
+ @param topMargin 距离顶部距离
+ @param gapRadius 圆弧大小
+ */
+- (void)addGapTopMargin:(CGFloat)topMargin gapRadius:(CGFloat)gapRadius {
+    UIBezierPath *path = [UIBezierPath bezierPathWithRect:self.bounds];
+    UIBezierPath *path1 = [UIBezierPath bezierPath];
+    CGFloat gapY = topMargin;
+    [path1 moveToPoint:CGPointMake(0, gapY)];
+    [path1 addQuadCurveToPoint:CGPointMake(gapRadius, gapY + gapRadius * 1.5) controlPoint:CGPointMake(0, gapY + gapRadius * 1)];
+    [path1 addQuadCurveToPoint:CGPointMake(gapRadius, gapY + gapRadius * 3.5) controlPoint:CGPointMake(gapRadius * 2, gapY + gapRadius * 2.5)];
+    [path1 addQuadCurveToPoint:CGPointMake(0, gapY + gapRadius * 5) controlPoint:CGPointMake(0, gapY + gapRadius * 4)];
+    [path1 fill];
+    
+    UIBezierPath *path2 = [UIBezierPath bezierPathWithCGPath:path1.CGPath];
+    [path2 applyTransform:CGAffineTransformMakeRotation(M_PI)];
+    [path2 applyTransform:CGAffineTransformMakeTranslation(CGRectGetWidth(self.frame), topMargin * 2 + 5 * gapRadius)];
+    [path appendPath:[path1 bezierPathByReversingPath]];
+    [path appendPath:[path2 bezierPathByReversingPath]];
+    
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.path = path.CGPath;
+    [self.layer setMask:shapeLayer];
+}
+</code></pre>
+</div>
+<p>2.2 如何使用:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>[self.bgView addGapTopMargin:84 gapRadius:8];
+</code></pre>
+</div>
+<p>2.3 最终效果</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/3538284-28a1910f81a0e2e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="弧度为5" /></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/3538284-bbf5fb297e36f440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="弧度为8" /></p>
+
+<h4 id="3-绘制虚线">3. 绘制虚线</h4>
+<p>3.1 同样在UIView类目中添加该方法:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>/**
+ 绘制虚线
+ 
+ @param rect 虚线尺寸
+ @param lineHeight 虚线的高度
+ @param lineWidth 虚线的宽度
+ @param lineSpacing 虚线的间距
+ @param lineColor 虚线的颜色
+ @param isHorizonal 水平 | 垂直  (YES 水平; NO 垂直)
+ */
+- (void)addLineOfDashWithRect:(CGRect)rect lineHeight: (CGFloat)lineHeight lineWidth:(CGFloat)lineWidth lineSpacing:(CGFloat)lineSpacing lineColor:(UIColor *)lineColor lineDirection:(BOOL)isHorizonal {
+    
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    [shapeLayer setBounds:self.bounds];
+    [shapeLayer setPosition:CGPointMake(CGRectGetWidth(self.frame) * 0.5 + CGRectGetMinX(rect), CGRectGetHeight(self.frame) * 0.5 + CGRectGetMinY(rect))];
+    [shapeLayer setFillColor:[UIColor clearColor].CGColor];
+    //  设置虚线颜色为blackColor
+    [shapeLayer setStrokeColor:lineColor.CGColor];
+    //  设置虚线高度
+    [shapeLayer setLineWidth:lineHeight];
+    [shapeLayer setLineJoin:kCALineJoinRound];
+    //  设置线宽，线间距
+    [shapeLayer setLineDashPattern:[NSArray arrayWithObjects:[NSNumber numberWithInt:lineWidth], [NSNumber numberWithInt:lineSpacing], nil]];
+    //  设置路径
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, 0, 0);
+    
+    if (isHorizonal) {
+        CGPathAddLineToPoint(path, NULL,CGRectGetWidth(rect), 0);
+    } else {
+        CGPathAddLineToPoint(path, NULL, 0, CGRectGetHeight(rect));
+    }
+    [shapeLayer setPath:path];
+    CGPathRelease(path);
+    //  把绘制好的虚线添加上来
+    [self.layer addSublayer:shapeLayer];
+}
+</code></pre>
+</div>
+<p>3.2 使用方法</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>//    [self.bgView addLineOfDashWithRect:CGRectMake(0, 150, self.bgView.bounds.size.width, 2) lineHeight:2 lineWidth:8 lineSpacing:5 lineColor:[UIColor redColor] lineDirection:YES];
+    [self.bgView addLineOfDashWithRect:CGRectMake(self.bgView.bounds.size.width * 0.5, 0, 2, self.bgView.bounds.size.height) lineHeight:2 lineWidth:8 lineSpacing:5 lineColor:[UIColor redColor] lineDirection:NO];
+</code></pre>
+</div>
+<p>3.3 虚线效果</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/3538284-059f2bfd39c9ab6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="水平虚线" /></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/3538284-1460d5ee43ab9f96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="竖直虚线" /></p>
+
+<h2 id="总结">总结</h2>
+<ol>
+  <li>颜色渐变<code class="highlighter-rouge">CAGradientLayer</code>
+    <div class="highlighter-rouge"><pre class="highlight"><code>CAGradientLayer *gradientLayer =  [CAGradientLayer layer];
+</code></pre>
+    </div>
+  </li>
+  <li>贝塞尔路径的copy(由path1 复制出 path2)
+    <div class="highlighter-rouge"><pre class="highlight"><code>UIBezierPath *path2 = [UIBezierPath bezierPathWithCGPath:path1.CGPath];
+</code></pre>
+    </div>
+  </li>
+  <li>贝塞尔路径的变换操作(平移, 旋转, 缩放)
+    <div class="highlighter-rouge"><pre class="highlight"><code>[path2 applyTransform:CGAffineTransformMakeRotation(M_PI)];
+[path2 applyTransform:CGAffineTransformMakeTranslation(CGRectGetWidth(self.frame), topMargin * 2 + 5 * gapRadius)];
+</code></pre>
+    </div>
+  </li>
+  <li>裁剪贝塞尔曲线填充的部分
+    <div class="highlighter-rouge"><pre class="highlight"><code>[path appendPath:[path1 bezierPathByReversingPath]];
+[path appendPath:[path2 bezierPathByReversingPath]];
+    
+ CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+ shapeLayer.path = path.CGPath;
+ [self.layer setMask:shapeLayer];
+</code></pre>
+    </div>
+  </li>
+  <li>设置虚线
+    <div class="highlighter-rouge"><pre class="highlight"><code> //  设置线宽，线间距
+ [shapeLayer setLineDashPattern:[NSArray arrayWithObjects:[NSNumber numberWithInt:lineWidth], [NSNumber numberWithInt:lineSpacing], nil]];
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>CALayer 层的动画暂停与恢复</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> /**
+  暂停layer层的动画
+     
+  @param layer
+  */
+ -(void)pauseLayer:(CALayer*)layer {
+     if (layer.speed == 0) return;
+     CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+     layer.speed = 0.0;
+     layer.timeOffset = pausedTime;
+ }
+ /**
+  恢复layer层的动画
+     
+  @param layer
+  */
+ -(void)resumeLayer:(CALayer*)layer {
+     if (layer.speed != 0) return;
+     CFTimeInterval pausedTime = [layer timeOffset];
+     layer.speed = 1.0;
+     layer.timeOffset = 0.0;
+     layer.beginTime = 0.0;
+     CFTimeInterval timeSincePause = [layer convertTime:CACurrentMediaTime() fromLayer:nil] - pausedTime;
+     layer.beginTime = timeSincePause;
+ }
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/3538284-c6db3cdb842391ed.gif?imageMogr2/auto-orient/strip" alt="pauseAnimation.gif" /></p>
+
+
+  </div>
+
+  
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">逆行云</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              逆行云
+            
+            </li>
+            
+            <li><a href="mailto:yuqiang.coder@gmail.com">yuqiang.coder@gmail.com</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/YQqiang"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">YQqiang</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>世界上有10种人, 一种是懂二进制的人, 一种是不懂二进制的人.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

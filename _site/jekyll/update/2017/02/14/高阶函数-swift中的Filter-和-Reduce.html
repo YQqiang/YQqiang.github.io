@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>高阶函数---swift中的Filter 和 Reduce</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/jekyll/update/2017/02/14/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0-swift%E4%B8%AD%E7%9A%84Filter-%E5%92%8C-Reduce.html">
+  <link rel="alternate" type="application/rss+xml" title="逆行云" href="/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+    
+    
+    <a class="site-title" href="/">逆行云</a>
+  
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+            
+            
+          
+            
+            
+            <a class="page-link" href="/about/">About</a>
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+        </div>
+      </nav>
+    
+  </div>
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">高阶函数---swift中的Filter 和 Reduce</h1>
+    <p class="post-meta">
+      <time datetime="2017-02-14T10:17:31+08:00" itemprop="datePublished">
+        
+        Feb 14, 2017
+      </time>
+      </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><img src="http://upload-images.jianshu.io/upload_images/3538284-0bc34a563338d07e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="" /></p>
+
+<h1 id="说明">说明</h1>
+<blockquote>
+  <p>本文内容均出自<a href="https://store.objccn.io/products/functional-swift/">函数式 Swift</a>一书, 此处整理仅仅是为了自己日后方便查看, 需要深入研究的话, 可以点进去购买, 支持<a href="https://store.objccn.io/products/functional-swift/">原作者</a>
+本书由 <a href="http://weibo.com/onevcat?is_hot=1">王巍–新浪微博</a>大神翻译
+<a href="https://onevcat.com/#blog">OneV’s Den 喵神博客</a></p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>上一篇写到了<a href="http://www.jianshu.com/p/b7d2adcedb14">高阶函数—Swift中的泛型介绍(一步步实现map函数)</a>
+<code class="highlighter-rouge">map函数</code>并不是Swift标准数组库中唯一一个使用泛型的函数. 趁着今天有时间, 把<code class="highlighter-rouge">Filter</code> 和 <code class="highlighter-rouge">Reduce</code>也整理一下, 方便日后查阅.</p>
+</blockquote>
+
+<h1 id="filter">Filter</h1>
+<hr />
+<blockquote>
+  <p>假设我们有一个由字符串组成的数组, 代表文件夹的内容:</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>let exampleFiles = ["README.md", "HelloWorld.swift", "FlappyBird.swift"]
+</code></pre>
+</div>
+
+<blockquote>
+  <p>现在如果我们想要一个包含所有<code class="highlighter-rouge">.swift</code>文件的数组, 可以很容易通过简单的循环得到:</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>func getSwiftFiles(_ files: [String]) -&gt; [String] {
+        var result: [String] = []
+        for file in files {
+            if file.hasSuffix(".swift") {
+                result.append(file)
+            }
+        }
+        return result
+    }
+</code></pre>
+</div>
+
+<blockquote>
+  <p>现在可以使用这个函数来取得<code class="highlighter-rouge">exampleFiles</code>数组中的<code class="highlighter-rouge">Swift</code>文件</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>print("\(getSwiftFiles(exampleFiles))")
+
+</code></pre>
+</div>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/3538284-ad28945db49f5cbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="获取数组中的Swift文件" /></p>
+
+<blockquote>
+  <p>当然, 我们可以将<code class="highlighter-rouge">getSwiftFiles</code>函数一般化. 比如, 相比于使用硬编码(hardcoding)的方式筛选扩展名为<code class="highlighter-rouge">.swift</code>的文件, 传递一个附加的<code class="highlighter-rouge">String</code>参数进行比对会是更好的方法. 我们接下来可以使用同样的函数去比对<code class="highlighter-rouge">.swift</code>或<code class="highlighter-rouge">.md</code>文件. 但是假如我们想查找没有扩展名的所有文件, 或者是名字以字符串<code class="highlighter-rouge">Hello</code>开头的文件, 那怎么办呢?</p>
+</blockquote>
+
+<hr />
+<blockquote>
+  <p>为了进行一个这样的查找, 我们可以定义一个名为<code class="highlighter-rouge">filter</code>的通用型函数. 就像之前看到的<a href="http://www.jianshu.com/p/b7d2adcedb14">map</a>那样, <code class="highlighter-rouge">filter</code>函数接受一个<strong><em>函数</em></strong>作为参数. <code class="highlighter-rouge">filter</code>函数的类型是<code class="highlighter-rouge">Element -&gt; Bool</code> ——对于数组中的所有元素, 此函数都会判定它是否应该被包含在结果中:</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extension Array {
+    func filter(includeElement: (Element) -&gt; Bool) -&gt; [Element] {
+        var result: [Element] = []
+        for x in self where includeElement(x) {
+            result.append(x)
+        }
+        return result
+    }
+}
+</code></pre>
+</div>
+
+<blockquote>
+  <p>根据<code class="highlighter-rouge">filter</code> 能很容易地定义<code class="highlighter-rouge">getSwiftFiles</code>:</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>func getSwiftFiles(_ files: [String]) -&gt; [String] {
+        return files.filter(includeElement: { (file) -&gt; Bool in
+            file.hasSuffix(".swift")
+        })
+    }
+</code></pre>
+</div>
+
+<blockquote>
+  <p>就像<code class="highlighter-rouge">map</code>一样, <code class="highlighter-rouge">Swift</code>标准库中的数组类型已经有定义好的<code class="highlighter-rouge">filter函数</code>了. 所以除非是作为练习, 否则并没有必要重写它.</p>
+</blockquote>
+
+<h1 id="reduce">Reduce</h1>
+<hr />
+<blockquote>
+  <p>在定义一个泛型函数来体现一个更常见的模式之前, 我们会先考虑一些相对简单的函数.</p>
+</blockquote>
+
+<blockquote>
+  <p>定义一个计算数组中所有整型值之和的函数非常简单:</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>func sum(_ xs: [Int]) -&gt; Int {
+        var result: Int = 0
+        for x in xs {
+            result += x
+        }
+        return result
+    }
+</code></pre>
+</div>
+
+<blockquote>
+  <p>我们可以向下面这样使用<code class="highlighter-rouge">sum函数</code></p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>print(sum([1, 2, 3, 4]))
+</code></pre>
+</div>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/3538284-bcbb4dd871eafc4a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="sum结果" /></p>
+
+<blockquote>
+  <p>我们也可以使用类似<code class="highlighter-rouge">sum</code>中的<code class="highlighter-rouge">for循环</code>来定义一个 <code class="highlighter-rouge">product函数</code>, 用于计算所有数组项相乘之积:</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>func product(_ xs: [Int]) -&gt; Int {
+        var result: Int = 1
+        for x in xs {
+            result = x * result
+        }
+        return result
+    }
+</code></pre>
+</div>
+
+<blockquote>
+  <p>同样地, 我们可能想要连接数组中的所有字符串:</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>func concatenate(_ xs: [String]) -&gt; String {
+        var result: String = ""
+        for x in xs {
+            result += x
+        }
+        return result
+    }
+</code></pre>
+</div>
+
+<blockquote>
+  <p>或者说, 我们可以选择连接数组中的所有字符串, 并插入一个单独的首行, 以及在每一项后面追加一个换行符:</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>func prettyPrintArray(_ xs: [String]) -&gt; String {
+        var result: String = ""
+        for x in xs {
+            result = " " + result + x + "\n"
+        }
+        return result
+    }
+</code></pre>
+</div>
+
+<blockquote>
+  <p>这些函数有什么共同特点呢? 他们都将变量<code class="highlighter-rouge">result</code>初始化为某个值. 随后对输入数组  <code class="highlighter-rouge">xs</code> 的每一项进行遍历, 最后以某种方式更新结果. 为了定义一个可以体现所需类型的泛型函数, 我们需要对两份信息进行抽象: 赋给 <code class="highlighter-rouge">result</code>变量的初始值, 和用于在每一次循环中更新<code class="highlighter-rouge">result</code>的<strong><em>函数</em></strong></p>
+</blockquote>
+
+<blockquote>
+  <p>考虑到这一点, 我们得出了能够匹配此模式的<code class="highlighter-rouge">reduce函数</code>定义, 如下所示:</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>extension Array {
+    func reduce&lt;T&gt;(initial: T, combine: (T, Element) -&gt; T) -&gt; T {
+        var result = initial
+        for x in self {
+            result = combine(result, x)
+        }
+        return result
+    }
+}
+</code></pre>
+</div>
+
+<blockquote>
+  <p>这个函数的泛型类型体现在两个方面: 对于任意的<code class="highlighter-rouge">[Element]</code>类型的<strong><em>输入数组</em></strong>来说, 它会计算一个类型为<code class="highlighter-rouge">T</code>的返回值. 这么做的前提是, 首先需要一个<code class="highlighter-rouge">T</code>类型的初始值(赋值给<code class="highlighter-rouge">result</code>变量), 以及一个用于更新<code class="highlighter-rouge">for循环</code>中变量值的函数<code class="highlighter-rouge">combine:(T, Element) -&gt; T</code>. 在一些想<code class="highlighter-rouge">OCaml</code> 和 <code class="highlighter-rouge">Haskell</code>一样的函数式语言中, <code class="highlighter-rouge">reduce</code>函数被称为<code class="highlighter-rouge">fold</code> 或 <code class="highlighter-rouge">fold_left</code></p>
+</blockquote>
+
+<blockquote>
+  <p>我们可以使用 <code class="highlighter-rouge">reduce</code>来定义以上函数. 下面是几个例子:</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>func sumUsingReduce(_ xs: [Int]) -&gt; Int {
+        return xs.reduce(0) { (result, x) -&gt; Int in
+            return result + x
+        }
+    }
+</code></pre>
+</div>
+
+<blockquote>
+  <p>除了写一个闭包, 我们也可以将运算符作为最后一个参数. 这使得代码更短, 如下面两个函数所示:</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>func productUsingReduce(_ xs: [Int]) -&gt; Int {
+        return xs.reduce(initial: 1, combine: *)
+    }
+    
+    func concatUsingReduce(_ xs: [String]) -&gt; String {
+        return xs.reduce(initial: "", combine: +)
+    }
+</code></pre>
+</div>
+
+<blockquote>
+  <p>需要再一次说明, 我们自定义<code class="highlighter-rouge">reduce</code>仅仅只是为了练习. <code class="highlighter-rouge">Swift</code>的标准库已经为数组提供了<code class="highlighter-rouge">reduce函数</code></p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>我们可以使用<code class="highlighter-rouge">reduce</code> 来定义新的泛型函数. 例如, 假设有一个数组, 它的每一项都是数组, 而我们想将他展开为一个单一数组. 可以使用<code class="highlighter-rouge">for循环</code>编写一个函数:</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>func flatten&lt;T&gt;(_ xss: [[T]]) -&gt; [T] {
+        var result: [T] = []
+        for xs in xss {
+            result += xs
+        }
+        return result
+    }
+</code></pre>
+</div>
+
+<blockquote>
+  <p>然而, 若使用<code class="highlighter-rouge">reduce</code>则可以想下面这样编写这个函数:</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>func flattenUsingReduce&lt;T&gt;(_ xss: [[T]]) -&gt; [T] {
+        return xss.reduce(initial: [], combine: { (result, xs) -&gt; [T] in
+            return result + xs
+        })
+    }
+</code></pre>
+</div>
+
+<blockquote>
+  <p>实际上, 我们甚至可以使用<code class="highlighter-rouge">reduce</code>重新定义<code class="highlighter-rouge">map</code> 和 <code class="highlighter-rouge">filter</code>:</p>
+</blockquote>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>func mapUsingReduce&lt;T&gt;(_ transform: (Element) -&gt; T) -&gt; [T] {
+        return reduce(initial: [], combine: { (result, x) -&gt; [T] in
+            return result + [transform(x)]
+        })
+    }
+    
+    func flterUsingReduce(_ includeElement:(Element) -&gt; Bool) -&gt; [Element] {
+        return reduce(initial: [], combine: { (result, x) -&gt; [Element] in
+            return includeElement(x) ? result + [x] : result
+        })
+    }
+</code></pre>
+</div>
+
+<blockquote>
+  <p>我们能够使用<code class="highlighter-rouge">reduce</code>来表示所有这些函数, 这个事实说明了<code class="highlighter-rouge">reduce</code>能够通过通用的方法来体现一个相当常见的编程模式: 遍历数组并计算结果.</p>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>请务必注意: 尽管通过<code class="highlighter-rouge">reduce</code>来定义一切是个很有趣的练习, 但是在实践中者往往不是一个什么好主意. 原因在于, 不出意外的话你的代码最终会在运行期间大量复制生成的数组, 换句话说, 它不得不反复分配内存, 释放内存, 以及复制大量内存中的内容.</p>
+</blockquote>
+
+
+  </div>
+
+  
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">逆行云</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              逆行云
+            
+            </li>
+            
+            <li><a href="mailto:yuqiang.coder@gmail.com">yuqiang.coder@gmail.com</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/YQqiang"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">YQqiang</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>世界上有10种人, 一种是懂二进制的人, 一种是不懂二进制的人.
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

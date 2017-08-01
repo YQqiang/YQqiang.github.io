@@ -1,0 +1,130 @@
+---
+layout: post
+title:  "Swift-技能小结(二)"
+date:   2017-03-07 10:17:31 +0800
+categories: jekyll update
+---
+![](http://upload-images.jianshu.io/upload_images/3538284-bc4c89ddbac7a99a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+上一篇: [Swift-技能小结(一)](http://www.jianshu.com/p/e52ac996055a)
+
+> 一, 自定义运算符, 判断是否是'null'字符串
+   二, 使用`CGBlendMode`更改图片颜色
+
+# 自定义运算符 ?*
+在开发中经常需要把接口的数据展示到界面上, 如果直接返回`"null"`, 我们又不处理的话, 那么直接显示`"null"`在APP中, 是非常影响UI界面的美观和用户的体验.
+
+> 处理方法: 自定义运算符 `?*` 去代替`null`字符串
+
+例:
+```
+let str = "null"
+print(str ?* "--")
+```
+结果为: 
+```
+--
+```
+实现代码如下:
+```
+/*
+ 运算符重载: 中置      前置      后置
+ infix    prefix   postfix
+ 组合赋值运算符: assignment
+ 自定义运算符:
+ 全局域使用 operator 关键字声明
+ 自定义中置运算符的优先级和结合性:
+ 结合性(associativity) 取值有: left right none
+ 优先级(precedence)  默认为100
+ Operator should no longer be declared with body; use a precedence group instead
+ */
+infix operator ?* : FriendlyString
+precedencegroup FriendlyString {
+    associativity: left             // 左结合
+    higherThan: AdditionPrecedence  // 优先级高于加法类型
+    lowerThan: MultiplicationPrecedence // 优先级低于减法类型
+}
+
+/// ?* 代替系统的 ?? 使用, 可以过滤 "null" 字符串
+/// 使用方法 例: str ?* "--"
+/// 结果为: 如果`str` 为空 或 `null`, 则返回 "--"字符串
+///
+/// - Parameters:
+///   - str: 原始字符串
+///   - defaultStr: 代替的字符串
+/// - Returns: 过滤后的字符串
+func ?*(str: String?, defaultStr: String) -> String {
+    let s = str ?? ""
+    if s == "null" || s == "<null>" || s.isKind(of: NSNull.self) {
+        return defaultStr
+    }
+    return s
+}
+```
+
+可以扩展一些方法, 当字符串为`"null"`时, 替换为固定的字符串
+例:
+```
+/// 过滤字符串, 默认返回一个空字符 ""
+///
+/// - Parameter str: 原始字符串
+/// - Returns: 过滤后的字符串
+func defaultEmptyStr(_ str: String?) -> String {
+    return str ?* ""
+}
+
+/// 过滤字符串, 默认返回一个 "--" 字符串
+///
+/// - Parameter str: 原始字符串
+/// - Returns: 过滤后的字符串
+func default__str(_ str: String?) -> String {
+    return str ?* "--"
+}
+```
+
+> `defaultEmptyStr(_ :)` 函数, 当字符串为`"null"` 时, 默认使用一个空字符
+   `default__str(_ :)` 函数, 当字符串为`"null"`时, 默认返回`"--"`代替空字符
+
+# 使用 ***CGBlendMode*** 更改图片颜色
+例: 原始图片
+
+![原始图片](http://upload-images.jianshu.io/upload_images/3538284-815f48201ea31e97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+更改颜色后的图片
+
+![更改颜色后的图片](http://upload-images.jianshu.io/upload_images/3538284-b56d973687b8de20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+代码实现:
+```
+extension UIImage {
+    func image(_ tintColor: UIColor, blendMode: CGBlendMode = .overlay) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        tintColor.setFill()
+        let bounds = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIRectFill(bounds)
+        draw(in: bounds, blendMode: blendMode, alpha: 1.0)
+        if blendMode != .destinationIn {
+            draw(in: bounds, blendMode: .destinationIn, alpha: 1.0)
+        }
+        let tintedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return tintedImage ?? UIImage()
+    }
+}
+```
+使用方法:
+```
+image1.image = UIImage(named: "location")?.image(.red)
+image2.image = UIImage(named: "location")?.image(.orange)
+image3.image = UIImage(named: "location")?.image(.gray)
+image4.image = UIImage(named: "location")?.image(.yellow)
+image5.image = UIImage(named: "location")?.image(.brown)
+image6.image = UIImage(named: "location")?.image(.purple)
+```
+> `CGBlendMode`的方法详细描述请参考[喵神](https://onevcat.com/#blog)的博客[iOS中使用blend改变图片颜色](https://onevcat.com/2013/04/using-blending-in-ios/)
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
+

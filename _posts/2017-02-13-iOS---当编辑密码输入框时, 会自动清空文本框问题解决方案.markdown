@@ -1,0 +1,43 @@
+---
+layout: post
+title:  "iOS---当编辑密码输入框时, 会自动清空文本框问题解决方案"
+date:   2017-02-13 10:17:31 +0800
+categories: jekyll update
+---
+![](http://upload-images.jianshu.io/upload_images/3538284-52de6b4f3b32beea.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+> 当`UITextField` 的 `isSecureTextEntry` 属性为 `true` 时, 我们如果编辑 `textField` 时, 系统会自动清空 `textField` 上的文本重新输入, 而不是在之前的文本后继续输入.
+
+# 问题演示如下图
+> 当输入密码时, 系统会自动清空以前的内容
+
+![自动清空密码输入框.gif](http://upload-images.jianshu.io/upload_images/3538284-24d139bfdac4cc75.gif?imageMogr2/auto-orient/strip)
+
+# 需求
+> 在项目中的需求是, 可以再之前的密码后面继续追加字符
+例如: 密码是  yq123
+密码输入框, 先输入了: yq, 点击完成后;
+再次点击密码输入框, 在之前的yq 后面追加:123
+
+# 解决问题
+> 在 `UITextField` 的代理方法 `func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool` 中添加如下代码
+
+```
+func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let textFieldContent = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
+        if textField == password, textField.isSecureTextEntry == true {
+            textField.text = textFieldContent
+            return false
+        }
+        return true
+    }
+```
+
+# 解决后的效果
+
+![解决后的效果.gif](http://upload-images.jianshu.io/upload_images/3538284-8942850584cce2a6.gif?imageMogr2/auto-orient/strip)
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
+

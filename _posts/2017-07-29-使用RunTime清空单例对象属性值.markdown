@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "使用RunTime清空单例对象属性值"
-date:   2017-08-01 10:54:31 +0800
+date:   2017-07-29 10:54:31 +0800
 categories: jekyll update
 ---
 ![来自项目截图](http://upload-images.jianshu.io/upload_images/3538284-36673d2ce46bbead.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)

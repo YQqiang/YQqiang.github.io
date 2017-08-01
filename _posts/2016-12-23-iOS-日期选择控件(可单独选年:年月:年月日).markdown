@@ -1,0 +1,62 @@
+---
+layout: post
+title:  "iOS-日期选择控件(可单独选年/年月/年月日)"
+date:   2016-12-23 10:17:31 +0800
+categories: jekyll update
+---
+# 说明
+iOS系统提供的UIDatePicker 只能用于选择年月日,通过借鉴[stackoverflow](http://stackoverflow.com/questions/3348247/uidatepicker-select-month-and-year)上的思路对月日图层的隐藏来达到显示年/ 年月的效果
+
+# 效果展示
+## 通过分段控制器 选择年 弹出仅有年份选择的datePicker
+
+![](http://upload-images.jianshu.io/upload_images/3538284-2ff3a9dee45bff5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+
+## 通过分段控制器 选择月 弹出仅有年月选择的datePicker
+
+![](http://upload-images.jianshu.io/upload_images/3538284-5e60b344e2d393fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+
+## 通过分段控制器 选择日 弹出有年月日选择的datePicker
+
+![](http://upload-images.jianshu.io/upload_images/3538284-cb5cadd7f570b6a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+
+# 实现的主要代码
+
+```swift
+override func layoutSubviews() {
+        super.layoutSubviews()
+        guard datePickerView.subviews.first?.subviews.first?.subviews.count == 3 else {
+            return
+        }
+        datePickerView.subviews.first?.subviews.first?.subviews[1].frame.origin.x = 0
+        datePickerView.subviews.first?.subviews.first?.subviews[0].frame.origin.x = 0
+        if type == .month {
+            datePickerView.subviews.first?.subviews.first?.subviews[0].isHidden = false
+            datePickerView.subviews.first?.subviews.first?.subviews[1].isHidden = false
+            datePickerView.subviews.first?.subviews.first?.subviews[2].isHidden = true
+            datePickerView.subviews.first?.subviews.first?.subviews[1].frame.origin.x += 100
+        } else if type == .year {
+            datePickerView.subviews.first?.subviews.first?.subviews[0].isHidden = false
+            datePickerView.subviews.first?.subviews.first?.subviews[1].isHidden = true
+            datePickerView.subviews.first?.subviews.first?.subviews[2].isHidden = true
+            datePickerView.subviews.first?.subviews.first?.subviews[0].frame.origin.x += 70
+        } else {
+           datePickerView.subviews.first?.subviews.first?.subviews[0].isHidden = false
+           datePickerView.subviews.first?.subviews.first?.subviews[1].isHidden = false
+           datePickerView.subviews.first?.subviews.first?.subviews[2].isHidden = false
+        }
+    }
+```
+# Demo下载地址 (github)
+github地址:
+* swift版本  [DateSegmentView](https://github.com/YQqiang/DateSegmentView)
+* OC版本 [DateSegmentView-OC](https://github.com/YQqiang/DateSegmentView-OC)
+
+
+# 写在最后 本人iOS开发菜鸟一枚, 不妥之处,还望大神指教~~~~~~~~~~~
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
+
