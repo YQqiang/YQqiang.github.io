@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Error Domain=NSCocoaErrorDomain Code=3840 "Garbage at end." UserInfo={NSDebugDescription=Garbage at end.}解决方案"
+title:  "UserInfo={NSDebugDescription=Garbage at end.}解决方案"
 date:   2017-08-17 17:41:31 +0800
 categories: jekyll update
 ---
@@ -10,6 +10,7 @@ categories: jekyll update
 * 步骤一: 将字符串使用`NSUTF8StringEncoding`编码格式转换为`NSData `
 * 步骤二: 将`data`使用`NSJSONSerialization `转换为对象
 * 步骤三: 把对象为`NSDictionary`
+
 ```
 NSData *jsonData = [result dataUsingEncoding:NSUTF8StringEncoding];
 NSError *error = nil;
@@ -20,6 +21,7 @@ if ([dicData isKindOfClass:[NSDictionary class]]) {
     NSDictionary *dict = (NSDictionary *)dicData;
 }
 ```
+
 ps:  代码中`result` 为以下字符串
 ```
 {"scannum":8,"list":[{"ssid":"SG-A1408190013","bssid":"C8:93:46:11:0C:7F","auth":"OPEN","channel":1,"rssi":-16},{"ssid":"MikroTik-D539F7","bssid":"4C:5E:0C:D5:39:F7","auth":"OPEN","channel":1,"rssi":-34},{"ssid":"254118","bssid":"4C:5E:0C:D6:F8:61","auth":"WPA2_PSK_AES","channel":3,"rssi":-44},{"ssid":"china-unicom","bssid":"00:36:76:1A:BE:27","auth":"WPA2_PSK_AES","channel":1,"rssi":-46},{"ssid":"Derek-Phone","bssid":"F4:5C:89:C3:2D:29","auth":"WPA2_PSK_AES","channel":6,"rssi":-50},{"ssid":"sungrow","bssid":"00:8E:F2:FF:CA:60","auth":"WPA2_PSK_AES","channel":11,"rssi":-68},{"ssid":"sungrow","bssid":"00:8E:F2:FF:C6:80","auth":"WPA2_PSK_AES","channel":11,"rssi":-68},{"ssid":"sungrow","bssid":"00:8E:F2:FF:C8:A0","auth":"WPA2_PSK_AES","channel":11,"rssi":-68}]}
