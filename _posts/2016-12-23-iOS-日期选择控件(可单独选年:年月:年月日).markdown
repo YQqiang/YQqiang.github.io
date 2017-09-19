@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS-日期选择控件(可单独选年/年月/年月日)"
 date:   2016-12-23 10:17:31 +0800
-categories: jekyll update
+categories: 开发笔记
 ---
 # 说明
 iOS系统提供的UIDatePicker 只能用于选择年月日,通过借鉴[stackoverflow](http://stackoverflow.com/questions/3348247/uidatepicker-select-month-and-year)上的思路对月日图层的隐藏来达到显示年/ 年月的效果
