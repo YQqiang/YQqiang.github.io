@@ -21,7 +21,7 @@ author:                                     #自定义常亮
 title: 逆行云的技术博客                             #自定义常量
 
 # avatar头像及Favicon
-avatar: http://upload-images.jianshu.io/upload_images/3538284-7141a1d895155e41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+avatar: https://github.com/YQqiang/YQqiang.github.io/blob/master/_site/assets/images/mine.JPG
 #favicon: http://7u2ho6.com1.z0.glb.clouddn.com/site-favicon.ico
 
 locals:                                     #自定义常量
