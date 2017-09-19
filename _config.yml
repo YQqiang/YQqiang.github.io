@@ -1,43 +1,47 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
 # Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: 逆行云
-email: yuqiang.coder@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  世界上有10种人, 一种是懂二进制的人, 一种是不懂二进制的人.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-# twitter_username: jekyllrb
+title: 逆行云的技术博客
+email: yuqiang.coder@gamil.com
+description: 世界上有10种人, 一种是懂二进制的人, 一种是不懂二进制的人.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "" # the base hostname & protocol for your site
+# url: "http://127.0.0.1:4000" # the base hostname & protocol for your site
+#twitter_username: ""
 github_username:  YQqiang
 
 # Build settings
-markdown: kramdown
-# theme: minima
-theme: minima
+#markdown: kramdown
+permalink: /:year/:month/:day/:title.html   #博文的固定链接
+paginate: 10                                #分页时每页博文数量
+author:                                     #自定义常亮
+  name: 逆行云
+  email: yuqiang.coder@gmail.com
+  link:  ""
+  weibo: ""
+  github: https://github.com/YQqiang
+title: 逆行云的技术博客                             #自定义常量
 
-plugins:
-  - jekyll-feed
+# avatar头像及Favicon
+avatar: http://upload-images.jianshu.io/upload_images/3538284-7141a1d895155e41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240
+#favicon: http://7u2ho6.com1.z0.glb.clouddn.com/site-favicon.ico
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+locals:                                     #自定义常量
+  tags: 标签
+  about: 关于
+active: 技术                                 #自定义常量
+subscribe_rss: /pages/atom.xml              #订阅地址
+markdown: kramdown                         #markdown解释器
+
+# google analytics 设置
+#ga:
+#  id:
+#  url:
+#
+
+# baidu analytics 设置
+
+ba:
+  src: //hm.baidu.com/hm.js?22d94317cfb9f9e0bb476228d9f79278
+
+# disqus 设置
+disqus:
+  shortname: 余强

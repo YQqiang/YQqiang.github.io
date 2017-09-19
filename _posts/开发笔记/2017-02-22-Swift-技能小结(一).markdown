@@ -1,0 +1,125 @@
+---
+layout: post
+title:  "Swift-技能小结(一)"
+date:   2017-02-22 10:17:31 +0800
+categories: 开发笔记
+---
+![](http://upload-images.jianshu.io/upload_images/3538284-de182ce415c302a3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+> 
+最近写代码处于很尴尬的状态, 某些简单的语法或者是小功能明明写过很多遍, 却总是不能手到擒来; 总是需要翻看以前的代码... 
+|
+|
+面壁五分钟........
+|
+|
+|
+|
+|
+|
+|
+|
+好了, 开始写代码, 做个小结.
+
+# 1. swift中的遍历 ***for-in***
+> `for循环`: 用来按照指定的次数多次执行一系列语句
+Swift中已经不支持C样式的`for循环`了, 只能使用`for-in`遍历
+
+* 使用`for-in`遍历, 如果需要下标(`index`), 怎么办? 
+```
+let array = ["a", "b", "c", "d"]
+        for (index, entry) in array.enumerated() {
+            print("entry: \(entry)--->index = \(index)")
+        }
+```
+
+结果如下:
+```
+entry: a--->index = 0
+entry: b--->index = 1
+entry: c--->index = 2
+entry: d--->index = 3
+```
+
+* 需要倒序遍历, 应该怎么办?
+```
+let array = ["1", "2", "3", "4"]
+        for entry in array.reversed() {
+            print("entry: \(entry)")
+        }
+```
+结果如下:
+```
+entry: 4
+entry: 3
+entry: 2
+entry: 1
+```
+
+# 2. Swift中的 ***Range*** 使用
+> 
+当我们截取字符串的时候, 往往需要使用到`Range`, `Range` 和 `NSRange`有着很大的不同; 当我们操作字符串时`Range`的参数类型需要是`String.index`
+
+例: 我们把一个手机号的中间四位替换为*
+```
+var phoneNum = "13356787890"
+phoneNum.replaceSubrange(Range(phoneNum.index(phoneNum.startIndex, offsetBy: 3)..<phoneNum.index(phoneNum.startIndex, offsetBy: 7)), with: "****")
+print("\(phoneNum)")
+```
+结果如下:
+```
+133****7890
+```
+
+# 3. 判断两个对象是否为同一个对象
+> 恒等运算符
+* 等价于 (`===`)
+* 不等价于 (`!==`)
+
+
+在Swift中:
+*  类是引用类型(有可能多个常量或变量同时引用同一个类实例);
+* 枚举和结构体是值类型(在被赋值到常量, 变量或者传递到函数时, 其值总是会被拷贝);
+
+所以当我们判断两个类的实例是否是同一个实例时, 需要使用恒等运算符.
+```
+let person1 = Person()
+let person2 = person1
+        
+if person1 === person2 {
+    print("person1:\(person1) === person2:\(person2)")
+}
+```
+
+结果如下: 
+```
+person1:Demo.Person === person2:Demo.Person
+```
+
+# 4. 设置中文文字为斜体
+> 
+使用`__CGAffineTransformMake(1, 0, CGFloat(tanf(-35.0 * Float(M_PI / 180.0))), 1, 0, 0)` 设置中文斜体
+
+```
+let button = UIButton()
+button.setTitle("设置按钮", for: .normal)
+button.setTitleColor(UIColor.blue, for: .normal)
+button.sizeToFit()
+button.center = view.center
+view.addSubview(button)
+let matrix = __CGAffineTransformMake(1, 0, CGFloat(tanf(-35.0 * Float(M_PI / 180.0))), 1, 0, 0)
+button.titleLabel?.transform = matrix
+```
+效果如下:
+
+![matrix.png](http://upload-images.jianshu.io/upload_images/3538284-b5345d0596ec53d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+# 5. 题外话
+> 先总结这么几个, 慢慢积累吧
+下一篇: [Swift-技能小结(二)](http://www.jianshu.com/p/843f476f3c88)
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
+

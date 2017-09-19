@@ -1,0 +1,116 @@
+---
+layout: post
+title:  "使用RunTime清空单例对象属性值"
+date:   2017-07-29 10:54:31 +0800
+categories: 开发笔记
+---
+![来自项目截图](http://upload-images.jianshu.io/upload_images/3538284-36673d2ce46bbead.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+
+### 功能介绍
+最近在做【电站接入】功能, 这个功能分为五个步骤前四个步骤分别让用户录入信息, 但是提交数据在最后一步执行.
+
+### 功能实现
+新建一个`Model`模型, 使用单例模式设计; 把用户输入的信息都记录在该`Model`中, 提交数据时, 只需要利用`MJExtension` 中的 `mj_keyValues` 方法把模型转成字典, 提交给后台即可.
+
+### 问题
+当退出【电站接入】流程时, 因为模型为单例, 所以模型数据一直存在, 再次进入该流程时, 会把之前用户录入的信息重新填充到表单中. 项目需求是, 退出流程再次进入时应该是一个新的流程, 不用保存上次录入的信息.  
+
+### 问题分析
+因为模型数据为单例, 存在于整个应用程序的生命周期; 如果手动把单例对象置空, 则此次应用程序生命周期期间, 不会再重新创建该模型数据对象. 因此只能对模型对象的属性值置空.
+```
+/**
+ 清空属性值
+ */
+- (void)clearPropertyValue {
+    self.latitude = nil;
+    self.longitude = nil;
+    self.moble_tel = nil;
+    self.moble_tel_bak = nil;
+
+    .....
+    ...........此处略去20行.......
+    .....
+
+    self.org_index_code = nil;
+    self.ps_id = nil;
+    self.ps_location = nil;
+    self.ps_name = nil;
+    self.ps_type = nil;
+    self.timezone = nil;
+    self.time_zone_id = nil;
+    self.ps_type_name = nil;
+    self.safe_start_date = nil;
+    self.set_user_org = nil;
+}
+```
+如果对每个属性都单独置空, 扩展性很差, 每次增加一个属性, 都需要在`clearPropertyValue`中加入一行代码, 而且不利于后期维护.
+
+### 优化解决方案
+使用`RunTime`获取到该类的所有属性名称, 然后使用`KVC` 对属性进行置空
+```
+/**
+ 清空属性值
+ */
+- (void)clearPropertyValue {
+    // 置空自身的属性值
+    unsigned int pro_count = 0;
+    objc_property_t *properties = class_copyPropertyList([self class], &pro_count);
+    for (int i = 0; i < pro_count; i ++) {
+        objc_property_t property = properties[i];
+        NSString *propertyName = [NSString stringWithFormat:@"%s", property_getName(property)];
+        [self setValue:nil forKey:propertyName];
+    }
+    free(properties);
+}
+```
+
+因为在我们项目中该模型使用了继承, 因此还需要清空父类的属性值
+```
+/**
+ 清空属性值
+ */
+- (void)clearPropertyValue {
+    // 置空自身的属性值
+    unsigned int pro_count = 0;
+    objc_property_t *properties = class_copyPropertyList([self class], &pro_count);
+    for (int i = 0; i < pro_count; i ++) {
+        objc_property_t property = properties[i];
+        NSString *propertyName = [NSString stringWithFormat:@"%s", property_getName(property)];
+        [self setValue:nil forKey:propertyName];
+    }
+    free(properties);
+    
+    // 置空父类(PowerStationForHouseholdModel)的属性值
+    pro_count = 0;
+    objc_property_t *properties_super = class_copyPropertyList([self superclass], &pro_count);
+    for (int i = 0; i < pro_count; i ++) {
+        objc_property_t property = properties_super[i];
+        NSString *propertyName = [NSString stringWithFormat:@"%s", property_getName(property)];
+        [self setValue:nil forKey:propertyName];
+    }
+    free(properties_super);
+}
+```
+### 需要注意的地方
+由于模型中有些属性声明的是`readonly`, 使用`KVC`时会导致找不到对应的`key`,发生crash. 因此还需要重写`setValue: forUndefinedKey:`方法
+```
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+}
+```
+
+### 补充
+获取使用`RunTime`获取成员变量
+```
+unsigned int count = 0;
+    Ivar *ivars = class_copyIvarList([self class], &count);
+    for (int i = 0; i < count; i ++) {
+        Ivar ivar = *(ivars + i);
+        NSLog(@"成员变量>>>>>>>>>>>(%s)", ivar_getName(ivar));
+    }
+    free(ivars);
+```
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+

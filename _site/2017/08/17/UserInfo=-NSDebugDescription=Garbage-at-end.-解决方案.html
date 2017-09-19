@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="baidu-site-verification" content="w9Akh6dPe4" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<!--[if lte IE 8]><meta http-equiv="refresh" content="0;url=/ie.html"><![endif]-->
+
+<title>UserInfo={NSDebugDescription=Garbage at end.}解决方案 | 逆行云的技术博客</title>
+<meta name="author" content="逆行云">
+
+
+
+
+<link rel="shortcut icon" href="" />
+
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+
+<link href="/pages/rss.xml" rel="alternate" title="逆行云的技术博客" type="application/atom+xml">
+
+
+
+  </head>
+  <body>
+        <aside id="sidebar">
+  <nav id="tags">
+    <a href="/index.html" id="avatar" style="background-image:url(http://upload-images.jianshu.io/upload_images/3538284-7141a1d895155e41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)"></a>
+
+    <ul id="tags__ul">
+      <li id="pl__all" class="tags__li tags-btn active">所有文章</li>
+       
+        <li id="开发笔记" class="tags__li tags-btn">开发笔记</li>
+       
+        <li id="函数式Swift" class="tags__li tags-btn">函数式Swift</li>
+       
+        <li id="项目维护" class="tags__li tags-btn">项目维护</li>
+       
+        <li id="开源项目" class="tags__li tags-btn">开源项目</li>
+      
+    </ul>
+
+    <div id="tags__bottom">
+      <a href="https://github.com/YQqiang" id="icon-github" class="tags-btn fontello" target="_blank"></a>
+      <a href="/pages/rss.xml" id="icon-feed" class="tags-btn fontello" target="_blank"></a>
+      <a href="mailto:yuqiang.coder@gmail.com" id="icon-email" class="tags-btn fontello"></a>
+    </div>
+  </nav> <!-- end #tags -->
+
+  <div id="posts-list">
+    <form action="" id="search-form">
+      <a href="/index.html" id="mobile-avatar" style="background-image:url(http://upload-images.jianshu.io/upload_images/3538284-7141a1d895155e41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)"></a>
+      <!-- NOTE: input field is disabled by default -->
+      <input id="search-input" type="text" placeholder="Search..." >
+    </form>
+
+    <nav id="pl__container">
+    
+      <a class="开发笔记 pl__all" href="/2017/08/30/@strongify(self)-%E5%92%8C-@weakify(self)-%E5%AE%8F.html"><span class="pl__circle"></span><span class="pl__title">@strongify(self) 和 @weakify(self) 宏</span><span class="pl__date">17/08/30</span></a>
+    
+      <a class="开发笔记 pl__all" href="/2017/08/17/UserInfo=-NSDebugDescription=Garbage-at-end.-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html"><span class="pl__circle"></span><span class="pl__title">UserInfo={NSDebugDescription=Garbage at end.}解决方案</span><span class="pl__date">17/08/17</span></a>
+    
+      <a class="开发笔记 pl__all" href="/2017/07/29/%E4%BD%BF%E7%94%A8RunTime%E6%B8%85%E7%A9%BA%E5%8D%95%E4%BE%8B%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E5%80%BC.html"><span class="pl__circle"></span><span class="pl__title">使用RunTime清空单例对象属性值</span><span class="pl__date">17/07/29</span></a>
+    
+      <a class="开发笔记 pl__all" href="/2017/07/12/UIBezierPath-+-CAShapeLayer-%E5%AE%9E%E6%88%98%E5%BA%94%E7%94%A8.html"><span class="pl__circle"></span><span class="pl__title">UIBezierPath + CAShapeLayer 实战应用</span><span class="pl__date">17/07/12</span></a>
+    
+      <a class="项目维护 pl__all" href="/2017/06/20/%E9%A1%B9%E7%9B%AE%E7%BB%B4%E6%8A%A4-%E6%A8%A1%E7%B3%8A%E6%90%9C%E7%B4%A2%E6%8E%A7%E4%BB%B6%E5%B0%81%E8%A3%85.html"><span class="pl__circle"></span><span class="pl__title">项目维护<<模糊搜索控件封装>></span><span class="pl__date">17/06/20</span></a>
+    
+      <a class="项目维护 pl__all" href="/2017/06/13/%E9%A1%B9%E7%9B%AE%E7%BB%B4%E6%8A%A4-%E5%9C%B0%E5%9B%BE%E7%9B%B8%E5%85%B3%E6%80%BB%E7%BB%93.html"><span class="pl__circle"></span><span class="pl__title">项目维护<<地图相关总结>></span><span class="pl__date">17/06/13</span></a>
+    
+      <a class="项目维护 pl__all" href="/2017/06/03/%E9%A1%B9%E7%9B%AE%E7%BB%B4%E6%8A%A4-%E5%AF%BC%E8%88%AA%E6%A0%8F%E6%A0%87%E9%A2%98%E6%8D%A2%E8%A1%8C%E6%98%BE%E7%A4%BA.html"><span class="pl__circle"></span><span class="pl__title">项目维护<<导航栏标题换行显示>></span><span class="pl__date">17/06/03</span></a>
+    
+      <a class="开源项目 pl__all" href="/2017/04/28/iOS-YQAlert-%E5%BC%B9%E5%87%BA%E6%A1%86-%E4%B8%AA%E4%BA%BA%E5%BA%93.html"><span class="pl__circle"></span><span class="pl__title">iOS YQAlert 弹出框 -- 个人库</span><span class="pl__date">17/04/28</span></a>
+    
+      <a class="开源项目 pl__all" href="/2017/04/19/Nunchakus-%E4%B8%AA%E4%BA%BAAPP.html"><span class="pl__circle"></span><span class="pl__title">Nunchakus -- 个人APP</span><span class="pl__date">17/04/19</span></a>
+    
+      <a class="开发笔记 pl__all" href="/2017/04/07/git-%E6%97%A5%E5%B8%B8%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93.html"><span class="pl__circle"></span><span class="pl__title">git 日常使用小结</span><span class="pl__date">17/04/07</span></a>
+    
+      <a class="开发笔记 pl__all" href="/2017/03/20/BgImgTextView.html"><span class="pl__circle"></span><span class="pl__title">BgImgTextView</span><span class="pl__date">17/03/20</span></a>
+    
+      <a class="开发笔记 pl__all" href="/2017/03/07/Swift-%E6%8A%80%E8%83%BD%E5%B0%8F%E7%BB%93(%E4%BA%8C).html"><span class="pl__circle"></span><span class="pl__title">Swift-技能小结(二)</span><span class="pl__date">17/03/07</span></a>
+    
+      <a class="项目维护 pl__all" href="/2017/02/25/%E4%BD%BF%E7%94%A8NSUserDefaults%E6%8C%81%E4%B9%85%E5%8C%96%E7%99%BB%E5%BD%95%E6%8E%A5%E5%8F%A3%E6%95%B0%E6%8D%AE%E7%9A%84%E5%A1%AB%E5%9D%91%E7%AC%94%E8%AE%B0.html"><span class="pl__circle"></span><span class="pl__title">使用NSUserDefaults持久化登录接口数据的填坑笔记</span><span class="pl__date">17/02/25</span></a>
+    
+      <a class="函数式Swift pl__all" href="/2017/02/23/RxSwift-+-Moya-+-ObjectMapper-+-MVVM-%E7%9A%84%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82.html"><span class="pl__circle"></span><span class="pl__title">RxSwift + Moya + ObjectMapper + MVVM 的网络请求</span><span class="pl__date">17/02/23</span></a>
+    
+      <a class="开发笔记 pl__all" href="/2017/02/22/Swift-%E6%8A%80%E8%83%BD%E5%B0%8F%E7%BB%93(%E4%B8%80).html"><span class="pl__circle"></span><span class="pl__title">Swift-技能小结(一)</span><span class="pl__date">17/02/22</span></a>
+    
+      <a class="函数式Swift pl__all" href="/2017/02/14/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0-swift%E4%B8%AD%E7%9A%84%E6%B3%9B%E5%9E%8B%E4%BB%8B%E7%BB%8D(%E4%B8%80%E6%AD%A5%E6%AD%A5%E5%AE%9E%E7%8E%B0Map%E5%87%BD%E6%95%B0).html"><span class="pl__circle"></span><span class="pl__title">高阶函数---swift中的泛型介绍(一步步实现Map函数)</span><span class="pl__date">17/02/14</span></a>
+    
+      <a class="函数式Swift pl__all" href="/2017/02/14/%E9%AB%98%E9%98%B6%E5%87%BD%E6%95%B0-swift%E4%B8%AD%E7%9A%84Filter-%E5%92%8C-Reduce.html"><span class="pl__circle"></span><span class="pl__title">高阶函数---swift中的Filter 和 Reduce</span><span class="pl__date">17/02/14</span></a>
+    
+      <a class="开发笔记 pl__all" href="/2017/02/13/iOS-%E5%BD%93%E7%BC%96%E8%BE%91%E5%AF%86%E7%A0%81%E8%BE%93%E5%85%A5%E6%A1%86%E6%97%B6,-%E4%BC%9A%E8%87%AA%E5%8A%A8%E6%B8%85%E7%A9%BA%E6%96%87%E6%9C%AC%E6%A1%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html"><span class="pl__circle"></span><span class="pl__title">iOS---当编辑密码输入框时, 会自动清空文本框问题解决方案</span><span class="pl__date">17/02/13</span></a>
+    
+      <a class="开发笔记 pl__all" href="/2017/02/09/REMOTE-HOST-IDENTIFICATION-HAS-CHANGED.html"><span class="pl__circle"></span><span class="pl__title">WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!</span><span class="pl__date">17/02/09</span></a>
+    
+      <a class="项目维护 pl__all" href="/2017/01/22/UISearchBar-%E9%97%AA%E7%8E%B0%E8%83%8C%E6%99%AF%E8%89%B2%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html"><span class="pl__circle"></span><span class="pl__title">UISearchBar 闪现背景色解决方案</span><span class="pl__date">17/01/22</span></a>
+    
+      <a class="开发笔记 pl__all" href="/2017/01/19/iOS%E5%90%8C%E6%AD%A5%E8%B0%83%E7%94%A8%E5%AF%B9%E8%AF%9D%E6%A1%86-RunLoop%E7%9A%84%E4%BD%BF%E7%94%A8.html"><span class="pl__circle"></span><span class="pl__title">iOS同步调用对话框 RunLoop的使用</span><span class="pl__date">17/01/19</span></a>
+    
+      <a class="函数式Swift pl__all" href="/2017/01/10/iOS-Swift%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B-Core-Image-%E5%B0%81%E8%A3%85.html"><span class="pl__circle"></span><span class="pl__title">iOS-Swift函数式编程 Core Image 封装</span><span class="pl__date">17/01/10</span></a>
+    
+      <a class="开发笔记 pl__all" href="/2017/01/07/iOS-%E6%97%B6%E5%8C%BA%E8%BD%AC%E6%8D%A2(Objective-C)-NSTimeZone.html"><span class="pl__circle"></span><span class="pl__title">iOS-时区转换(Objective-C) NSTimeZone</span><span class="pl__date">17/01/07</span></a>
+    
+      <a class="函数式Swift pl__all" href="/2016/12/28/RxSwift-%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E8%AF%AD%E6%B3%95.html"><span class="pl__circle"></span><span class="pl__title">RxSwift 成长之路---基本概念和语法</span><span class="pl__date">16/12/28</span></a>
+    
+      <a class="开发笔记 pl__all" href="/2016/12/24/iOS-UILabel%E6%89%A9%E5%B1%95%E5%AE%9E%E7%8E%B0%E6%95%B0%E5%AD%97%E5%A2%9E%E9%95%BF-%E5%87%8F%E5%B0%8F%E5%8A%A8%E7%94%BB.html"><span class="pl__circle"></span><span class="pl__title">iOS-UILabel扩展实现数字增长/减小动画</span><span class="pl__date">16/12/24</span></a>
+    
+      <a class="开发笔记 pl__all" href="/2016/12/23/iOS-%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E6%8E%A7%E4%BB%B6(%E5%8F%AF%E5%8D%95%E7%8B%AC%E9%80%89%E5%B9%B4-%E5%B9%B4%E6%9C%88-%E5%B9%B4%E6%9C%88%E6%97%A5).html"><span class="pl__circle"></span><span class="pl__title">iOS-日期选择控件(可单独选年/年月/年月日)</span><span class="pl__date">16/12/23</span></a>
+    
+    </nav>
+  </div> <!-- end #posts-list -->
+</aside> <!-- end #sidebar -->
+    <div id="post">
+      <div id="pjax">
+        <article id="post__content">
+    <h1 id="post__title" data-identifier="20170817">UserInfo={NSDebugDescription=Garbage at end.}解决方案</h1>
+    <p><img src="http://upload-images.jianshu.io/upload_images/3538284-0994ca16d7c693b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320" alt="" /></p>
+
+<h3 id="使用-nsjsonserialization-将字符串转字典">使用 <em>NSJSONSerialization</em> 将字符串转字典</h3>
+<ul>
+  <li>步骤一: 将字符串使用<code class="highlighter-rouge">NSUTF8StringEncoding</code>编码格式转换为<code class="highlighter-rouge">NSData </code></li>
+  <li>步骤二: 将<code class="highlighter-rouge">data</code>使用<code class="highlighter-rouge">NSJSONSerialization </code>转换为对象</li>
+  <li>步骤三: 把对象为<code class="highlighter-rouge">NSDictionary</code></li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>NSData *jsonData = [result dataUsingEncoding:NSUTF8StringEncoding];
+NSError *error = nil;
+id  dicData = [NSJSONSerialization JSONObjectWithData:jsonData
+                                              options:kNilOptions
+                                                error:&amp;error];
+if ([dicData isKindOfClass:[NSDictionary class]]) {
+    NSDictionary *dict = (NSDictionary *)dicData;
+}
+</code></pre>
+</div>
+
+<p>ps:  代码中<code class="highlighter-rouge">result</code> 为以下字符串</p>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="nt">"scannum"</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="nt">"list"</span><span class="p">:[{</span><span class="nt">"ssid"</span><span class="p">:</span><span class="s2">"SG-A1408190013"</span><span class="p">,</span><span class="nt">"bssid"</span><span class="p">:</span><span class="s2">"C8:93:46:11:0C:7F"</span><span class="p">,</span><span class="nt">"auth"</span><span class="p">:</span><span class="s2">"OPEN"</span><span class="p">,</span><span class="nt">"channel"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">"rssi"</span><span class="p">:</span><span class="mi">-16</span><span class="p">},{</span><span class="nt">"ssid"</span><span class="p">:</span><span class="s2">"MikroTik-D539F7"</span><span class="p">,</span><span class="nt">"bssid"</span><span class="p">:</span><span class="s2">"4C:5E:0C:D5:39:F7"</span><span class="p">,</span><span class="nt">"auth"</span><span class="p">:</span><span class="s2">"OPEN"</span><span class="p">,</span><span class="nt">"channel"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">"rssi"</span><span class="p">:</span><span class="mi">-34</span><span class="p">},{</span><span class="nt">"ssid"</span><span class="p">:</span><span class="s2">"254118"</span><span class="p">,</span><span class="nt">"bssid"</span><span class="p">:</span><span class="s2">"4C:5E:0C:D6:F8:61"</span><span class="p">,</span><span class="nt">"auth"</span><span class="p">:</span><span class="s2">"WPA2_PSK_AES"</span><span class="p">,</span><span class="nt">"channel"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="nt">"rssi"</span><span class="p">:</span><span class="mi">-44</span><span class="p">},{</span><span class="nt">"ssid"</span><span class="p">:</span><span class="s2">"china-unicom"</span><span class="p">,</span><span class="nt">"bssid"</span><span class="p">:</span><span class="s2">"00:36:76:1A:BE:27"</span><span class="p">,</span><span class="nt">"auth"</span><span class="p">:</span><span class="s2">"WPA2_PSK_AES"</span><span class="p">,</span><span class="nt">"channel"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">"rssi"</span><span class="p">:</span><span class="mi">-46</span><span class="p">},{</span><span class="nt">"ssid"</span><span class="p">:</span><span class="s2">"Derek-Phone"</span><span class="p">,</span><span class="nt">"bssid"</span><span class="p">:</span><span class="s2">"F4:5C:89:C3:2D:29"</span><span class="p">,</span><span class="nt">"auth"</span><span class="p">:</span><span class="s2">"WPA2_PSK_AES"</span><span class="p">,</span><span class="nt">"channel"</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span><span class="nt">"rssi"</span><span class="p">:</span><span class="mi">-50</span><span class="p">},{</span><span class="nt">"ssid"</span><span class="p">:</span><span class="s2">"sungrow"</span><span class="p">,</span><span class="nt">"bssid"</span><span class="p">:</span><span class="s2">"00:8E:F2:FF:CA:60"</span><span class="p">,</span><span class="nt">"auth"</span><span class="p">:</span><span class="s2">"WPA2_PSK_AES"</span><span class="p">,</span><span class="nt">"channel"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="nt">"rssi"</span><span class="p">:</span><span class="mi">-68</span><span class="p">},{</span><span class="nt">"ssid"</span><span class="p">:</span><span class="s2">"sungrow"</span><span class="p">,</span><span class="nt">"bssid"</span><span class="p">:</span><span class="s2">"00:8E:F2:FF:C6:80"</span><span class="p">,</span><span class="nt">"auth"</span><span class="p">:</span><span class="s2">"WPA2_PSK_AES"</span><span class="p">,</span><span class="nt">"channel"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="nt">"rssi"</span><span class="p">:</span><span class="mi">-68</span><span class="p">},{</span><span class="nt">"ssid"</span><span class="p">:</span><span class="s2">"sungrow"</span><span class="p">,</span><span class="nt">"bssid"</span><span class="p">:</span><span class="s2">"00:8E:F2:FF:C8:A0"</span><span class="p">,</span><span class="nt">"auth"</span><span class="p">:</span><span class="s2">"WPA2_PSK_AES"</span><span class="p">,</span><span class="nt">"channel"</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span><span class="nt">"rssi"</span><span class="p">:</span><span class="mi">-68</span><span class="p">}]}</span><span class="w">
+</span></code></pre>
+</div>
+<p>转换结果报错, 错误如下:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>Error Domain=NSCocoaErrorDomain Code=3840 "Garbage at end." UserInfo={NSDebugDescription=Garbage at end.}
+</code></pre>
+</div>
+
+<h3 id="问题分析">问题分析</h3>
+<ol>
+  <li>使用json格式化工具验证json是否合格
+json正确, 如下图所示</li>
+</ol>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/3538284-b0269aa4374a0c2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="验证json合格" /></p>
+
+<ol>
+  <li>既然是合法的json, 为什么转换会出错?
+通过查看data数据, 发现了问题所在.
+    <div class="highlighter-rouge"><pre class="highlight"><code>&lt;7b227363 616e6e75 6d223a36 2c226c69 7374223a 5b7b2273 73696422 
+3a225347 2d413134 30383139 30303133 222c2262 73736964 223a2243 
+383a3933 3a34363a 31313a30 433a3746 222c2261 75746822 3a224f50 
+454e222c 22636861 6e6e656c 223a312c 22727373 69223a2d 31347d2c 
+7b227373 6964223a 224d696b 726f5469 6b2d4435 33394637 222c2262 
+73736964 223a2234 433a3545 3a30433a 44353a33 393a4637 222c2261 
+75746822 3a224f50 454e222c 22636861 6e6e656c 223a312c 22727373 
+69223a2d 33307d2c 7b227373 6964223a 22323534 31313822 2c226273 
+73696422 3a223443 3a35453a 30433a44 363a4638 3a363122 2c226175 
+7468223a 22575041 325f5053 4b5f4145 53222c22 6368616e 6e656c22 
+3a332c22 72737369 223a2d34 327d2c7b 22737369 64223a22 44657265 
+6b2d5068 6f6e6522 2c226273 73696422 3a224634 3a35433a 38393a43
+ 333a3244 3a323922 2c226175 7468223a 22575041 325f5053 4b5f4145 
+53222c22 6368616e 6e656c22 3a362c22 72737369 223a2d34 387d2c7b 
+22737369 64223a22 6368696e 612d756e 69636f6d 222c2262 73736964 
+223a2230 303a3336 3a37363a 31413a42 453a3237 222c2261 75746822 
+3a225750 41325f50 534b5f41 4553222c 22636861 6e6e656c 223a362c 
+22727373 69223a2d 35307d2c 7b227373 6964223a 2273756e 67726f77 
+222c2262 73736964 223a2230 303a3845 3a46323a 46463a43 413a3630 
+222c2261 75746822 3a225750 41325f50 534b5f41 4553222c 22636861 
+6e6e656c 223a3131 2c227273 7369223a 2d36347d 00&gt;
+</code></pre>
+    </div>
+    <p>data 最后以00 结尾, 尝试删除最后一位,查看结果正常;
+分析原因可能是转换data的字符串中含有不可见的非法字符</p>
+  </li>
+</ol>
+
+<h3 id="解决">解决</h3>
+<p>过滤字符串中的非法字符
+<a href="https://baike.baidu.com/item/%E6%8E%A7%E5%88%B6%E5%AD%97%E7%AC%A6/6913704?fr=aladdin">控制字符</a></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>// 去掉首尾的空白字符
+result = [result stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+// 去除掉控制字符
+result = [result stringByTrimmingCharactersInSet:[NSCharacterSet controlCharacterSet]];
+</code></pre>
+</div>
+
+<h3 id="完整的步骤为">完整的步骤为</h3>
+<div class="highlighter-rouge"><pre class="highlight"><code>// 去掉首尾的空白字符
+result = [result stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+// 去除掉控制字符
+result = [result stringByTrimmingCharactersInSet:[NSCharacterSet controlCharacterSet]];
+
+NSData *jsonData = [result dataUsingEncoding:NSUTF8StringEncoding];
+NSError *error = nil;
+id  dicData = [NSJSONSerialization JSONObjectWithData:jsonData
+                                              options:kNilOptions
+                                                error:&amp;error];
+if ([dicData isKindOfClass:[NSDictionary class]]) {
+    NSDictionary *dict = (NSDictionary *)dicData;
+}
+</code></pre>
+</div>
+
+
+    <div class="declare">
+        <div>
+
+        </div>
+    </div>
+</article>
+<!-- end #post__content -->
+
+<div id="post__share">
+  <a id="icon-twitter" class="fontello" href="https://twitter.com/intent/tweet?url=http://localhost:4000/2017/08/17/UserInfo=-NSDebugDescription=Garbage-at-end.-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html&text=UserInfo={NSDebugDescription=Garbage at end.}解决方案" target="_blank"></a>
+  <a id="icon-cc" class="fontello" href="https://github.com/YQqiang" target="_blank"></a>
+  <a id="icon-weibo" class="fontello" href="http://v.t.sina.com.cn/share/share.php?url=http://localhost:4000/2017/08/17/UserInfo=-NSDebugDescription=Garbage-at-end.-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html&title=UserInfo={NSDebugDescription=Garbage at end.}解决方案" target="_blank"></a>
+    <!-- <div class="share-info">分享一下~</div> -->
+</div>
+<div id="qrcode" >
+	<img src="http://localhost:4000/assets/images/qrcode.jpg" style="margin: 0 auto;display: block;" width="200" height="200" alt="">
+</div>
+<!-- end #post__share -->
+<div id="disqus_thread" name="余强">
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink" target="_blank">Loading Disqus comments...</a>
+</div>
+
+
+            <!---->
+    <!--<p id="copyright">Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a>-->
+    <!--&nbsp;&nbsp;|&nbsp;&nbsp;Theme <a href="https://github.com/P233/3-Jekyll" target="_blank">3-Jekyll</a>-->
+    <!--&nbsp;&nbsp;|&nbsp;&nbsp;Hosted on <a href="https://pages.github.com" target="_blank">Github</a></p>-->
+      </div> <!-- end #pjax -->
+
+      <div id="post__toc-trigger">
+        <div id="post__toc">
+          <span id="post__toc-title">Table of Contents</span>
+          <ul id="post__toc-ul"></ul>
+        </div>
+      </div>
+    </div> <!-- end #post -->
+
+    <button id="js-fullscreen"><span id="icon-arrow" class="fontello"></span></button>
+
+<script src="/assets/js/jquery.js"></script>
+<script src="/assets/js/jquery.pjax.js"></script>
+<script src="/assets/js/nprogress.js"></script>
+<script src="/assets/js/searchbox.js"></script>
+<script src="/assets/js/script.js"></script>
+
+
+    <script>
+    //百度站点统计,排除localhost
+    if(window.location.host.indexOf("localhost") ==-1 &&  window.location.host.indexOf("127.0.0.1") == -1){
+
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?22d94317cfb9f9e0bb476228d9f79278";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    }
+</script>
+   </body>
+ </html>
