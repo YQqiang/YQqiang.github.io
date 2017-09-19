@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS-UILabel扩展实现数字增长/减小动画"
 date:   2016-12-24 10:17:31 +0800
-categories: jekyll update
+categories: 开发笔记
 ---
 ![](http://upload-images.jianshu.io/upload_images/3538284-4f6bbcf66c1f4c52.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
