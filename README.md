@@ -1,6 +1,6 @@
 ### 我的博客
 
-地址：[yuqiangcoder.com](yuqiangcoder.com)
+地址：[http://yuqiangcoder.com/](http://yuqiangcoder.com/)
 
 
 
