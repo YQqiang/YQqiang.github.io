@@ -1,0 +1,36 @@
+---
+layout: post
+title:  "iOS 获取国际化应用名称"
+date:   2017-09-19 11:17:31 +0800
+categories: 项目维护
+---
+### 应用名称国际化
+应用名称国际化:
+
+![应用名称国际化文件](http://upload-images.jianshu.io/upload_images/3538284-e8c27f229a956d59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+在对应国家的`InfoPlist.strings`文件中加入需要国际化的应用名称:
+```
+"CFBundleDisplayName" = "应用名称";
+```
+
+### 问题
+使用 
+```
+NSString *displayName = [[NSBundle mainBundle].infoDictionary objectForKey:@"CFBundleDisplayName"];
+```
+只能获取到`Info.plist`文件中的`Bundle display name` 的名称, 获取不到`InfoPlist.strings`文件中`CFBundleDisplayName`的值.
+
+### 获取国际化后的应用名称
+使用下面方式即可(获取本地化的info)
+```
+NSString *displayName = [[NSBundle mainBundle].localizedInfoDictionary objectForKey:@"CFBundleDisplayName"];
+```
+
+[Obtaining the localized application name in Cocoa](https://developer.apple.com/library/content/qa/qa1544/_index.html)
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
+
