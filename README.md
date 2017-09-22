@@ -1,6 +1,6 @@
 ### 我的博客
 
-地址：[https://yqqiang.github.io/](https://yqqiang.github.io/)
+地址：[http://yuqiangcoder.com/](http://yuqiangcoder.com/)
 
 
 
