@@ -5,6 +5,10 @@ date:   2017-09-26 20:01:31 +0800
 categories: 项目维护
 ---
 ![](http://upload-images.jianshu.io/upload_images/3538284-27726434142f4634.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+### 2017-10-07 更新
+[苹果官方中文版iPhone X 适配指南](https://developer.apple.com/cn/ios/update-apps-for-iphone-x/)
+
+---
 
 ### 启动图片 launchImage
 1. 若使用`LaunchScreen.storyboard`, 则自动会拉伸至全屏幕
