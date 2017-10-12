@@ -54,8 +54,6 @@ CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)
 [官方文档iPhone X](https://developer.apple.com/ios/human-interface-guidelines/overview/iphone-x/)
 [用 Swift 判断 iPhone X 机型](https://imtx.me/archives/2374.html)
 
-[Obtaining the localized application name in Cocoa](https://developer.apple.com/library/content/qa/qa1544/_index.html)
-
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
