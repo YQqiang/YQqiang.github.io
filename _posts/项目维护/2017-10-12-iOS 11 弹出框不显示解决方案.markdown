@@ -1,0 +1,73 @@
+---
+layout: post
+title:  "iOS 11 弹出框不显示解决方案"
+date:   2017-10-12 15:39:31 +0800
+categories: 项目维护
+---
+![](http://upload-images.jianshu.io/upload_images/3538284-443f7fbeb58b4ce4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+### 问题
+项目中很多地方使用了 `window` 的 `rootViewController` 去模态弹出框.
+升级到 `iOS11` 后, 经常出现弹出框显示不出来的问题.
+
+```
+/**
+ 获取最上层window
+
+ @return window
+ */
++ (UIWindow *)lastWindow {
+    NSArray *windows = [UIApplication sharedApplication].windows;
+    for(UIWindow *window in [windows reverseObjectEnumerator]) {
+        if ([window isKindOfClass:[UIWindow class]] &&
+            CGRectEqualToRect(window.bounds, [UIScreen mainScreen].bounds))
+            return window;
+    }
+    return [UIApplication sharedApplication].keyWindow;
+}
+
+```
+
+### 分析
+通过 `Reveal` 查看层级结构发现 `iOS11` 系统下多了一个 `window`, 而且这个`window` 的  `hidden = YES`
+
+> iOS10 系统下window层级
+
+![iOS10_windows.png](http://upload-images.jianshu.io/upload_images/3538284-692919e2b005a07d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+> iOS11 系统下window层级
+
+![iOS11_window.png](http://upload-images.jianshu.io/upload_images/3538284-da20b4f019d79589.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+>  隐藏的 `window`  -----> `_UIInteractiveHighlightEffectWindow`
+
+![隐藏状态的windows.png](http://upload-images.jianshu.io/upload_images/3538284-ad4a770da7e87231.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+### 解决
+优化获取最上层window方法, 过滤隐藏状态的 `window`
+
+```
+/**
+ 获取最上层window
+
+ @return window
+ */
++ (UIWindow *)lastWindow {
+    NSArray *windows = [UIApplication sharedApplication].windows;
+    for(UIWindow *window in [windows reverseObjectEnumerator]) {
+        if ([window isKindOfClass:[UIWindow class]] && !window.hidden &&
+            CGRectEqualToRect(window.bounds, [UIScreen mainScreen].bounds))
+            return window;
+    }
+    return [UIApplication sharedApplication].keyWindow;
+}
+```
+
+[Obtaining the localized application name in Cocoa](https://developer.apple.com/library/content/qa/qa1544/_index.html)
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
+
