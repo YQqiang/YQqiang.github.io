@@ -34,7 +34,7 @@ categories: 函数式Swift
 
 #### 1. 基本用法
 
-<img src="https://github.com/YQqiang/UIViewControllerYQAlert/blob/master/Screen%20Shot/1.png" alt="基本用法" width="320">
+![基本用法](https://github.com/YQqiang/UIViewControllerYQAlert/blob/master/Screen%20Shot/1.png)
 
 ```Swift
 yq.makeAlert { (make) in
