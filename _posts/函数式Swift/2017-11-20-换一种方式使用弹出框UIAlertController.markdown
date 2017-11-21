@@ -34,7 +34,7 @@ categories: 函数式Swift
 
 #### 1. 基本用法
 
-![基本用法](https://github.com/YQqiang/UIViewControllerYQAlert/blob/master/Screen%20Shot/1.png)
+![基本用法.png](http://upload-images.jianshu.io/upload_images/3538284-befef13d4b3cac7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
 
 ```Swift
 yq.makeAlert { (make) in
@@ -45,7 +45,7 @@ yq.makeAlert { (make) in
 
 #### 2. 更改按钮颜色
 
-<img src="https://github.com/YQqiang/UIViewControllerYQAlert/blob/master/Screen%20Shot/2.png" alt="更改按钮颜色" width="320">
+![更改按钮颜色.png](http://upload-images.jianshu.io/upload_images/3538284-dd1fd44eb4d2ec4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
 
 ```swift
 yq.makeAlert { (make) in
@@ -58,7 +58,7 @@ yq.makeAlert { (make) in
 
 #### 3. 更改按钮文字
 
-<img src="https://github.com/YQqiang/UIViewControllerYQAlert/blob/master/Screen%20Shot/3.png" alt="更改按钮文字" width="320">
+![更改按钮文字.png](http://upload-images.jianshu.io/upload_images/3538284-910a93c955856824.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
 
 ```swift
 yq.makeAlert { (make) in
@@ -73,7 +73,7 @@ yq.makeAlert { (make) in
 
 #### 4. 自定义标题和描述文字
 
-<img src="https://github.com/YQqiang/UIViewControllerYQAlert/blob/master/Screen%20Shot/4.png" alt="自定义标题和描述文字" width="320">
+![自定义标题和描述文字.png](http://upload-images.jianshu.io/upload_images/3538284-610620b9a1210e90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
 
 ```swift
 yq.makeAlert { (make) in
@@ -88,7 +88,7 @@ yq.makeAlert { (make) in
 
 #### 5. 自定义顶部图片
 
-<img src="https://github.com/YQqiang/UIViewControllerYQAlert/blob/master/Screen%20Shot/5.png" alt="自定义顶部图片" width="320">
+![自定义顶部图片.png](http://upload-images.jianshu.io/upload_images/3538284-079c1fe6f235e0a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
 
 ```swift
 yq.makeAlert { (make) in
@@ -101,7 +101,7 @@ yq.makeAlert { (make) in
 
 #### 6. 按钮点击事件回调
 
-<img src="https://github.com/YQqiang/UIViewControllerYQAlert/blob/master/Screen%20Shot/6.png" alt="按钮点击事件回调" width="320">
+![按钮点击事件回调.png](http://upload-images.jianshu.io/upload_images/3538284-93c99f3e7344c771.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
 
 ```swift
 yq.makeAlert { (make) in
@@ -119,7 +119,7 @@ yq.makeAlert { (make) in
 
 #### 7. 一个操作按钮的弹出框
 
-<img src="https://github.com/YQqiang/UIViewControllerYQAlert/blob/master/Screen%20Shot/7.png" alt="一个操作按钮的弹出框" width="320">
+![一个操作按钮的弹出框.png](http://upload-images.jianshu.io/upload_images/3538284-f467529f91f1d876.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
 
 ```swift
 yq.makeAlert { (make) in
@@ -133,7 +133,7 @@ yq.makeAlert { (make) in
 
 #### 8. 综合使用
 
-<img src="https://github.com/YQqiang/UIViewControllerYQAlert/blob/master/Screen%20Shot/8.png" alt="综合使用" width="320">
+![综合使用.png](http://upload-images.jianshu.io/upload_images/3538284-2946b3cba6689385.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
 
 ```swift
 yq.makeAlert { (make) in
