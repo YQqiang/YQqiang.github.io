@@ -9,6 +9,7 @@ categories: 开源项目
 ### 下载
 下载地址: 
 [LocalizationTool 源码](https://github.com/YQqiang/LocalizationTool)
+
 [LocalizationTool dmg压缩包](https://github.com/YQqiang/LocalizationTool/releases/tag/v1.0)
 
 ### 前言
