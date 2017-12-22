@@ -2,7 +2,7 @@
 layout: post
 title:  "换一种方式使用弹出框UIAlertController"
 date:   2017-11-20 15:06:31 +0800
-categories: 函数式Swift
+categories: 开源项目
 ---
 ![](http://upload-images.jianshu.io/upload_images/3538284-f7aed0581977e9ae.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
