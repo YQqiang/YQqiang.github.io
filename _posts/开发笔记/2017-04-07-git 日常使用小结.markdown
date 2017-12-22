@@ -228,6 +228,16 @@ git 使用branch_A分支的file1文件替换branch_B的file1文件
 (branch_B) $ git checkout branch_A file1
 ```
 
+- ### 移除git
+```
+rm -rf .git
+```
+
+- ### 查看 hosts 文件
+```
+cat /etc/hosts
+```
+
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
