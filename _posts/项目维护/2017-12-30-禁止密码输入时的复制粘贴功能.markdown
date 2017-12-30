@@ -1,0 +1,193 @@
+---
+layout: post
+title:  "禁止密码输入时的复制粘贴功能"
+date:   2017-12-30 09:00:31 +0800
+categories: 项目维护
+---
+
+![](http://upload-images.jianshu.io/upload_images/3538284-8c6d8e3802ebbb3a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+### 需求
+正在维护的三个项目中所有密文方式的输入框, 禁止使用`复制`, `粘贴`等功能
+
+### 分析
+* 方案一: 找到所有项目中使用到的密文方式(`secureTextEntry = YES`)的输入框`UITextField`, 依次设置.....算了, 放弃............
+* 方案二: 子类化一个`UITextField`, 使用到的地方继承该类; 由于项目中已经为了定制化`textField`子类化了一些输入框, 固放弃该方案
+* 方案三: 使用类目`Category`, 重写系统方法; 并且可以使用`RunTime`扩展属性控制是否显示`MenuController`; 移植方便, 只需要添加`.h` `.m`即可, 不需要额外增加其他代码.      嗯.......感觉可行......
+
+### 实现
+新建文件`UITextField+NOPaste.h`, 重写`- (BOOL)canPerformAction:(SEL)action withSender:(id)sender`方法
+
+```
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    // 安全输入状态, 禁止全部menu
+    if (self.isSecureTextEntry) {
+        return NO;
+    } else {
+        return [super canPerformAction:action withSender:sender];
+}
+```
+运行看下效果
+
+![显示全部MenuItem](http://upload-images.jianshu.io/upload_images/3538284-bb9ea8fae5f6dcd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+
+
+密码输入框是不显示`MenuController`了, 但是其它输入框`MenuController`显示了系统全部`MenuItem`
+
+### 填坑
+
+1. 看下原来的效果 ,只显示了`选择`, `全选`, `粘贴`
+
+![原有效果](http://upload-images.jianshu.io/upload_images/3538284-686fdc893732fbad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+修改代码如下:
+
+```
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    if (self.isSecureTextEntry) {
+        return NO;
+    } else {
+        if (action == @selector(select:)) {
+            return self.text.length > 0;
+        }
+        if (action == @selector(selectAll:)) {
+            return self.text.length > 0;
+        }
+        if (action == @selector(paste:)) {
+            return self.text.length > 0;
+        }
+        return NO;
+    }
+}
+```
+
+2. 弹出`MenuController`, 选中文本后没有`剪切`, `拷贝`功能, 再来看下没改代码前的效果
+
+![选中文本后,显示剪切, 拷贝](http://upload-images.jianshu.io/upload_images/3538284-2c15f62b5f2f5dcd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+
+继续修改代码如下:
+
+```
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    // 安全输入状态, 禁止全部menu
+    if (self.isSecureTextEntry) {
+        return NO;
+    } else {
+        // 有文本且未选择文本时 选择功能可用
+        if (action == @selector(select:)) {
+            return self.text.length > 0 && self.selectedTextRange.isEmpty;
+        }
+        
+        // 有文本且未选择文本时 全选功能可用
+        if (action == @selector(selectAll:)) {
+            return self.text.length > 0 && self.selectedTextRange.isEmpty;
+        }
+        
+        // 有选择文本时 复制功能可用
+        if (action == @selector(copy:)) {
+            return !self.selectedTextRange.isEmpty;
+        }
+        
+        // 有选择文本时 剪切功能可用
+        if (action == @selector(cut:)) {
+            return !self.selectedTextRange.isEmpty;
+        }
+        
+        // 粘贴板中有内容时 粘贴功能可用
+        if (action == @selector(paste:)) {
+            return [UIPasteboard generalPasteboard].string.length > 0;
+        }
+        return NO;
+    }
+}
+```
+
+3. 扩展一个属性控制是否显示`MenuController`
+
+```
+NSString const *SGHiddenMenuControllerKey = @"SGHiddenMenuController";
+
+- (void)setSg_hiddenMenuController:(BOOL)sg_hiddenMenuController {
+    objc_setAssociatedObject(self, &SGHiddenMenuControllerKey, @(sg_hiddenMenuController), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)sg_hiddenMenuController {
+    return [objc_getAssociatedObject(self, &SGHiddenMenuControllerKey) boolValue];
+}
+```
+
+### 完整代码
+> 头文件 `.h`
+
+```
+#import <UIKit/UIKit.h>
+
+@interface UITextField (NOPaste)
+
+/**
+ 扩展属性: 是否显示menuController(即: 复制, 粘贴, 选择, 全选, 剪切);
+ 默认值: default value is false;
+ 输入框类型为密码输入时, 也不显示menuController.
+ */
+@property (nonatomic, assign) BOOL sg_hiddenMenuController;
+
+@end
+```
+
+> 实现部分 `.m`
+
+```
+#import "UITextField+NOPaste.h"
+
+NSString const *SGHiddenMenuControllerKey = @"SGHiddenMenuController";
+
+@implementation UITextField (NOPaste)
+
+- (void)setSg_hiddenMenuController:(BOOL)sg_hiddenMenuController {
+    objc_setAssociatedObject(self, &SGHiddenMenuControllerKey, @(sg_hiddenMenuController), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (BOOL)sg_hiddenMenuController {
+    return [objc_getAssociatedObject(self, &SGHiddenMenuControllerKey) boolValue];
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    // 安全输入状态, 禁止全部menu
+    if (self.isSecureTextEntry || self.sg_hiddenMenuController) {
+        return NO;
+    } else {
+        // 有文本且未选择文本时 选择功能可用
+        if (action == @selector(select:)) {
+            return self.text.length > 0 && self.selectedTextRange.isEmpty;
+        }
+        
+        // 有文本且未选择文本时 全选功能可用
+        if (action == @selector(selectAll:)) {
+            return self.text.length > 0 && self.selectedTextRange.isEmpty;
+        }
+        
+        // 有选择文本时 复制功能可用
+        if (action == @selector(copy:)) {
+            return !self.selectedTextRange.isEmpty;
+        }
+        
+        // 有选择文本时 剪切功能可用
+        if (action == @selector(cut:)) {
+            return !self.selectedTextRange.isEmpty;
+        }
+        
+        // 粘贴板中有内容时 粘贴功能可用
+        if (action == @selector(paste:)) {
+            return [UIPasteboard generalPasteboard].string.length > 0;
+        }
+        return NO;
+    }
+}
+
+@end
+```
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
+
