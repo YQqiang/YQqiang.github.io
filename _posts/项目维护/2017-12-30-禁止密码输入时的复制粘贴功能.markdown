@@ -137,6 +137,7 @@ categories: 项目维护
 
 ```
 #import "UITextField+NOPaste.h"
+#import <objc/runtime.h>
 
 NSString const *SGHiddenMenuControllerKey = @"SGHiddenMenuController";
 
