@@ -4,7 +4,7 @@ title:  "BgImgTextView"
 date:   2017-03-20 10:17:31 +0800
 categories: 开发笔记
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-86506572fc2c26e6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201703/4.jpg)
 
 > 半个月没有更新博客了, 俗话说 ***三天不学习赶不上刘少奇*** ; 这半个月又不知被别人甩出去多远😂😂😂
 
@@ -16,7 +16,7 @@ categories: 开发笔记
 本人菜鸟一枚, 才疏学浅, 望大神们多指教.
 
 ## bug演示
-![bug](http://upload-images.jianshu.io/upload_images/3538284-c9f9191fc4441220.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![bug](http://yuqiangcoder.com/assets/postImages/ios/201703/5.png)
 
 ## BgImgTextView
 1. 带有占位文字(`placeholder`)
@@ -25,7 +25,7 @@ categories: 开发笔记
 
 ## 效果展示
 
-![BgImgTextView.gif](http://upload-images.jianshu.io/upload_images/3538284-3bed97a0cfc42175.gif?imageMogr2/auto-orient/strip)
+![BgImgTextView.gif](http://yuqiangcoder.com/assets/postImages/ios/201703/6.gif)
 
 ## github地址
 [BgImgTextView](https://github.com/YQqiang/BgImgTextView)
