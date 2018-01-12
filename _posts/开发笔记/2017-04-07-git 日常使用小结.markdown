@@ -4,7 +4,7 @@ title:  "git 日常使用小结"
 date:   2017-04-07 10:17:31 +0800
 categories: 开发笔记
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-74d949e6c7fd8c79.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201704/1.png)
 
 
 ## Git 简介
@@ -17,7 +17,7 @@ categories: 开发笔记
 
 ## 开发模式
 
-![开发模式](http://upload-images.jianshu.io/upload_images/3538284-69ee98a20b4137a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![开发模式](http://yuqiangcoder.com/assets/postImages/ios/201704/2.png)
 
 ## Git 基础命令
  - ### git 配置
@@ -47,7 +47,7 @@ categories: 开发笔记
 
  - ### 提交文件
     
-    ![提交文件](http://upload-images.jianshu.io/upload_images/3538284-f87840bb3b7548c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+    ![提交文件](http://yuqiangcoder.com/assets/postImages/ios/201704/3.png)
     * `git status` 查看文件状态
     * 文件所处三种状态
         * `working tree`    对应.git/之外的项目文件或目录
@@ -134,11 +134,11 @@ categories: 开发笔记
 
  - ### 撤销操作
     
-    ![Rebase](http://upload-images.jianshu.io/upload_images/3538284-43a1c6121896f297.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+    ![Rebase](http://yuqiangcoder.com/assets/postImages/ios/201704/4.png)
     > [rebase 详解](http://gitbook.liuhui998.com/4_2.html)
  rebase 命令执行后, 实际上是将分支点从C移动了G, 这样分支也就具有了C到G的功能  
     
-  ![reset](http://upload-images.jianshu.io/upload_images/3538284-93800dc23b5cb4d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+  ![reset](http://yuqiangcoder.com/assets/postImages/ios/201704/5.png)
     * `reset` 将当前的工作目录完全回滚到指定的版本号
     * `revert` 还原一个版本的修改, 必须提供一个具体git版本号
     * 区别
