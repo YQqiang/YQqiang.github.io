@@ -4,7 +4,7 @@ title:  "iOS同步调用对话框 RunLoop的使用"
 date:   2017-01-19 10:17:31 +0800
 categories: 开发笔记
 ---
-![](http://yuqiangcoder.com/assets/postImages/ios/201701/5.jpeg)
+![](http://yuqiangcoder.com/assets/postImages/ios/201701/3.jpg)
 
 > 更新时间: 2017-04-19
 此种方案设计的弹出框, 不适用于`tableView` `Cell`点击代理方法中操作; 但是可以通过在`cell`上增加`button`, 利用`button`的点击事件调用同步弹出框. 
@@ -20,7 +20,7 @@ iOS中弹窗显示后, 代码会继续执行, 然后使用`block`获取用户操
 
 
 # 测试结果, 注意输出`isConfirm`的时机
-![测试Demo.gif](http://upload-images.jianshu.io/upload_images/3538284-bd8490af18e17595.gif?imageMogr2/auto-orient/strip)
+![测试Demo.gif](http://yuqiangcoder.com/assets/postImages/ios/201701/4.gif)
 
 # 代码
 ```
@@ -49,7 +49,7 @@ iOS中弹窗显示后, 代码会继续执行, 然后使用`block`获取用户操
 
 # 写在最后
 
-![](http://upload-images.jianshu.io/upload_images/3538284-2b59305066e31d68.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201701/5.jpeg)
 本人菜鸟一枚,欢迎大神前来指(tiao)教(xi), 带我~~进坑~~入门
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
