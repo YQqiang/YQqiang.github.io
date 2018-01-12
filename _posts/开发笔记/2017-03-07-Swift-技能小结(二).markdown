@@ -4,7 +4,7 @@ title:  "Swift-技能小结(二)"
 date:   2017-03-07 10:17:31 +0800
 categories: 开发笔记
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-bc4c89ddbac7a99a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201703/1.jpg)
 
 上一篇: [Swift-技能小结(一)](http://www.jianshu.com/p/e52ac996055a)
 
@@ -88,11 +88,11 @@ func default__str(_ str: String?) -> String {
 # 使用 ***CGBlendMode*** 更改图片颜色
 例: 原始图片
 
-![原始图片](http://upload-images.jianshu.io/upload_images/3538284-815f48201ea31e97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![原始图片](http://yuqiangcoder.com/assets/postImages/ios/201703/2.png)
 
 更改颜色后的图片
 
-![更改颜色后的图片](http://upload-images.jianshu.io/upload_images/3538284-b56d973687b8de20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![更改颜色后的图片](http://yuqiangcoder.com/assets/postImages/ios/201703/3.png)
 
 代码实现:
 ```
