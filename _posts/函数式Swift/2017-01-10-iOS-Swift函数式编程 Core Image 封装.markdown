@@ -4,7 +4,7 @@ title:  "iOS-Swift函数式编程 Core Image 封装"
 date:   2017-01-10 10:17:31 +0800
 categories: 函数式Swift
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-34afae9b84040147.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201701/2.jpg)
 
 # 说明
 > 本文内容均出自[函数式 Swift](https://store.objccn.io/products/functional-swift/)一书, 此处整理仅仅是为了自己日后方便查看, 需要深入研究的话, 可以点进去购买, 支持[原作者](https://store.objccn.io/products/functional-swift/)

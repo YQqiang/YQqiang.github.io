@@ -4,7 +4,7 @@ title:  "iOS-时区转换(Objective-C) NSTimeZone"
 date:   2017-01-07 10:17:31 +0800
 categories: 开发笔记
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-7b2f4fc46bfd078e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201701/1.jpg)
 
 ## 说明
 > 虽然代码很烂, 但还是要记录下来😀
