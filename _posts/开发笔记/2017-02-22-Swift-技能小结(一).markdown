@@ -4,7 +4,7 @@ title:  "Swift-技能小结(一)"
 date:   2017-02-22 10:17:31 +0800
 categories: 开发笔记
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-de182ce415c302a3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201702/11.jpg)
 
 > 
 最近写代码处于很尴尬的状态, 某些简单的语法或者是小功能明明写过很多遍, 却总是不能手到擒来; 总是需要翻看以前的代码... 
@@ -112,11 +112,11 @@ button.titleLabel?.transform = matrix
 ```
 效果如下:
 
-![matrix.png](http://upload-images.jianshu.io/upload_images/3538284-b5345d0596ec53d3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![matrix.png](http://yuqiangcoder.com/assets/postImages/ios/201702/12.png)
 
 # 5. 题外话
 > 先总结这么几个, 慢慢积累吧
-下一篇: [Swift-技能小结(二)](http://www.jianshu.com/p/843f476f3c88)
+下一篇: [Swift-技能小结(二)](http://yuqiangcoder.com/2017/03/07/Swift-%E6%8A%80%E8%83%BD%E5%B0%8F%E7%BB%93(%E4%BA%8C).html)
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
