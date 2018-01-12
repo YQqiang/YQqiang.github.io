@@ -4,7 +4,7 @@ title:  "iOS YQAlert 弹出框 -- 个人库"
 date:   2017-04-28 10:17:31 +0800
 categories: 开源项目
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-dd4e9342eab529ed.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201704/8.jpg)
 
 > 最近使用swift 撸了一个弹出框, 可以高度自定义弹出框的内容, 样式和动画效果, 且可以使用[同步弹出框](http://www.jianshu.com/p/95df9f07b5f2), 支持`cocoapods`引入
 
@@ -12,7 +12,7 @@ categories: 开源项目
 [YQAlert git地址](https://github.com/YQqiang/YQAlert), ***支持cocoapods***
 ## 弹出框结构
 
-![alertStructure.png](http://upload-images.jianshu.io/upload_images/3538284-f394241fd22a1cd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![alertStructure.png](http://yuqiangcoder.com/assets/postImages/ios/201704/9.png)
 
 | 标注 | 说明 |
 | :-: | :-: |
@@ -56,7 +56,7 @@ end
 请下载Demo直接运行
 
 ### Demo 预览
-![YQAlertDemo.gif](https://github.com/YQqiang/YQAlert/blob/master/YQAlertDemo.gif?raw=true)
+![YQAlertDemo.gif](http://yuqiangcoder.com/assets/postImages/ios/201704/10.gif)
 
 ## 代码详解
 ### 全局配置
@@ -184,7 +184,7 @@ end
 ```
 ### 基本用法
 #### 仅有标题和内容文字
-![noneButton.png](http://upload-images.jianshu.io/upload_images/3538284-864b1397dc826e6c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![noneButton.png](http://yuqiangcoder.com/assets/postImages/ios/201704/11.png)
 
 ```swift
 let alertV = YQAlertNormalView(title: "标题", detail: "内容文字")
@@ -194,7 +194,7 @@ alertV.show()
 
 #### 创建一个按钮的弹出框, 使用闭包获取到按钮的点击回调; 默认按钮标题为`确认`, 也可以设置标题; 默认按钮类型为普通类型`normal`, 也可以设置按钮类型
 
-![oneButton.png](http://upload-images.jianshu.io/upload_images/3538284-9f56a8f1587e12fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![oneButton.png](http://yuqiangcoder.com/assets/postImages/ios/201704/12.png)
 
 ```swift
 let alertV = YQAlertNormalView(title: "标题", detail: "内容文字") { (button) in
@@ -206,7 +206,7 @@ alertV.show()
 
 #### 创建两个按钮的弹出框, 使用闭包获取到按钮的点击回调, 默认第一个按钮, 标题为`取消`, 按钮类型为`cancel`; 默认第二个按钮的标题为`确认`, 按钮类型为`normal`; 通过闭包获取到每个按钮的点击事件, 并且默认值也支持自定义
 
-![twoButton.png](http://upload-images.jianshu.io/upload_images/3538284-477be019a570b2da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![twoButton.png](http://yuqiangcoder.com/assets/postImages/ios/201704/13.png)
 
 ```swift
 let alertV = YQAlertNormalView(title: "标题", detail: "详细内容", cancelHandle: { (button) in
@@ -220,7 +220,7 @@ alertV.show()
 
 #### 操作按钮的增加, 删除 和 插入
 
-![operationButton.png](http://upload-images.jianshu.io/upload_images/3538284-6be950c91d86e776.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![operationButton.png](http://yuqiangcoder.com/assets/postImages/ios/201704/14.png)
 
 ```swift
 
@@ -250,7 +250,7 @@ alertV.show()
 ### 自定义用法 (ps: 自定义的视图请使用 Auto Layout 布局)
 #### 自定义头视图
 
-![customHead.png](http://upload-images.jianshu.io/upload_images/3538284-7d391959a07e01ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![customHead.png](http://yuqiangcoder.com/assets/postImages/ios/201704/15.png)
 
 ```swift
 let alertV = YQAlertNormalView(title: "标题", detail: "内容文字") { (button) in
@@ -280,7 +280,7 @@ alertV.show()
 ```
 #### 自定义内容视图
 
-![customContent.png](http://upload-images.jianshu.io/upload_images/3538284-e7efef55dcfe2498.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![customContent.png](http://yuqiangcoder.com/assets/postImages/ios/201704/16.png)
 
 ```swift
 let alertV = YQAlertNormalView(title: "标题", detail: "内容文字") { (button) in
