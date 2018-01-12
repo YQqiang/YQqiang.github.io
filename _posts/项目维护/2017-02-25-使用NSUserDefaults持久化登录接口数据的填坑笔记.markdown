@@ -4,7 +4,7 @@ title:  "使用NSUserDefaults持久化登录接口数据的填坑笔记"
 date:   2017-02-25 10:17:31 +0800
 categories: 项目维护
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-32793e09e7e124d5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201702/14.jpg)
 
 > 项目中一直是使用`NSUserDefaults`把登录接口获取到的用户信息, 保存在本地的`plist`文件. 一切都是那么的Easy, 世界是多么的美好. 直到今天(2017-02-25), 切换服务器(我们APP支持自定义服务器)的时候再登录, 直接闪退, ***what fuck !!!!!! ***
 

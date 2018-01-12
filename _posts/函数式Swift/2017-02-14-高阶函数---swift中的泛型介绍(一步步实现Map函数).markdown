@@ -4,7 +4,7 @@ title:  "高阶函数---swift中的泛型介绍(一步步实现Map函数)"
 date:   2017-02-14 10:17:31 +0800
 categories: 函数式Swift
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-2d9c01962d77399b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201702/6.jpg)
 
 # 说明
 > 本文内容均出自[函数式 Swift](https://store.objccn.io/products/functional-swift/)一书, 此处整理仅仅是为了自己日后方便查看, 需要深入研究的话, 可以点进去购买, 支持[原作者](https://store.objccn.io/products/functional-swift/)
@@ -74,7 +74,7 @@ func isEvenArray(xs: [Int]) -> [Bool] {
 
 > 不幸的是, 这段代码导致了一个类型错误. 问题在于, 我们的`computeIntArray函数`接受一个 `Int -> Int` 类型的参数, 也就是说, 该参数是一个返回整型值的函数. 而在`isEvenArray`函数的定义中, 我们传递了一个`Int -> Bool`类型的参数, 于是导致了类型错误.
 
-![类型错误](http://upload-images.jianshu.io/upload_images/3538284-f1809c26ee8b36fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![类型错误](http://yuqiangcoder.com/assets/postImages/ios/201702/7.png)
 
  > 我们应该如何解决这个问题呢? 一种***可行***的方案是定义新版本的`computeIntArray函数`, 接受一个`Int -> Bool` 类型的函数作为参数. 类似下面这样: 
 

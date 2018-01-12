@@ -4,7 +4,7 @@ title:  "高阶函数---swift中的Filter 和 Reduce"
 date:   2017-02-14 10:17:31 +0800
 categories: 函数式Swift
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-0bc34a563338d07e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201702/8.jpg)
 
 # 说明
 > 本文内容均出自[函数式 Swift](https://store.objccn.io/products/functional-swift/)一书, 此处整理仅仅是为了自己日后方便查看, 需要深入研究的话, 可以点进去购买, 支持[原作者](https://store.objccn.io/products/functional-swift/)
@@ -45,7 +45,7 @@ print("\(getSwiftFiles(exampleFiles))")
 
 ```
 
-![获取数组中的Swift文件](http://upload-images.jianshu.io/upload_images/3538284-ad28945db49f5cbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![获取数组中的Swift文件](http://yuqiangcoder.com/assets/postImages/ios/201702/9.png)
 
 > 当然, 我们可以将`getSwiftFiles`函数一般化. 比如, 相比于使用硬编码(hardcoding)的方式筛选扩展名为`.swift`的文件, 传递一个附加的`String`参数进行比对会是更好的方法. 我们接下来可以使用同样的函数去比对`.swift`或`.md`文件. 但是假如我们想查找没有扩展名的所有文件, 或者是名字以字符串`Hello`开头的文件, 那怎么办呢?
 
@@ -99,7 +99,7 @@ func sum(_ xs: [Int]) -> Int {
 print(sum([1, 2, 3, 4]))
 ```
 
-![sum结果](http://upload-images.jianshu.io/upload_images/3538284-bcbb4dd871eafc4a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![sum结果](http://yuqiangcoder.com/assets/postImages/ios/201702/10.png)
 
 > 我们也可以使用类似`sum`中的`for循环`来定义一个 `product函数`, 用于计算所有数组项相乘之积:
 

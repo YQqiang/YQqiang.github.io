@@ -4,7 +4,7 @@ title:  "RxSwift + Moya + ObjectMapper + MVVM 的网络请求"
 date:   2017-02-23 10:17:31 +0800
 categories: 函数式Swift
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-ef0f41eb3947d975.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201702/13.jpg)
 
 > 2016年底的时候, 项目经理决定把我们的项目以`MVVM`架构方式进行重构; 当时`Swift`已经是3.0版本了, 也是时候转战Swift了.  之所以选择使用`RxSwift`实现`MVVM`, 而没有使用 `RAC`, 是因为我觉得`RxSwift`更符合`Swift`的编程思想.
 
