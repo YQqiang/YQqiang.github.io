@@ -4,14 +4,14 @@ title:  "Nunchakus -- 个人APP"
 date:   2017-04-19 10:17:31 +0800
 categories: 开源项目
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-e1bc33c34e201e2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201704/6.png)
 
 # 前言
 最近利用业余时间, 写了一个非常简陋的APP(Nunchakus): 该APP只有一个功能, 那就是视屏播放, 虽然功能就一个, 但是开发中坑却不少, 所以在此做下总结.
 
 # Nunchakus 预览及简介
 
-![Nunchakus](http://upload-images.jianshu.io/upload_images/3538284-62c5d1bbc283b0b7.gif?imageMogr2/auto-orient/strip)
+![Nunchakus](http://yuqiangcoder.com/assets/postImages/ios/201704/7.gif)
 
 Nunchakus 是一款专门播放双节棍视频的APP, Nunchakus中所有的视屏资源均来自[双节棍吧](http://www.sjg8.com)
 
