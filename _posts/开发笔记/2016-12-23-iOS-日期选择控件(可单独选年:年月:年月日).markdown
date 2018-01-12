@@ -10,15 +10,15 @@ iOS系统提供的UIDatePicker 只能用于选择年月日,通过借鉴[stackove
 # 效果展示
 ## 通过分段控制器 选择年 弹出仅有年份选择的datePicker
 
-![](http://upload-images.jianshu.io/upload_images/3538284-2ff3a9dee45bff5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![](http://yuqiangcoder.com/assets/postImages/ios/201612/1.png)
 
 ## 通过分段控制器 选择月 弹出仅有年月选择的datePicker
 
-![](http://upload-images.jianshu.io/upload_images/3538284-5e60b344e2d393fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![](http://yuqiangcoder.com/assets/postImages/ios/201612/2.png)
 
 ## 通过分段控制器 选择日 弹出有年月日选择的datePicker
 
-![](http://upload-images.jianshu.io/upload_images/3538284-cb5cadd7f570b6a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![](http://yuqiangcoder.com/assets/postImages/ios/201612/3.png)
 
 # 实现的主要代码
 
