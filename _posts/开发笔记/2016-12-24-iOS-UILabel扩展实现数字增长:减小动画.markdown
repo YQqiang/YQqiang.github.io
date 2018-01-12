@@ -4,7 +4,7 @@ title:  "iOS-UILabel扩展实现数字增长/减小动画"
 date:   2016-12-24 10:17:31 +0800
 categories: 开发笔记
 ---
-![](http://yuqiangcoder.com/assets/postImages/ios/201612/4.png)
+![](http://yuqiangcoder.com/assets/postImages/ios/201612/4.jpg)
 
 # AnimationUILabel
 # 说明
