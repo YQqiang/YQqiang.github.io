@@ -5,7 +5,7 @@ date:   2016-12-28 10:17:31 +0800
 categories: 函数式Swift
 ---
 > 更新时间: 2017-02-28
-[RxSwift + Moya + ObjectMapper + MVVM 的网络请求](http://www.jianshu.com/p/2e0dfba02ae5)
+[RxSwift + Moya + ObjectMapper + MVVM 的网络请求](http://yuqiangcoder.com/2017/02/23/RxSwift-+-Moya-+-ObjectMapper-+-MVVM-%E7%9A%84%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82.html)
 
 # 说明
 刚开始接触`RxSwift`, 很多概念理不清; 试着阅读官方的`playground`, 无奈英语水平有限, 看着英文文档,更加迷糊. 几经周折,找到这篇很好的教程, 作者整理的非常清晰, 感谢作者的分享精神.
@@ -15,9 +15,9 @@ categories: 函数式Swift
 
 # 文件目录预览, 基本概念划分
 
-![目录](http://upload-images.jianshu.io/upload_images/3538284-56ec8dfc17415f0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![目录](http://yuqiangcoder.com/assets/postImages/ios/201612/7.png)
 
-![可依次取消注释,在控制台查看运行结果](http://upload-images.jianshu.io/upload_images/3538284-411971e968154f7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![可依次取消注释,在控制台查看运行结果](http://yuqiangcoder.com/assets/postImages/ios/201612/8.png)
 
 # 内容拆分
 ## 基本概念
