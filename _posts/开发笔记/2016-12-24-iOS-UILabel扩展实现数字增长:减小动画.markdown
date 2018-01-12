@@ -4,16 +4,16 @@ title:  "iOS-UILabel扩展实现数字增长/减小动画"
 date:   2016-12-24 10:17:31 +0800
 categories: 开发笔记
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-4f6bbcf66c1f4c52.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201612/4.png)
 
 # AnimationUILabel
 # 说明
 该版本为Swift版本 ,原文在这[OC版本](https://github.com/ScottZg/AnimationNumLabel)
 # 效果展示
 
-![数字减小.gif](http://upload-images.jianshu.io/upload_images/3538284-f3f39d16bf4007e2.gif?imageMogr2/auto-orient/strip)
+![数字减小.gif](http://yuqiangcoder.com/assets/postImages/ios/201612/5.gif)
 
-![数字增长.gif](http://upload-images.jianshu.io/upload_images/3538284-e266230237b7c2d1.gif?imageMogr2/auto-orient/strip)
+![数字增长.gif](http://yuqiangcoder.com/assets/postImages/ios/201612/6.gif)
 
 # 主要代码
 
