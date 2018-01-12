@@ -4,12 +4,12 @@ title:  "WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!"
 date:   2017-02-09 10:17:31 +0800
 categories: 开发笔记
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-5fbde0a2f0be8d7d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201702/1.jpg)
 
 > 更新时间: 2017-02-10 
 今天又出现了相同的问题, 检查发现是服务器的问题, 重启服务器就好了(大写加粗的囧字,尴尬五分钟)
 
-![尴尬...](http://upload-images.jianshu.io/upload_images/3538284-814055a93083f569.gif?imageMogr2/auto-orient/strip)
+![尴尬...](http://yuqiangcoder.com/assets/postImages/ios/201702/2.gif)
 
 # 问题
 ---
