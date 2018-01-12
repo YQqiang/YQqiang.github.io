@@ -4,7 +4,7 @@ title:  "iOS同步调用对话框 RunLoop的使用"
 date:   2017-01-19 10:17:31 +0800
 categories: 开发笔记
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-600ace94ea6c8576.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201701/5.jpeg)
 
 > 更新时间: 2017-04-19
 此种方案设计的弹出框, 不适用于`tableView` `Cell`点击代理方法中操作; 但是可以通过在`cell`上增加`button`, 利用`button`的点击事件调用同步弹出框. 
