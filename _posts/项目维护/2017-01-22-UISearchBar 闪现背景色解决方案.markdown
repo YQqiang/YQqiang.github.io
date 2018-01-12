@@ -31,7 +31,7 @@ UISearchBar 放在导航栏, 当pop控制器时, searchBar会闪现背景色.
 ps: DopSearchBar 是子类化的searchBar
 
 searchBar 层级结构如下图
-![searchBar 层次结构.png](http://upload-images.jianshu.io/upload_images/3538284-2f4971d7c65b294f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![searchBar 层次结构.png](http://yuqiangcoder.com/assets/postImages/ios/201701/9.png)
 
 
 
