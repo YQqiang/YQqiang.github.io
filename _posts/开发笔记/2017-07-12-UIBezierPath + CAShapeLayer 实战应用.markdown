@@ -4,7 +4,7 @@ title:  "UIBezierPath + CAShapeLayer 实战应用"
 date:   2017-07-12 10:17:31 +0800
 categories: 开发笔记
 ---
-![时效截图](http://upload-images.jianshu.io/upload_images/3538284-e19704ddc2fece86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![时效截图](http://yuqiangcoder.com/assets/postImages/ios/201707/1.png)
 
 
 ---- 
@@ -72,19 +72,19 @@ categories: 开发笔记
 * 视图左右两边的圆弧也使用贝塞尔曲线绘制, 并封装成类目方法
 * 绘制虚线
 
-![任务1](http://upload-images.jianshu.io/upload_images/3538284-075e95e59f4e1d55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![任务1](http://yuqiangcoder.com/assets/postImages/ios/201707/2.png)
 
-![任务2](http://upload-images.jianshu.io/upload_images/3538284-34a7a85cecb3828b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![任务2](http://yuqiangcoder.com/assets/postImages/ios/201707/3.png)
 
-![任务3](http://upload-images.jianshu.io/upload_images/3538284-480f86074b2df2e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![任务3](http://yuqiangcoder.com/assets/postImages/ios/201707/4.png)
 
 ## 代码实现
 #### 1.顶部代表进度的视图
 1.1 视图分解
 顶部视图可以看成是由5个item组成, 只需要绘制出一个item, 然后再基于该item进行二次封装即可
-![分解顶部视图](http://upload-images.jianshu.io/upload_images/3538284-16ffffa409dcf65a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![分解顶部视图](http://yuqiangcoder.com/assets/postImages/ios/201707/5.png)
 1.2 绘制单个item
-![分解单个item](http://upload-images.jianshu.io/upload_images/3538284-dd1f37a3da101fd1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![分解单个item](http://yuqiangcoder.com/assets/postImages/ios/201707/6.png)
 绘制思路: 
 ① :    使用贝塞尔曲线绘制部分圆弧;
 ②③ :使用二次贝塞尔曲线绘制圆弧
@@ -298,7 +298,7 @@ categories: 开发笔记
 ```
 1.4 最终效果
 
-![效果](http://upload-images.jianshu.io/upload_images/3538284-796cf479478aa0c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![效果](http://yuqiangcoder.com/assets/postImages/ios/201707/7.png)
 
 1.5 demo地址 [ProgressTopBar](https://github.com/YQqiang/ProgressTopBar)
 
@@ -338,9 +338,9 @@ categories: 开发笔记
 ```
 2.3 最终效果
 
-![弧度为5](http://upload-images.jianshu.io/upload_images/3538284-28a1910f81a0e2e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![弧度为5](http://yuqiangcoder.com/assets/postImages/ios/201707/8.png)
 
-![弧度为8](http://upload-images.jianshu.io/upload_images/3538284-bbf5fb297e36f440.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![弧度为8](http://yuqiangcoder.com/assets/postImages/ios/201707/9.png)
 
 #### 3. 绘制虚线
 3.1 同样在UIView类目中添加该方法:
@@ -390,9 +390,9 @@ categories: 开发笔记
 ```
 3.3 虚线效果
 
-![水平虚线](http://upload-images.jianshu.io/upload_images/3538284-059f2bfd39c9ab6b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![水平虚线](http://yuqiangcoder.com/assets/postImages/ios/201707/10.png)
 
-![竖直虚线](http://upload-images.jianshu.io/upload_images/3538284-1460d5ee43ab9f96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![竖直虚线](http://yuqiangcoder.com/assets/postImages/ios/201707/11.png)
 
 ## 总结
 1. 颜色渐变`CAGradientLayer`
@@ -452,7 +452,7 @@ UIBezierPath *path2 = [UIBezierPath bezierPathWithCGPath:path1.CGPath];
     }
     ```
       
-![pauseAnimation.gif](http://upload-images.jianshu.io/upload_images/3538284-c6db3cdb842391ed.gif?imageMogr2/auto-orient/strip)
+![pauseAnimation.gif](http://yuqiangcoder.com/assets/postImages/ios/201707/12.gif)
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
