@@ -4,7 +4,7 @@ title:  "@strongify(self) 和 @weakify(self) 宏"
 date:   2017-08-30 18:45:31 +0800
 categories: 开发笔记
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-7141a1d895155e41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201708/3.png)
 ### 宏展开
 首先看一下宏展开的样子
 > strongify(self) = autoreleasepool {} _Pragma("clang diagnostic push") _Pragma("clang diagnostic ignored \"-Wshadow\"") __attribute__((objc_ownership(strong))) __typeof__(self) self = self_weak_; _Pragma("clang diagnostic pop")

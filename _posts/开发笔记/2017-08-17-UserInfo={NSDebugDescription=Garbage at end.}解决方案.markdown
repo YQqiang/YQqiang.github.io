@@ -4,7 +4,7 @@ title:  "UserInfo={NSDebugDescription=Garbage at end.}解决方案"
 date:   2017-08-17 17:41:31 +0800
 categories: 开发笔记
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-0994ca16d7c693b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![](http://yuqiangcoder.com/assets/postImages/ios/201708/1.png)
 
 ### 使用 *NSJSONSerialization* 将字符串转字典
 * 步骤一: 将字符串使用`NSUTF8StringEncoding`编码格式转换为`NSData `
@@ -35,7 +35,7 @@ Error Domain=NSCocoaErrorDomain Code=3840 "Garbage at end." UserInfo={NSDebugDes
 1. 使用json格式化工具验证json是否合格
 json正确, 如下图所示
 
-![验证json合格](http://upload-images.jianshu.io/upload_images/3538284-b0269aa4374a0c2e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![验证json合格](http://yuqiangcoder.com/assets/postImages/ios/201708/2.png)
 
 2. 既然是合法的json, 为什么转换会出错?
 通过查看data数据, 发现了问题所在.
