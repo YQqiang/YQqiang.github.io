@@ -4,7 +4,7 @@ title:  "使用RunTime清空单例对象属性值"
 date:   2017-07-29 10:54:31 +0800
 categories: 开发笔记
 ---
-![来自项目截图](http://upload-images.jianshu.io/upload_images/3538284-36673d2ce46bbead.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![来自项目截图](http://yuqiangcoder.com/assets/postImages/ios/201707/13.png)
 
 ### 功能介绍
 最近在做【电站接入】功能, 这个功能分为五个步骤前四个步骤分别让用户录入信息, 但是提交数据在最后一步执行.
