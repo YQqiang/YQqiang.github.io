@@ -7,7 +7,7 @@ categories: 项目维护
 ### 应用名称国际化
 应用名称国际化:
 
-![应用名称国际化文件](http://upload-images.jianshu.io/upload_images/3538284-e8c27f229a956d59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![应用名称国际化文件](http://yuqiangcoder.com/assets/postImages/ios/201709/1.png)
 
 在对应国家的`InfoPlist.strings`文件中加入需要国际化的应用名称:
 ```
