@@ -4,7 +4,7 @@ title:  "项目维护<<地图相关总结>>"
 date:   2017-06-13 10:17:31 +0800
 categories: 项目维护
 ---
-![来自项目截图-点聚合](http://upload-images.jianshu.io/upload_images/3538284-e74be5476a2457b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![来自项目截图-点聚合](http://yuqiangcoder.com/assets/postImages/ios/201706/3.png)
 
 ## 一. 问题: 地图标注点位置不准确
 ### 知识背景
@@ -30,11 +30,11 @@ CLLocationCoordinate2D amapcoord = AMapCoordinateConvert(CLLocationCoordinate2DM
 > 注: 在未设置城市限制时, 高德POI搜索仅会返回建议城市, 需要引导用户选择某一城市后,继续搜索.
 [高德官方sdk](http://lbs.amap.com/api/ios-sdk/guide/map-data/poi)
 
-![建议城市](http://upload-images.jianshu.io/upload_images/3538284-8b0b2a66c87d8226.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![建议城市](http://yuqiangcoder.com/assets/postImages/ios/201706/4.png)
 
-![兴趣点](http://upload-images.jianshu.io/upload_images/3538284-72e0ac18b3a073dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![兴趣点](http://yuqiangcoder.com/assets/postImages/ios/201706/5.png)
 
-![标注点](http://upload-images.jianshu.io/upload_images/3538284-30ca0462abbc018b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![标注点](http://yuqiangcoder.com/assets/postImages/ios/201706/6.png)
 
 ## 三. 导航功能
 > 跳转到高德地图和苹果自带地图, 目标位置是准确的; 但是跳转到百度地图, 目标位置发生偏移.
