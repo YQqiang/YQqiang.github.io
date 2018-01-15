@@ -4,7 +4,7 @@ title:  "iOS 11 弹出框不显示解决方案"
 date:   2017-10-12 15:39:31 +0800
 categories: 项目维护
 ---
-![](http://yuqiangcoder.com/assets/postImages/ios/201710/1.png)
+![](http://yuqiangcoder.com/assets/postImages/ios/201710/1.jpeg)
 
 
 ### 问题
