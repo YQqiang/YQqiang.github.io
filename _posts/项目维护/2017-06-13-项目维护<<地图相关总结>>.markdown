@@ -58,7 +58,7 @@ NSString *urlString = [[NSString stringWithFormat:@"baidumap://map/direction?ori
 
 如果不指定类型, 也可以手动转换坐标点, 请参考[火星坐标系 (GCJ-02) 与百度坐标系 (BD-09) 的转换算法](https://blog.woodbunny.com/post-68.html)
 
-强烈推荐同事(地图方面的大神)的一篇博客,介绍的非常详细 [[国内外地图差异分析](http://www.chengyong.net/tool-used/map-difference-at-home-and-abroad.html)](http://www.chengyong.net/tool-used/map-difference-at-home-and-abroad.html)
+强烈推荐同事(地图方面的大神)的一篇博客,介绍的非常详细 [国内外地图差异分析](https://chy.mobi/tool-used/map-difference-at-home-and-abroad.html)
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
