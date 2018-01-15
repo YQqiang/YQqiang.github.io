@@ -4,7 +4,7 @@ title:  "项目维护<<模糊搜索控件封装>>"
 date:   2017-06-20 10:17:31 +0800
 categories: 项目维护
 ---
-![来自项目截图](http://upload-images.jianshu.io/upload_images/3538284-2cbd3c688b66833c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![来自项目截图](http://yuqiangcoder.com/assets/postImages/ios/201706/7.png)
 
 > 接手项目中的选择控件是iOS系统风格的`pickView`, 但是当数据源个数超过十几个时, `pickView`用起来就不是很方便了, 需要来回滚动找到需要的那条数据.
 于是就撸了一个简单的支持搜索的菜单选择控件.
@@ -13,7 +13,7 @@ categories: 项目维护
 
 ## Demo演示
 
-![模糊搜索演示.gif](http://upload-images.jianshu.io/upload_images/3538284-b503f4d6a82e6352.gif?imageMogr2/auto-orient/strip)
+![模糊搜索演示.gif](http://yuqiangcoder.com/assets/postImages/ios/201706/8.gif)
 
 ## 如何使用
 ```
@@ -43,7 +43,7 @@ SearchTableView *searchTableView = [[SearchTableView alloc] initWithTitle:@"测�
 ## 最后
 这博客太没技术含量了, 水平太低, 写不出高深的东西, 我也很无奈啊, 哈哈哈哈哈哈哈
 
-![图片来源于网络, 如果侵犯了您的权利, 请联系我删除](http://upload-images.jianshu.io/upload_images/3538284-a10f79ca99b08f67.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![图片来源于网络, 如果侵犯了您的权利, 请联系我删除](http://yuqiangcoder.com/assets/postImages/ios/201706/9.jpeg)
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll

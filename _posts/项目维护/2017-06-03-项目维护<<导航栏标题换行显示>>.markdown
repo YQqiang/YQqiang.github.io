@@ -4,10 +4,10 @@ title:  "项目维护<<导航栏标题换行显示>>"
 date:   2017-06-03 10:17:31 +0800
 categories: 项目维护
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-9aa412fdf2013211.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201706/1.jpg)
 >   此处略去吐槽一万字......
 
-![图片来源于网络](http://upload-images.jianshu.io/upload_images/3538284-a242874a40e586c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![图片来源于网络](http://yuqiangcoder.com/assets/postImages/ios/201706/2.png)
 
 > 吐槽完了, 工作还是要继续的
 
