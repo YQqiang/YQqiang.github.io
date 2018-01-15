@@ -4,7 +4,7 @@ title:  "iOS 11 弹出框不显示解决方案"
 date:   2017-10-12 15:39:31 +0800
 categories: 项目维护
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-443f7fbeb58b4ce4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201710/1.png)
 
 
 ### 问题
@@ -34,15 +34,15 @@ categories: 项目维护
 
 > iOS10 系统下window层级
 
-![iOS10_windows.png](http://upload-images.jianshu.io/upload_images/3538284-692919e2b005a07d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![iOS10_windows.png](http://yuqiangcoder.com/assets/postImages/ios/201710/2.png)
 
 > iOS11 系统下window层级
 
-![iOS11_window.png](http://upload-images.jianshu.io/upload_images/3538284-da20b4f019d79589.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![iOS11_window.png](http://yuqiangcoder.com/assets/postImages/ios/201710/3.png)
 
 >  隐藏的 `window`  -----> `_UIInteractiveHighlightEffectWindow`
 
-![隐藏状态的windows.png](http://upload-images.jianshu.io/upload_images/3538284-ad4a770da7e87231.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![隐藏状态的windows.png](http://yuqiangcoder.com/assets/postImages/ios/201710/4.png)
 
 ### 解决
 优化获取最上层window方法, 过滤隐藏状态的 `window`
