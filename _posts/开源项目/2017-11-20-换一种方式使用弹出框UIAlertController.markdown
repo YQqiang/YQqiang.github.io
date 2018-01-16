@@ -4,7 +4,7 @@ title:  "换一种方式使用弹出框UIAlertController"
 date:   2017-11-20 15:06:31 +0800
 categories: 开源项目
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-f7aed0581977e9ae.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201711/8.jpg)
 
 ## Github 地址
 [UIViewControllerYQAlert](https://github.com/YQqiang/UIViewControllerYQAlert)
@@ -34,7 +34,7 @@ categories: 开源项目
 
 #### 1. 基本用法
 
-![基本用法.png](http://upload-images.jianshu.io/upload_images/3538284-befef13d4b3cac7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![基本用法.png](http://yuqiangcoder.com/assets/postImages/ios/201711/9.png)
 
 ```Swift
 yq.makeAlert { (make) in
@@ -45,7 +45,7 @@ yq.makeAlert { (make) in
 
 #### 2. 更改按钮颜色
 
-![更改按钮颜色.png](http://upload-images.jianshu.io/upload_images/3538284-dd1fd44eb4d2ec4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![更改按钮颜色.png](http://yuqiangcoder.com/assets/postImages/ios/201711/10.png)
 
 ```swift
 yq.makeAlert { (make) in
@@ -58,7 +58,7 @@ yq.makeAlert { (make) in
 
 #### 3. 更改按钮文字
 
-![更改按钮文字.png](http://upload-images.jianshu.io/upload_images/3538284-910a93c955856824.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![更改按钮文字.png](http://yuqiangcoder.com/assets/postImages/ios/201711/11.png)
 
 ```swift
 yq.makeAlert { (make) in
@@ -73,7 +73,7 @@ yq.makeAlert { (make) in
 
 #### 4. 自定义标题和描述文字
 
-![自定义标题和描述文字.png](http://upload-images.jianshu.io/upload_images/3538284-610620b9a1210e90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![自定义标题和描述文字.png](http://yuqiangcoder.com/assets/postImages/ios/201711/12.png)
 
 ```swift
 yq.makeAlert { (make) in
@@ -88,7 +88,7 @@ yq.makeAlert { (make) in
 
 #### 5. 自定义顶部图片
 
-![自定义顶部图片.png](http://upload-images.jianshu.io/upload_images/3538284-079c1fe6f235e0a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![自定义顶部图片.png](http://yuqiangcoder.com/assets/postImages/ios/201711/13.png)
 
 ```swift
 yq.makeAlert { (make) in
@@ -101,7 +101,7 @@ yq.makeAlert { (make) in
 
 #### 6. 按钮点击事件回调
 
-![按钮点击事件回调.png](http://upload-images.jianshu.io/upload_images/3538284-93c99f3e7344c771.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![按钮点击事件回调.png](http://yuqiangcoder.com/assets/postImages/ios/201711/14.png)
 
 ```swift
 yq.makeAlert { (make) in
@@ -119,7 +119,7 @@ yq.makeAlert { (make) in
 
 #### 7. 一个操作按钮的弹出框
 
-![一个操作按钮的弹出框.png](http://upload-images.jianshu.io/upload_images/3538284-f467529f91f1d876.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![一个操作按钮的弹出框.png](http://yuqiangcoder.com/assets/postImages/ios/201711/15.png)
 
 ```swift
 yq.makeAlert { (make) in
@@ -133,7 +133,7 @@ yq.makeAlert { (make) in
 
 #### 8. 综合使用
 
-![综合使用.png](http://upload-images.jianshu.io/upload_images/3538284-2946b3cba6689385.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![综合使用.png](http://yuqiangcoder.com/assets/postImages/ios/201711/16.png)
 
 ```swift
 yq.makeAlert { (make) in

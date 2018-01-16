@@ -1,5 +1,5 @@
 # Site settings
-title: 逆行云的技术博客
+title: 大道至简 悟在天成
 email: yuqiang.coder@gamil.com
 description: 世界上有10种人, 一种是懂二进制的人, 一种是不懂二进制的人.
 baseurl: "" # the subpath of your site, e.g. /blog/
@@ -18,7 +18,7 @@ author:                                     #自定义常亮
   link:  ""
   weibo: ""
   github: https://github.com/YQqiang
-title: 逆行云的技术博客                             #自定义常量
+title: 大道至简 悟在天成                             #自定义常量
 
 # avatar头像及Favicon
 avatar: https://github.com/YQqiang/YQqiang.github.io/blob/master/assets/images/mine.JPG?raw=true
