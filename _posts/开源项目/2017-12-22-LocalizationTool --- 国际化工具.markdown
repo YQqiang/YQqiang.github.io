@@ -4,7 +4,7 @@ title:  "LocalizationTool --- 国际化工具"
 date:   2017-12-22 09:48:31 +0800
 categories: 开源项目
 ---
-![](http://upload-images.jianshu.io/upload_images/3538284-22a1a8c2a367d199.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201712/1.png)
 
 ### 下载
 下载地址: 
@@ -22,7 +22,7 @@ categories: 开源项目
 2. 下载[LocalizationTool dmg压缩包](https://github.com/YQqiang/LocalizationTool/releases/tag/v1.0), 解压后双击运行.
 
 ### 使用
-![应用程序界面](http://upload-images.jianshu.io/upload_images/3538284-c0724452b26c8a54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![应用程序界面](http://yuqiangcoder.com/assets/postImages/ios/201712/2.png)
 
 1. 导入路径
 选择工程项目所在路径
@@ -30,26 +30,26 @@ categories: 开源项目
 2. 匹配规则说明
 * 默认匹配规则为 检索 `NSLocalizedString` 包裹的字符串, 可自动根据`OC` 或 `Swift`文件切换匹配规则
 * 自定义匹配规则, 可填写正则表达式进行匹配; 注: 匹配中若包含`(` `)`, 需要转义 `\(` `\)`
-![自定义匹配规则](http://upload-images.jianshu.io/upload_images/3538284-651cde3d341bf9d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![自定义匹配规则](http://yuqiangcoder.com/assets/postImages/ios/201712/3.png)
 * 使用前缀&后缀匹配, 输入要匹配的前缀和后缀即可自动匹配; 注: 匹配中若包含`(` `)`, 需要转义 `\(` `\)`
-![输入前缀&后缀匹配](http://upload-images.jianshu.io/upload_images/3538284-11fe6e69c431d904.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![输入前缀&后缀匹配](http://yuqiangcoder.com/assets/postImages/ios/201712/4.png)
 
 3. 文件后缀
 * 默认检索的文件为`.h`, `.m`, `.swift`
 * 可补充需要检索的文件后缀名; 例: `xml,strings`
-![补充增加检索文件后缀](http://upload-images.jianshu.io/upload_images/3538284-5b890af99c57623c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![补充增加检索文件后缀](http://yuqiangcoder.com/assets/postImages/ios/201712/5.png)
 
 4. 导出路径
 * 导出路径会在选择路径后创建文件夹`Localization`, 导出会有两个文件: `allKeys.txt` 和 `removedExistKey.txt`
   * `allKeys.txt`  检索到的所有key值
   * `removedExistKey.txt`  去除重复key后的文件
-![导出路径](http://upload-images.jianshu.io/upload_images/3538284-7d6344725dca42bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![导出路径](http://yuqiangcoder.com/assets/postImages/ios/201712/6.png)
 
 5. 剔除重复key
 * 默认剔除项目中所有`strings`文件中存在`key`
-![默认剔除所有String文件中存在的key](http://upload-images.jianshu.io/upload_images/3538284-26c8ecff35185fdd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![默认剔除所有String文件中存在的key](http://yuqiangcoder.com/assets/postImages/ios/201712/7.png)
 * 剔除指定`strings`文件中存在的`key`
-![剔除指定strings文件中存在的key](http://upload-images.jianshu.io/upload_images/3538284-50f1394ee3035359.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![剔除指定strings文件中存在的key](http://yuqiangcoder.com/assets/postImages/ios/201712/8.png)
 
 ### 问题记录
 第一次写Mac程序, 记录两个小问题😂😂😂😂😂😂😂😂
@@ -65,7 +65,7 @@ NSUnderlyingError=0x608000045d90
 Code=1 "Operation not permitted"}}
 ```
 解决: 关闭`TARGETS --> Capabilities --> App Sandbox`
-![关闭App Sandbox](http://upload-images.jianshu.io/upload_images/3538284-48c1413ac208041c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![关闭App Sandbox](http://yuqiangcoder.com/assets/postImages/ios/201712/9.png)
 2. 点击左上角叉号, 退出应用程序
 在`AppDelegate`中处理
 
