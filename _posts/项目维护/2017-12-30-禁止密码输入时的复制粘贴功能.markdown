@@ -5,7 +5,7 @@ date:   2017-12-30 09:00:31 +0800
 categories: 项目维护
 ---
 
-![](http://upload-images.jianshu.io/upload_images/3538284-8c6d8e3802ebbb3a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](http://yuqiangcoder.com/assets/postImages/ios/201712/10.jpg)
 
 ### 需求
 正在维护的三个项目中所有密文方式的输入框, 禁止使用`复制`, `粘贴`等功能
@@ -29,7 +29,7 @@ categories: 项目维护
 ```
 运行看下效果
 
-![显示全部MenuItem](http://upload-images.jianshu.io/upload_images/3538284-bb9ea8fae5f6dcd0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+![显示全部MenuItem](http://yuqiangcoder.com/assets/postImages/ios/201712/11.png)
 
 
 密码输入框是不显示`MenuController`了, 但是其它输入框`MenuController`显示了系统全部`MenuItem`
@@ -38,7 +38,7 @@ categories: 项目维护
 
 1. 看下原来的效果 ,只显示了`选择`, `全选`, `粘贴`
 
-    ![原有效果](http://upload-images.jianshu.io/upload_images/3538284-686fdc893732fbad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+    ![原有效果](http://yuqiangcoder.com/assets/postImages/ios/201712/12.png)
     修改代码如下:
     
     ```
@@ -62,7 +62,7 @@ categories: 项目维护
 
 2. 弹出`MenuController`, 选中文本后没有`剪切`, `拷贝`功能, 再来看下没改代码前的效果
 
-    ![选中文本后,显示剪切, 拷贝](http://upload-images.jianshu.io/upload_images/3538284-2c15f62b5f2f5dcd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/320)
+    ![选中文本后,显示剪切, 拷贝](http://yuqiangcoder.com/assets/postImages/ios/201712/13.png)
     
     继续修改代码如下:
     
