@@ -31,7 +31,7 @@ enum VideoType {
     case v          // 播放视屏
 }
 ```
-整理好网站结构可以很容易地使用`moya`写出网络请求`Service`, 不太会使用`moya`的同学可以参考我的这篇文章[RxSwift + Moya + ObjectMapper + MVVM 的网络请求](http://www.jianshu.com/p/2e0dfba02ae5)
+整理好网站结构可以很容易地使用`moya`写出网络请求`Service`, 不太会使用`moya`的同学可以参考我的这篇文章[RxSwift + Moya + ObjectMapper + MVVM 的网络请求](http://yuqiangcoder.com/2017/02/23/RxSwift-+-Moya-+-ObjectMapper-+-MVVM-%E7%9A%84%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82.html)
 首页虽然有七大类(`v`是用来播放视频的不作为视频类型, 但是`URL`路径类似, 所以写在同一个枚举里面), 但是我们只需要实现某一类型的视频播放, 然后设置不同的类型即可.
 
 ### 解析HTML
@@ -282,7 +282,7 @@ func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forR
 ```
 
 ### 坑5 - tableView 的点击代理方法中, 不能使用同步的弹出框
-注: 弹出框的同步调用可以参考我的这篇文章[iOS同步调用对话框 RunLoop的使用](http://www.jianshu.com/p/95df9f07b5f2)
+注: 弹出框的同步调用可以参考我的这篇文章[iOS同步调用对话框 RunLoop的使用](http://yuqiangcoder.com/2017/01/19/iOS%E5%90%8C%E6%AD%A5%E8%B0%83%E7%94%A8%E5%AF%B9%E8%AF%9D%E6%A1%86-RunLoop%E7%9A%84%E4%BD%BF%E7%94%A8.html)
 
 网络状态监控, 使用到了库[ReachabilitySwift](https://github.com/ashleymills/Reachability.swift), 感谢开源社区的贡献.
 
