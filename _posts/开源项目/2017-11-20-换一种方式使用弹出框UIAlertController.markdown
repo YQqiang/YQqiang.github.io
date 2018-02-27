@@ -18,6 +18,7 @@ categories: 开源项目
 - 支持在标题顶部增加logo图片
 - 支持单个按钮的弹出框
 - 优雅的调用方式
+- 正则表达式检索关键字, 增加超链接
 
 ## 要求
 - Xcode 9.0
@@ -130,8 +131,29 @@ yq.makeAlert { (make) in
     print("\(String(describing: action.title))")
 }).showSingleConfirm()
 ```
+#### 8. 超链接文本
 
-#### 8. 综合使用
+![超链接文本](http://yuqiangcoder.com/assets/postImages/ios/201711/17.gif)
+
+```swift
+yq.makeAlert { (make) in
+  make.title = "温馨提示"
+  make.desc = "您已连续超过五次输入密码错误, 账号已被锁定, 请点击找回密码进行密码找回."
+  make.linkUnderLineStyle = .single
+  make.linkColor = UIColor.red
+  make.passColor = UIColor.gray
+  make.linkRegex = "(?:找回密码)"
+  }.linkClickEnd { (label, text) in
+      print("-------- \(text)")
+      let viewController = UIViewController()
+      viewController.title = text
+      viewController.view.backgroundColor = UIColor.white
+      self.presentedViewController?.dismiss(animated: true, completion: nil)
+      self.navigationController?.pushViewController(viewController, animated: true)
+}.showSingleRight()
+```
+
+#### 9. 综合使用
 
 ![综合使用.png](http://yuqiangcoder.com/assets/postImages/ios/201711/16.png)
 
