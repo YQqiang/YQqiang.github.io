@@ -1,0 +1,76 @@
+---
+layout: post
+title:  "Swift-技能小结(三)"
+date:   2018-03-03 21:31:31 +0800
+categories: 开发笔记
+---
+![](http://yuqiangcoder.com/assets/postImages/ios/201703/1.jpg)
+
+[Swift-技能小结(一)](http://yuqiangcoder.com/2017/02/22/Swift-%E6%8A%80%E8%83%BD%E5%B0%8F%E7%BB%93(%E4%B8%80).html)
+[Swift-技能小结(二)](http://yuqiangcoder.com/2017/03/07/Swift-%E6%8A%80%E8%83%BD%E5%B0%8F%E7%BB%93(%E4%BA%8C).html)
+
+### 前言
+据上一篇 [Swift-技能小结](http://yuqiangcoder.com/2017/03/07/Swift-%E6%8A%80%E8%83%BD%E5%B0%8F%E7%BB%93(%E4%BA%8C).html) 快过去一年了, 然而这一年时间里并没啥进步😂😂😂😂😂
+今天再记录两个Swift开发小问题.
+
+### 问题一
+在构造函数里对属性赋值时, 代码不走属性的`didSet`方法
+
+```
+init(touModel: TouModel?) {
+    self.touModel = touModel
+    super.init(nibName: nil, bundle: nil)
+}
+
+fileprivate var touModel: TouModel? {
+    didSet {
+        print("==========")
+    }
+}
+```
+
+解决方案: 使用`defer`延迟赋值
+
+```
+defer {
+    self.touModel = touModel
+}
+```
+
+完整代码如下
+
+```
+init(touModel: TouModel?) {
+    defer {
+        self.touModel = touModel
+    }
+    super.init(nibName: nil, bundle: nil)
+}
+
+fileprivate var touModel: TouModel? {
+    didSet {
+        print("==========")
+    }
+}
+```
+
+###  问题二
+不把赋值给自身
+
+```
+self.touModel = touModel
+```
+
+上述代码会出现如下错误 `Assigning a property to itself`
+
+解决方案: 使用下面的方式进行赋值
+
+```
+({self.touModel = touModel}())
+```
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
+
