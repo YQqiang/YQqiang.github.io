@@ -4,9 +4,10 @@ title:  "Swift-技能小结(三)"
 date:   2018-03-03 21:31:31 +0800
 categories: 开发笔记
 ---
-![](http://yuqiangcoder.com/assets/postImages/ios/201703/1.jpg)
+![](http://yuqiangcoder.com/assets/postImages/ios/201803/1.jpeg)
 
 [Swift-技能小结(一)](http://yuqiangcoder.com/2017/02/22/Swift-%E6%8A%80%E8%83%BD%E5%B0%8F%E7%BB%93(%E4%B8%80).html)
+    
 [Swift-技能小结(二)](http://yuqiangcoder.com/2017/03/07/Swift-%E6%8A%80%E8%83%BD%E5%B0%8F%E7%BB%93(%E4%BA%8C).html)
 
 ### 前言
@@ -55,7 +56,7 @@ fileprivate var touModel: TouModel? {
 ```
 
 ###  问题二
-不把赋值给自身
+不能把赋值给自身
 
 ```
 self.touModel = touModel
