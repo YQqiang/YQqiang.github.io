@@ -2,7 +2,7 @@
 layout: post
 title:  "Learn Swift again (一) 特性"
 date:   2018-01-30 15:29:31 +0800
-categories: Learn Swift again
+categories: Swift Summary
 ---
 ![](http://yuqiangcoder.com/assets/postImages/ios/201801/1.png)
 
