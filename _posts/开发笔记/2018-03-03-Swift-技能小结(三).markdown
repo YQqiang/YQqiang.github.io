@@ -56,7 +56,7 @@ fileprivate var touModel: TouModel? {
 ```
 
 ###  问题二
-不能把赋值给自身
+不能赋值给自身
 
 ```
 self.touModel = touModel
