@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="-352 722 1006.8738 881.5" width="1006.8738pt" height="881.5pt" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <metadata> Produced by OmniGraffle 7.4.1 
+    <dc:date>2018-04-23 05:32:34 +0000</dc:date>
+  </metadata>
+  <defs>
+    <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="500">
+      <font-face-src>
+        <font-face-name name="HelveticaNeue"/>
+      </font-face-src>
+    </font-face>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="DimensionArrow_Marker" viewBox="-1 -9 15 18" markerWidth="15" markerHeight="18" color="black">
+      <g>
+        <path d="M 0 0 L 12.000001 0 M 12.000001 7.500001 L 12.000001 -7.500001 M 0 3.0000002 L 10.500001 0 L 0 -3.0000002" fill="none" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="DimensionArrow_Marker_2" viewBox="-14 -9 15 18" markerWidth="15" markerHeight="18" color="black">
+      <g>
+        <path d="M 0 0 L -12.000001 0 M -12.000001 -7.500001 L -12.000001 7.500001 M 0 -3.0000002 L -10.500001 0 L 0 3.0000002" fill="none" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+    <font-face font-family="PingFang SC" font-size="10" panose-1="2 11 4 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-150" underline-thickness="58" slope="0" x-height="600" cap-height="860" ascent="1060.0021" descent="-340.0007" font-weight="500">
+      <font-face-src>
+        <font-face-name name="PingFangSC-Regular"/>
+      </font-face-src>
+    </font-face>
+    <font-face font-family="PingFang SC" font-size="16" panose-1="2 11 4 0 0 0 0 0 0 0" units-per-em="1000" underline-position="-150" underline-thickness="58" slope="0" x-height="600" cap-height="860" ascent="1060.0021" descent="-340.0007" font-weight="500">
+      <font-face-src>
+        <font-face-name name="PingFangSC-Regular"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+    <title>Canvas 1</title>
+    <rect fill="white" width="1006.8738" height="881.5"/>
+    <g>
+      <title>Layer 1</title>
+      <rect x="-337" y="758" width="556.73244" height="38" fill="white"/>
+      <rect x="-337" y="758" width="556.73244" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-337" y="758" width="35" height="38" fill="white"/>
+      <rect x="-337" y="758" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-302" y="758" width="35" height="38" fill="white"/>
+      <rect x="-302" y="758" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-267" y="758" width="35" height="38" fill="red"/>
+      <rect x="-267" y="758" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-262 767.776)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x="8.052" y="15" textLength="8.896">0</tspan>
+      </text>
+      <rect x="-232.2174" y="758" width="35" height="38" fill="red"/>
+      <rect x="-232.2174" y="758" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-227.2174 767.776)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x="8.052" y="15" textLength="8.896">3</tspan>
+      </text>
+      <rect x="-197.43478" y="758" width="35" height="38" fill="lime"/>
+      <rect x="-197.43478" y="758" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-162.65217" y="758" width="35" height="38" fill="lime"/>
+      <rect x="-162.65217" y="758" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-127.86957" y="758" width="35" height="38" fill="lime"/>
+      <rect x="-127.86957" y="758" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-93.08696" y="758" width="35" height="38" fill="lime"/>
+      <rect x="-93.08696" y="758" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-58.30435" y="758" width="35" height="38" fill="aqua"/>
+      <rect x="-58.30435" y="758" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-23.52174" y="758" width="35" height="38" fill="aqua"/>
+      <rect x="-23.52174" y="758" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="11.26087" y="758" width="35" height="38" fill="aqua"/>
+      <rect x="11.26087" y="758" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="46.04348" y="758" width="35" height="38" fill="aqua"/>
+      <rect x="46.04348" y="758" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="80.38462" y="758" width="35" height="38" fill="white"/>
+      <rect x="80.38462" y="758" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="115.16722" y="758" width="35" height="38" fill="white"/>
+      <rect x="115.16722" y="758" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="149.94983" y="758" width="35" height="38" fill="white"/>
+      <rect x="149.94983" y="758" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="184.73244" y="758" width="35" height="38" fill="white"/>
+      <rect x="184.73244" y="758" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="-325" y1="817" x2="-279" y2="817" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-318.4161" y="798" width="30" height="38" fill="white"/>
+      <text transform="translate(-313.4161 803)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="0" y="11" textLength="20">设备</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="0" y="25" textLength="20">地址</tspan>
+      </text>
+      <line x1="-185.43478" y1="817.5" x2="-70.08696" y2="817.5" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-163.07987" y="798.5" width="65" height="38" fill="white"/>
+      <text transform="translate(-158.07987 803.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="7.5" y="11" textLength="40">起始地址</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">高8位,低8位</tspan>
+      </text>
+      <line x1="-46.304347" y1="817.5" x2="69.04348" y2="817.5" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-23.94944" y="798.5" width="65" height="38" fill="white"/>
+      <text transform="translate(-18.94944 803.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="2.5" y="11" textLength="50">寄存器个数</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">高8位,低8位</tspan>
+      </text>
+      <line x1="93.04348" y1="817.5" x2="208.3913" y2="817.5" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="115.39839" y="798.5" width="65" height="38" fill="white"/>
+      <text transform="translate(120.39839 803.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="6.84" y="11" textLength="41.32">CRC校验</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">低8位,高8位</tspan>
+      </text>
+      <text transform="translate(-332 727.5)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x=".056" y="17" textLength="17.792">1. </tspan>
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="17.848" y="17" textLength="16">读</tspan>
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x="33.848" y="17" textLength="8.896">4</tspan>
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="42.744" y="17" textLength="219.2">区输出寄存器(指令代码: 0X03)</tspan>
+      </text>
+      <rect x="-337" y="909" width="696.0803" height="38" fill="white"/>
+      <rect x="-337" y="909" width="696.0803" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-337" y="909" width="35" height="38" fill="white"/>
+      <rect x="-337" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-302" y="909" width="35" height="38" fill="white"/>
+      <rect x="-302" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-267" y="909" width="35" height="38" fill="red"/>
+      <rect x="-267" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-262 918.776)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x="8.052" y="15" textLength="8.896">0</tspan>
+      </text>
+      <rect x="-232.2174" y="909" width="35" height="38" fill="red"/>
+      <rect x="-232.2174" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-227.2174 918.776)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x="8.052" y="15" textLength="8.896">3</tspan>
+      </text>
+      <rect x="-197.43478" y="909" width="35" height="38" fill="yellow"/>
+      <rect x="-197.43478" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-162.65217" y="909" width="35" height="38" fill="yellow"/>
+      <rect x="-162.65217" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-127.86957" y="909" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="-127.86957" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-93.08696" y="909" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="-93.08696" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-58.30435" y="909" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="-58.30435" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-23.52174" y="909" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="-23.52174" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="11.26087" y="909" width="69.78261" height="38" fill="white"/>
+      <rect x="11.26087" y="909" width="69.78261" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(16.26087 918.776)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="13.891304" y="15" textLength="32">……</tspan>
+      </text>
+      <rect x="80.38462" y="909" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="80.38462" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="115.16722" y="909" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="115.16722" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="149.94983" y="909" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="149.94983" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="184.73244" y="909" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="184.73244" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="-325" y1="969" x2="-279" y2="969" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-318.4161" y="950" width="30" height="38" fill="white"/>
+      <text transform="translate(-313.4161 955)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="0" y="11" textLength="20">设备</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="0" y="25" textLength="20">地址</tspan>
+      </text>
+      <line x1="-185.43478" y1="969" x2="-139.43478" y2="969" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-183.85088" y="956.5" width="40" height="25" fill="white"/>
+      <text transform="translate(-178.85088 962)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="0" y="11" textLength="30">字节数</tspan>
+      </text>
+      <line x1="-115.86956" y1="969" x2="-.5217401" y2="969" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-93.51466" y="950" width="65" height="38" fill="white"/>
+      <text transform="translate(-88.51466 955)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="10.495" y="11" textLength="34.01">数据位1</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">高8位,低8位</tspan>
+      </text>
+      <line x1="92.38462" y1="968.5" x2="207.73244" y2="968.5" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="114.73952" y="949.5" width="65" height="38" fill="white"/>
+      <text transform="translate(119.73952 954.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="9.705" y="11" textLength="35.59">数据位n</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">高8位,低8位</tspan>
+      </text>
+      <text transform="translate(-332 883)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="0" y="17" textLength="32">应答</tspan>
+      </text>
+      <rect x="219.73244" y="909" width="35" height="38" fill="white"/>
+      <rect x="219.73244" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="254.51505" y="909" width="35" height="38" fill="white"/>
+      <rect x="254.51505" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="289.29766" y="909" width="35" height="38" fill="white"/>
+      <rect x="289.29766" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="324.08027" y="909" width="35" height="38" fill="white"/>
+      <rect x="324.08027" y="909" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="231.73244" y1="968.5" x2="347.08027" y2="968.5" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="254.08735" y="949.5" width="65" height="38" fill="white"/>
+      <text transform="translate(259.08735 954.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="6.84" y="11" textLength="41.32">CRC校验</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">低8位,高8位</tspan>
+      </text>
+      <rect x="-336.77926" y="1082" width="556.73244" height="38" fill="white"/>
+      <rect x="-336.77926" y="1082" width="556.73244" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-336.77926" y="1082" width="35" height="38" fill="white"/>
+      <rect x="-336.77926" y="1082" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-301.77926" y="1082" width="35" height="38" fill="white"/>
+      <rect x="-301.77926" y="1082" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-266.77926" y="1082" width="35" height="38" fill="red"/>
+      <rect x="-266.77926" y="1082" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-261.77926 1091.776)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x="8.052" y="15" textLength="8.896">0</tspan>
+      </text>
+      <rect x="-231.99666" y="1082" width="35" height="38" fill="red"/>
+      <rect x="-231.99666" y="1082" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-226.99666 1091.776)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x="8.052" y="15" textLength="8.896">6</tspan>
+      </text>
+      <rect x="-197.21405" y="1082" width="35" height="38" fill="lime"/>
+      <rect x="-197.21405" y="1082" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-162.43144" y="1082" width="35" height="38" fill="lime"/>
+      <rect x="-162.43144" y="1082" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-127.64883" y="1082" width="35" height="38" fill="lime"/>
+      <rect x="-127.64883" y="1082" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-92.86622" y="1082" width="35" height="38" fill="lime"/>
+      <rect x="-92.86622" y="1082" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-58.08361" y="1082" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="-58.08361" y="1082" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-23.301003" y="1082" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="-23.301003" y="1082" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="11.481605" y="1082" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="11.481605" y="1082" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="46.264214" y="1082" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="46.264214" y="1082" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="80.60535" y="1082" width="35" height="38" fill="white"/>
+      <rect x="80.60535" y="1082" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="115.38796" y="1082" width="35" height="38" fill="white"/>
+      <rect x="115.38796" y="1082" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="150.17057" y="1082" width="35" height="38" fill="white"/>
+      <rect x="150.17057" y="1082" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="184.95318" y="1082" width="35" height="38" fill="white"/>
+      <rect x="184.95318" y="1082" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="-324.77926" y1="1141.5" x2="-278.77927" y2="1141.5" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-318.19536" y="1122.5" width="30" height="38" fill="white"/>
+      <text transform="translate(-313.19536 1127.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="0" y="11" textLength="20">设备</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="0" y="25" textLength="20">地址</tspan>
+      </text>
+      <line x1="-185.21405" y1="1142" x2="-69.86622" y2="1142" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-162.85914" y="1123" width="65" height="38" fill="white"/>
+      <text transform="translate(-157.85914 1128)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="7.5" y="11" textLength="40">起始地址</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">高8位,低8位</tspan>
+      </text>
+      <line x1="-46.08361" y1="1142" x2="69.26421" y2="1142" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-26.228704" y="1123" width="70" height="38" fill="white"/>
+      <text transform="translate(-21.228704 1128)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="0" y="11" textLength="60">要写入的数据</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="2.68" y="25" textLength="54.64">高8位,低8位</tspan>
+      </text>
+      <line x1="93.04682" y1="1142" x2="208.39465" y2="1142" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="115.40173" y="1123" width="65" height="38" fill="white"/>
+      <text transform="translate(120.40173 1128)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="6.84" y="11" textLength="41.32">CRC校验</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">低8位,高8位</tspan>
+      </text>
+      <rect x="-336.77926" y="1210.5" width="556.73244" height="38" fill="white"/>
+      <rect x="-336.77926" y="1210.5" width="556.73244" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-336.77926" y="1210.5" width="35" height="38" fill="white"/>
+      <rect x="-336.77926" y="1210.5" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-301.77926" y="1210.5" width="35" height="38" fill="white"/>
+      <rect x="-301.77926" y="1210.5" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-266.77926" y="1210.5" width="35" height="38" fill="red"/>
+      <rect x="-266.77926" y="1210.5" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-261.77926 1220.276)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x="8.052" y="15" textLength="8.896">0</tspan>
+      </text>
+      <rect x="-231.99666" y="1210.5" width="35" height="38" fill="red"/>
+      <rect x="-231.99666" y="1210.5" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-226.99666 1220.276)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x="8.052" y="15" textLength="8.896">6</tspan>
+      </text>
+      <rect x="-197.21405" y="1210.5" width="35" height="38" fill="lime"/>
+      <rect x="-197.21405" y="1210.5" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-162.43144" y="1210.5" width="35" height="38" fill="lime"/>
+      <rect x="-162.43144" y="1210.5" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-127.64883" y="1210.5" width="35" height="38" fill="lime"/>
+      <rect x="-127.64883" y="1210.5" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-92.86622" y="1210.5" width="35" height="38" fill="lime"/>
+      <rect x="-92.86622" y="1210.5" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-58.08361" y="1210.5" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="-58.08361" y="1210.5" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-23.301003" y="1210.5" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="-23.301003" y="1210.5" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="11.481605" y="1210.5" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="11.481605" y="1210.5" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="46.264214" y="1210.5" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="46.264214" y="1210.5" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="80.60535" y="1210.5" width="35" height="38" fill="white"/>
+      <rect x="80.60535" y="1210.5" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="115.38796" y="1210.5" width="35" height="38" fill="white"/>
+      <rect x="115.38796" y="1210.5" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="150.17057" y="1210.5" width="35" height="38" fill="white"/>
+      <rect x="150.17057" y="1210.5" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="184.95318" y="1210.5" width="35" height="38" fill="white"/>
+      <rect x="184.95318" y="1210.5" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="-324.77926" y1="1270.5" x2="-278.77927" y2="1270.5" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-318.19536" y="1251.5" width="30" height="38" fill="white"/>
+      <text transform="translate(-313.19536 1256.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="0" y="11" textLength="20">设备</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="0" y="25" textLength="20">地址</tspan>
+      </text>
+      <line x1="-185.21405" y1="1270" x2="-69.86622" y2="1270" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-162.85914" y="1251" width="65" height="38" fill="white"/>
+      <text transform="translate(-157.85914 1256)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="7.5" y="11" textLength="40">起始地址</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">高8位,低8位</tspan>
+      </text>
+      <line x1="-46.08361" y1="1270" x2="69.26421" y2="1270" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-26.228704" y="1251" width="70" height="38" fill="white"/>
+      <text transform="translate(-21.228704 1256)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="0" y="11" textLength="60">要写入的数据</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="2.68" y="25" textLength="54.64">高8位,低8位</tspan>
+      </text>
+      <line x1="93.04682" y1="1270" x2="208.39465" y2="1270" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="115.40173" y="1251" width="65" height="38" fill="white"/>
+      <text transform="translate(120.40173 1256)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="6.84" y="11" textLength="41.32">CRC校验</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">低8位,高8位</tspan>
+      </text>
+      <text transform="translate(-332 1052)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x=".056" y="17" textLength="17.792">2. </tspan>
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="17.848" y="17" textLength="48">单个写</tspan>
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x="65.848" y="17" textLength="8.896">4</tspan>
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="74.744" y="17" textLength="219.2">区输出寄存器(指令代码: 0X06)</tspan>
+      </text>
+      <text transform="translate(-331.77926 1184.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="0" y="17" textLength="32">应答</tspan>
+      </text>
+      <rect x="-336.77926" y="1367" width="969.1446" height="38" fill="white"/>
+      <rect x="-336.77926" y="1367" width="969.1446" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-336.77926" y="1367" width="35" height="38" fill="white"/>
+      <rect x="-336.77926" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-301.77926" y="1367" width="35" height="38" fill="white"/>
+      <rect x="-301.77926" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-266.77926" y="1367" width="35" height="38" fill="red"/>
+      <rect x="-266.77926" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-261.77926 1376.776)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x="8.052" y="15" textLength="8.896">1</tspan>
+      </text>
+      <rect x="-231.99666" y="1367" width="35" height="38" fill="red"/>
+      <rect x="-231.99666" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-226.99666 1376.776)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x="8.052" y="15" textLength="8.896">0</tspan>
+      </text>
+      <rect x="-197.21405" y="1367" width="35" height="38" fill="lime"/>
+      <rect x="-197.21405" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-162.43144" y="1367" width="35" height="38" fill="lime"/>
+      <rect x="-162.43144" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-127.64883" y="1367" width="35" height="38" fill="lime"/>
+      <rect x="-127.64883" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-92.86622" y="1367" width="35" height="38" fill="lime"/>
+      <rect x="-92.86622" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-58.08361" y="1367" width="35" height="38" fill="aqua"/>
+      <rect x="-58.08361" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-23.301003" y="1367" width="35" height="38" fill="aqua"/>
+      <rect x="-23.301003" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="11.481605" y="1367" width="35" height="38" fill="aqua"/>
+      <rect x="11.481605" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="46.264214" y="1367" width="35" height="38" fill="aqua"/>
+      <rect x="46.264214" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="81.04682" y="1367" width="35" height="38" fill="yellow"/>
+      <rect x="81.04682" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="115.82943" y="1367" width="35" height="38" fill="yellow"/>
+      <rect x="115.82943" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="150.61204" y="1367" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="150.61204" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="185.39465" y="1367" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="185.39465" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="220.17726" y="1367" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="220.17726" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="254.95987" y="1367" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="254.95987" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="493.0175" y="1367" width="35" height="38" fill="white"/>
+      <rect x="493.0175" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="527.8001" y="1367" width="35" height="38" fill="white"/>
+      <rect x="527.8001" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="562.5827" y="1367" width="35" height="38" fill="white"/>
+      <rect x="562.5827" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="597.3653" y="1367" width="35" height="38" fill="white"/>
+      <rect x="597.3653" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="-324.77926" y1="1426.5" x2="-278.77927" y2="1426.5" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-318.19536" y="1407.5" width="30" height="38" fill="white"/>
+      <text transform="translate(-313.19536 1412.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="0" y="11" textLength="20">设备</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="0" y="25" textLength="20">地址</tspan>
+      </text>
+      <line x1="-185.21405" y1="1427" x2="-69.86622" y2="1427" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-162.85914" y="1408" width="65" height="38" fill="white"/>
+      <text transform="translate(-157.85914 1413)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="7.5" y="11" textLength="40">起始地址</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">高8位,低8位</tspan>
+      </text>
+      <line x1="-46.08361" y1="1427" x2="69.26421" y2="1427" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-23.728704" y="1408" width="65" height="38" fill="white"/>
+      <text transform="translate(-18.728704 1413)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="2.5" y="11" textLength="50">寄存器数量</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">高8位,低8位</tspan>
+      </text>
+      <line x1="93.04682" y1="1427" x2="138.82943" y2="1427" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="94.52643" y="1414.5" width="40" height="25" fill="white"/>
+      <text transform="translate(99.52643 1420)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="0" y="11" textLength="30">字节数</tspan>
+      </text>
+      <line x1="162.61204" y1="1427" x2="277.95987" y2="1427" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="184.96695" y="1408" width="65" height="38" fill="white"/>
+      <text transform="translate(189.96695 1413)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="15.495" y="11" textLength="24.01">数据1</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">高8位,低8位</tspan>
+      </text>
+      <line x1="505.0175" y1="1427" x2="620.3653" y2="1427" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="527.3724" y="1408" width="65" height="38" fill="white"/>
+      <text transform="translate(532.3724 1413)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="6.84" y="11" textLength="41.32">CRC校验</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">低8位,高8位</tspan>
+      </text>
+      <rect x="-336.77926" y="1518" width="556.73244" height="38" fill="white"/>
+      <rect x="-336.77926" y="1518" width="556.73244" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-336.77926" y="1518" width="35" height="38" fill="white"/>
+      <rect x="-336.77926" y="1518" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-301.77926" y="1518" width="35" height="38" fill="white"/>
+      <rect x="-301.77926" y="1518" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-266.77926" y="1518" width="35" height="38" fill="red"/>
+      <rect x="-266.77926" y="1518" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-261.77926 1527.776)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x="8.052" y="15" textLength="8.896">1</tspan>
+      </text>
+      <rect x="-231.99666" y="1518" width="35" height="38" fill="red"/>
+      <rect x="-231.99666" y="1518" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(-226.99666 1527.776)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x="8.052" y="15" textLength="8.896">0</tspan>
+      </text>
+      <rect x="-197.21405" y="1518" width="35" height="38" fill="lime"/>
+      <rect x="-197.21405" y="1518" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-162.43144" y="1518" width="35" height="38" fill="lime"/>
+      <rect x="-162.43144" y="1518" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-127.64883" y="1518" width="35" height="38" fill="lime"/>
+      <rect x="-127.64883" y="1518" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-92.86622" y="1518" width="35" height="38" fill="lime"/>
+      <rect x="-92.86622" y="1518" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-58.08361" y="1518" width="35" height="38" fill="aqua"/>
+      <rect x="-58.08361" y="1518" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-23.301003" y="1518" width="35" height="38" fill="aqua"/>
+      <rect x="-23.301003" y="1518" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="11.481605" y="1518" width="35" height="38" fill="aqua"/>
+      <rect x="11.481605" y="1518" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="46.264214" y="1518" width="35" height="38" fill="aqua"/>
+      <rect x="46.264214" y="1518" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="80.60535" y="1518" width="35" height="38" fill="white"/>
+      <rect x="80.60535" y="1518" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="115.38796" y="1518" width="35" height="38" fill="white"/>
+      <rect x="115.38796" y="1518" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="150.17057" y="1518" width="35" height="38" fill="white"/>
+      <rect x="150.17057" y="1518" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="184.95318" y="1518" width="35" height="38" fill="white"/>
+      <rect x="184.95318" y="1518" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="-324.77926" y1="1577.5" x2="-278.77927" y2="1577.5" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-318.19536" y="1558.5" width="30" height="38" fill="white"/>
+      <text transform="translate(-313.19536 1563.5)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="0" y="11" textLength="20">设备</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="0" y="25" textLength="20">地址</tspan>
+      </text>
+      <line x1="-185.21405" y1="1578" x2="-69.86622" y2="1578" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-162.85914" y="1559" width="65" height="38" fill="white"/>
+      <text transform="translate(-157.85914 1564)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="7.5" y="11" textLength="40">起始地址</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">高8位,低8位</tspan>
+      </text>
+      <line x1="-46.08361" y1="1578" x2="69.26421" y2="1578" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="-23.728704" y="1559" width="65" height="38" fill="white"/>
+      <text transform="translate(-18.728704 1564)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="2.5" y="11" textLength="50">寄存器数量</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">高8位,低8位</tspan>
+      </text>
+      <line x1="93.26422" y1="1578" x2="208.61204" y2="1578" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="115.61912" y="1559" width="65" height="38" fill="white"/>
+      <text transform="translate(120.61912 1564)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="6.84" y="11" textLength="41.32">CRC校验</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">低8位,高8位</tspan>
+      </text>
+      <text transform="translate(-331.77926 1335.5)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x=".148" y="17" textLength="17.792">3. </tspan>
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="17.94" y="17" textLength="48">多个写</tspan>
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" x="65.94" y="17" textLength="8.896">4</tspan>
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="74.836" y="17" textLength="216.016">区输出寄存器(指令代码: 0X10)</tspan>
+      </text>
+      <rect x="289.74247" y="1367" width="69.78261" height="38" fill="white"/>
+      <rect x="289.74247" y="1367" width="69.78261" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(294.74247 1376.776)" fill="black">
+        <tspan font-family="Helvetica Neue" font-size="16" font-weight="500" fill="black" x="13.891304" y="15" textLength="32">……</tspan>
+      </text>
+      <rect x="353.6697" y="1367" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="353.6697" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="388.4523" y="1367" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="388.4523" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="423.2349" y="1367" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="423.2349" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="458.0175" y="1367" width="35" height="38" fill="#c0c0ff"/>
+      <rect x="458.0175" y="1367" width="35" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <line x1="365.6697" y1="1427" x2="481.0175" y2="1427" marker-end="url(#DimensionArrow_Marker)" marker-start="url(#DimensionArrow_Marker_2)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <rect x="388.0246" y="1408" width="65" height="38" fill="white"/>
+      <text transform="translate(393.0246 1413)" fill="black">
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x="14.705" y="11" textLength="25.59">数据n</tspan>
+        <tspan font-family="PingFang SC" font-size="10" font-weight="500" x=".18" y="25" textLength="54.64">高8位,低8位</tspan>
+      </text>
+      <text transform="translate(-331.77926 1492)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="0" y="17" textLength="32">应答</tspan>
+      </text>
+      <rect x="537.4348" y="787" width="116.93901" height="38" fill="red"/>
+      <rect x="537.4348" y="787" width="116.93901" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(542.4348 795)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="29.469507" y="17" textLength="48">功能码</tspan>
+      </text>
+      <rect x="537" y="834" width="116.93901" height="38" fill="lime"/>
+      <rect x="537" y="834" width="116.93901" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(542 842)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" fill="black" x="21.469507" y="17" textLength="64">起始地址</tspan>
+      </text>
+      <rect x="537.4348" y="881" width="116.93901" height="38" fill="#40ffff"/>
+      <rect x="537.4348" y="881" width="116.93901" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(542.4348 889)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="13.469507" y="17" textLength="80">寄存器个数</tspan>
+      </text>
+      <rect x="537.4348" y="928" width="116.93901" height="38" fill="#ffff40"/>
+      <rect x="537.4348" y="928" width="116.93901" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(542.4348 936)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="29.469507" y="17" textLength="48">字节数</tspan>
+      </text>
+      <rect x="537.4348" y="975" width="116.93901" height="38" fill="#c0c0ff"/>
+      <rect x="537.4348" y="975" width="116.93901" height="38" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <text transform="translate(542.4348 983)" fill="black">
+        <tspan font-family="PingFang SC" font-size="16" font-weight="500" x="37.469507" y="17" textLength="32">数据</tspan>
+      </text>
+    </g>
+  </g>
+</svg>
