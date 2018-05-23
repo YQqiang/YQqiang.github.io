@@ -239,6 +239,12 @@ rm -rf .git
 cat /etc/hosts
 ```
 
+- ### commit 后的代码还原(未提交到服务器)
+```
+git reset commit_id （回退到上一个 提交的节点 代码还是原来你修改的） 
+git reset –hard commit_id （回退到上一个commit节点， 代码也发生了改变，变成上一次的）
+```
+
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
