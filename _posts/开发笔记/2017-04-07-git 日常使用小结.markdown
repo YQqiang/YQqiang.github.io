@@ -245,6 +245,19 @@ git reset commit_id （回退到上一个 提交的节点 代码还是原来你�
 git reset –hard commit_id （回退到上一个commit节点， 代码也发生了改变，变成上一次的）
 ```
 
+- ###  git cz 
+    团队对提交的commit message格式有约定俗称的要求，但是没有一个统一的规范，导致大家提交的commit message或多或少不太一样。因此，需要一个工具来帮助大家统一commit message的格式，也方便后续的分析和拓展。
+    [commitizen](https://github.com/commitizen/cz-cli) 是一个帮助规范commit message的工具
+    [commitizen和cz-customizable配置git commit message](https://segmentfault.com/a/1190000014742181?utm_source=channel-hottest)
+    安装步骤如下:
+    
+    ```
+    npm install -g commitizen
+    npm install -g cz-conventional-changelog
+    echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
+    ```
+    现在，进入任何git repository, 使用git cz代替git commit提交commit
+
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
