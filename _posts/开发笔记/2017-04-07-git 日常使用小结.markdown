@@ -245,6 +245,15 @@ git reset commit_id （回退到上一个 提交的节点 代码还是原来你�
 git reset –hard commit_id （回退到上一个commit节点， 代码也发生了改变，变成上一次的）
 ```
 
+- ###  按提交信息过滤
+    按提交信息来过滤提交，你可以使用 `--grep` 标记。
+    比如说，你的团队规范要求在提交信息中包括相关的issue编号，你可以用下面这个命令来显示这个 issue 相关的所有提交：
+    
+    ```
+    git log --grep="JRA-224:"
+    ```
+    你也可以传入 -i 参数来忽略大小写匹配。
+
 - ###  git cz 
     团队对提交的commit message格式有约定俗称的要求，但是没有一个统一的规范，导致大家提交的commit message或多或少不太一样。因此，需要一个工具来帮助大家统一commit message的格式，也方便后续的分析和拓展。
     [commitizen](https://github.com/commitizen/cz-cli) 是一个帮助规范commit message的工具
