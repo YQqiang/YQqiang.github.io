@@ -234,6 +234,11 @@ git 使用branch_A分支的file1文件替换branch_B的file1文件
 rm -rf .git
 ```
 
+- ### 清空working tree
+```
+git clean -df
+```
+
 - ### 查看 hosts 文件
 ```
 cat /etc/hosts
