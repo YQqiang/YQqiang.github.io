@@ -266,6 +266,19 @@ git reset –hard commit_id （回退到上一个commit节点， 代码也发生
     echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
     ```
     现在，进入任何git repository, 使用git cz代替git commit提交commit
+    
+- ###  private pod update
+    验证 lib
+    
+    ```
+    pod lib lint
+    ```
+    
+    提交 pod
+    
+    ```
+    pod repo push PrivateSpecs --sources=http://url/PrivateSpecs.git,master SGChart.podspec --allow-warnings
+    ```
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
