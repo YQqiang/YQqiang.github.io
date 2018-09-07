@@ -56,7 +56,9 @@ Alamofire.SessionManager(configuration: configuration, serverTrustPolicyManager:
 
 ## 链接
 [Alamofire Issues](https://github.com/Alamofire/Alamofire/issues/876)
+
 [Alamofire源码解读系列(六)之Task代理(TaskDelegate)](http://www.cnblogs.com/machao/p/6544153.html)
+
 [Alamofire源码解读系列(八)之安全策略(ServerTrustPolicy)](https://www.cnblogs.com/machao/p/6605794.html)
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
