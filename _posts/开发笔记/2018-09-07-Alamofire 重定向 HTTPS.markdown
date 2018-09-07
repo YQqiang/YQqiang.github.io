@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Alamofrie 重定向 HTTPS"
+title:  "Alamofire 重定向 HTTPS"
 date:   2018-09-07 15:29:31 +0800
 categories: 开发笔记
 ---
@@ -55,7 +55,7 @@ Alamofire.SessionManager(configuration: configuration, serverTrustPolicyManager:
 ```
 
 ## 链接
-[Alamofrie Issues](https://github.com/Alamofire/Alamofire/issues/876)
+[Alamofire Issues](https://github.com/Alamofire/Alamofire/issues/876)
 [Alamofire源码解读系列(六)之Task代理(TaskDelegate)](http://www.cnblogs.com/machao/p/6544153.html)
 [Alamofire源码解读系列(八)之安全策略(ServerTrustPolicy)](https://www.cnblogs.com/machao/p/6605794.html)
 
