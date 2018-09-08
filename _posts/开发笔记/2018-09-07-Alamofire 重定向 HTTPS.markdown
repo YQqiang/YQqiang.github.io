@@ -54,6 +54,14 @@ let serverTrushPolicy = ServerTrustPolicyManager(policies: [(URL(string: host)?.
 Alamofire.SessionManager(configuration: configuration, serverTrustPolicyManager: serverTrushPolicy)
 ```
 
+## SessionManager
+当使用 Alamofire.SessionManager 的实例时, 必须保证该实例的声明周期, 否则实例对象释放**会话结束**,引发错误`code=-999`
+可以使用下面的方式解决 [Alamofire Error Domain=NSURLErrorDomain Code=-999 “cancelled”](https://stackoverflow.com/questions/40447436/alamofire-error-domain-nsurlerrordomain-code-999-cancelled)
+
+```
+sessionManager.request(url).session.finishTasksAndInvalidate()
+```
+
 ## 链接
 [Alamofire Issues](https://github.com/Alamofire/Alamofire/issues/876)
 
