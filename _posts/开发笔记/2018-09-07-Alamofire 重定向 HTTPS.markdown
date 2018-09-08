@@ -62,6 +62,10 @@ Alamofire.SessionManager(configuration: configuration, serverTrustPolicyManager:
 sessionManager.request(url).session.finishTasksAndInvalidate()
 ```
 
+> `finishTasksAndInvalidate()` 此方法立即返回，无需等待任务完成。 会话失效后，无法在会话中创建新任务，但现有任务会一直持续到完成。 在最后一个任务完成并且会话进行与这些任务相关的最后一个委托调用之后，会话在其委托上调用`urlSession(_:didBecomeInvalidWithError:)`方法，然后中断对委托和回调对象的引用。 失效后，会话对象无法重用。
+[finishTasksAndInvalidate() 苹果官方文档](https://developer.apple.com/documentation/foundation/urlsession/1407428-finishtasksandinvalidate)
+
+
 ## 链接
 [Alamofire Issues](https://github.com/Alamofire/Alamofire/issues/876)
 
