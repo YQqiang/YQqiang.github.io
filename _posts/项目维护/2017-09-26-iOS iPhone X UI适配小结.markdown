@@ -5,6 +5,28 @@ date:   2017-09-26 20:01:31 +0800
 categories: 项目维护
 ---
 ![](http://yuqiangcoder.com/assets/postImages/ios/201709/2.png)
+
+
+### 2018-11-12 更新 
+判断是否是`iPhone x`系列 (`iPhone X`, `iPhone XS`, `iPhone XS Max`, `iPhone XR`)
+判断是否支持 faceID   [Detect if the device is iPhone X](https://stackoverflow.com/questions/46192280/detect-if-the-device-is-iphone-x/47067296)
+
+```
+import LocalAuthentication
+
+extension UIDevice {
+    /// 是否是iPhone X
+    ///
+    /// - Returns: iPhone X
+    public func isiPhoneX() -> Bool {
+        if #available(iOS 11.0, *) {
+            return LAContext().biometryType == .faceID
+        }
+        return false
+    }
+}
+```
+
 ### 2017-10-07 更新
 [苹果官方中文版iPhone X 适配指南](https://developer.apple.com/cn/ios/update-apps-for-iphone-x/)
 
@@ -27,6 +49,7 @@ categories: 项目维护
 * iPhone X           83
 
 判断是否为`iPhone X`  [用 Swift 判断 iPhone X 机型](https://imtx.me/archives/2374.html)
+
 ```
 extension UIDevice {
     /// 是否是iPhone X
@@ -40,18 +63,23 @@ extension UIDevice {
     }
 }
 ```
+
 因为自己项目是OC 和 Swift 混编, 所以增加了一个宏
+
 ```
 #define TABBAR_HEIGHT ([UIDevice currentDevice].isiPhoneX ? 83 : 49)
 ```
 
 ### StatusBar 高度
 正常情况下  `statusBar` 高度为22, 但是在`iPhone X` 或 打开热点, 并被连接或后台使用定位等情况下  `statusBar`高度会改变, 所以最好使用系统方法获取`statusBar`高度
+
 ```
 CGRectGetHeight([UIApplication sharedApplication].statusBarFrame)
 ```
+
 ### 参考文章
 [官方文档iPhone X](https://developer.apple.com/ios/human-interface-guidelines/overview/iphone-x/)
+
 [用 Swift 判断 iPhone X 机型](https://imtx.me/archives/2374.html)
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
