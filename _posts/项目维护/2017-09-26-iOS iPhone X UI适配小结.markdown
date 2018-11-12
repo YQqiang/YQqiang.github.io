@@ -9,6 +9,7 @@ categories: 项目维护
 
 ### 2018-11-12 更新 
 判断是否是`iPhone x`系列 (`iPhone X`, `iPhone XS`, `iPhone XS Max`, `iPhone XR`)
+
 判断是否支持 faceID   [Detect if the device is iPhone X](https://stackoverflow.com/questions/46192280/detect-if-the-device-is-iphone-x/47067296)
 
 ```
