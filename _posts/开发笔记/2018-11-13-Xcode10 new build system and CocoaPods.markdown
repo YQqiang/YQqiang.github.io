@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Xcode10 new build system And CocoaPods"
+title:  "Xcode10 New Build System And CocoaPods"
 date:   2018-11-13 15:29:31 +0800
 categories: 开发笔记
 ---
