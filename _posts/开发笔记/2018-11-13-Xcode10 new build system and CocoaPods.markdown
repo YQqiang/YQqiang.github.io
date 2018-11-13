@@ -5,7 +5,7 @@ date:   2018-11-13 15:29:31 +0800
 categories: 开发笔记
 ---
 
-![](http://yuqiangcoder.com/assets/postImages/ios/201811/1.pdf)
+![](http://yuqiangcoder.com/assets/postImages/ios/201811/1.pnd)
 
 ## 前言
 
@@ -30,6 +30,7 @@ categories: 开发笔记
 
 ## Google
 `google` 一下吧, 看下别人时如何解决的
+
  果然, 已经有人在 `Stack overflow` 提问了
  
  [Xcode 10 build 10A255 requires clean build folder for all changes](https://stackoverflow.com/questions/52382648/xcode-10-build-10a255-requires-clean-build-folder-for-all-changes)
@@ -39,9 +40,11 @@ categories: 开发笔记
 ## New Build System
 
 因为 `Xcode 10` 默认的编译系统是  `New Build System`
+
 而在 `Xcode 9.4` 时默认的编译系统还是 `Legacy Build System`(传统编译系统)
 
-那么把编译系统改为`Legacy Build System`时试下
+那么把编译系统改为`Legacy Build System`试下
+
 `File -> Workspace Settings -> Build System`
 
 ![](http://yuqiangcoder.com/assets/postImages/ios/201811/5.png)
@@ -122,6 +125,7 @@ install! 'cocoapods', :disable_input_output_paths => true
 1. 解决方案一:
 
     更改 Xcode 的编译系统为 `Legacy Build System`
+
 
 2. 解决方案二:
 
