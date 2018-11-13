@@ -5,7 +5,7 @@ date:   2018-11-13 15:29:31 +0800
 categories: 开发笔记
 ---
 
-![](http://yuqiangcoder.com/assets/postImages/ios/201811/1.pnd)
+![](http://yuqiangcoder.com/assets/postImages/ios/201811/1.png)
 
 ## 前言
 
