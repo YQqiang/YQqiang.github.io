@@ -309,6 +309,15 @@ git reset –hard commit_id （回退到上一个commit节点， 代码也发生
     
     Git学习推荐[learngitbranching](https://learngitbranching.js.org/)
     
+- ###选择父提交记录
+    > 操作符 `^` 与 `~` 符一样，后面也可以跟一个数字。
+    >
+    > 但是该操作符后面的数字与 `~` 后面的不同，并不是用来指定向上返回几代，而是指定合并提交记录的某个父提交。一个合并提交有两个父提交，所以遇到这样的节点时该选择哪条路径就不是很清晰了。
+    >
+    > Git 默认选择合并提交的“第一个”父提交; 在操作符 `^` 后跟一个数字可以改变这一默认行为。
+    
+
+    
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
