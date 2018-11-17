@@ -115,7 +115,7 @@ categories: 开发笔记
     * `git log --pretty=oneline` 单行显示每次的提交(commit_id 和 注释)
     * `git log --pretty=format:"%H %an %ae %ad %s"`  格式化输出log
 
-| 选项| 说明|
+        | 选项| 说明|
         |:-:|:-:|
         | %H | 提交对象（commit）的完整哈希字串 |
         | %T | 树对象（tree）的完整哈希字串 |
@@ -284,7 +284,31 @@ git reset –hard commit_id （回退到上一个commit节点， 代码也发生
     ```
     pod repo push PrivateSpecs --sources=http://url/PrivateSpecs.git,master SGChart.podspec --allow-warnings
     ```
+    
+- ###  分离 HEAD  (2018-11-17 更新)
+    > `HEAD` 是一个对当前检出记录的符号引用 —— 也就是指向你正在其基础上进行工作的提交记录。
 
+    > `HEAD` 总是指向当前分支上最近一次提交记录。大多数修改提交树的 `Git`命令都是从改变`HEAD` 的指向开始的。
+    
+    ```
+    git checkout commit_id
+    ```
+    
+    查看 `HEAD` 指向
+    
+    ```
+    方式一:
+    cat .git/HEAD
+    
+    
+    方式二:
+    git symbolic-ref HEAD
+    ```
+    
+    > 分离的 `HEAD` 就是让其指向了某个具体的提交记录而不是分支名。
+    
+    Git学习推荐[learngitbranching](https://learngitbranching.js.org/)
+    
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
