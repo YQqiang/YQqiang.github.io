@@ -55,7 +55,7 @@ categories: 开发笔记
     * 可读可写属性 `{ set get }`
     * 只读属性 `{ get }`
     
-    ```
+    ```swift
     protocol SomeProtocol {
         // 协议定义部分
         
@@ -77,7 +77,7 @@ categories: 开发笔记
     * `class` 修饰的类属性, 只能是 类 `class` 类型遵循该协议
     * `static` 修饰的类属性, 可以是 类 `class` 或 结构体 `struct`等类型遵循该协议
     
-    ```
+    ```swift
     protocol ProtocolD {
         /// 协议中定义类型属性时，总是使用 static 关键字作为前缀
         static var staticProperty: String { get set }
@@ -104,7 +104,7 @@ categories: 开发笔记
         * 在协议中声明使用`static`关键字做前缀;
         * 具体实现时,当<font color=red>类</font>类型遵循协议时,还可使用`class`关键字
         
-       ```
+       ```swift
         protocol ProtocolE {
             static func staticFunc() -> Void
         }
@@ -127,7 +127,7 @@ categories: 开发笔记
         
     * 实例方法
         
-        ```
+        ```swift
         protocol ProtocolF {
             func instanceFunc() -> String
         }
