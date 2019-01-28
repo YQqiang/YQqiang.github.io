@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "cocoapods Private Pods"
+title:  "Cocoapods Private Pods"
 date:   2019-01-28 16:29:31 +0800
 categories: 开发笔记
 ---
 
 ![](http://yuqiangcoder.com/assets/postImages/ios/201901/2.png)
 
-# cocoapods Private Pods 
+# Cocoapods Private Pods 
 
 ### 前言
 [2018年底遗留篇补充系列1](http://yuqiangcoder.com/2019/01/28/VPS-%E6%90%AD%E5%BB%BA-GOGS.html)
