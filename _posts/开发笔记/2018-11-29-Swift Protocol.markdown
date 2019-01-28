@@ -604,7 +604,10 @@ categories: 开发笔记
 
 待继续...
 
-    
+## 参考
+[极客学院-协议](http://wiki.jikexueyuan.com/project/swift/chapter2/21_Protocols.html)
+
+[Generic Protocols with Associated Type](https://www.bobthedeveloper.io/blog/generic-protocols-with-associated-type)
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
