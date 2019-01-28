@@ -12,7 +12,7 @@ categories: 开发笔记
 ### 前言
 2018年底遗留篇补充系列1
 
-[2018年底遗留篇补充系列2]()
+[2018年底遗留篇补充系列2](http://yuqiangcoder.com/2019/01/28/cocoapods-Private-Pods.html)
 
 ### SSH 连接
 ```
