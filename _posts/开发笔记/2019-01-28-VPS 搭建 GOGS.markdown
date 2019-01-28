@@ -1,0 +1,106 @@
+---
+layout: post
+title:  "VPS 搭建 GOGS"
+date:   2019-01-28 15:29:31 +0800
+categories: 开发笔记
+---
+
+![](http://yuqiangcoder.com/assets/postImages/ios/20901/1.png)
+
+# VPS 搭建 GOGS 
+
+### 前言
+2018年底遗留篇补充系列1
+
+[2018年底遗留篇补充系列2]()
+
+### SSH 连接
+```
+ssh -p 端口号 用户名@IP地址 
+```
+
+### GOGS 安装
+
+1. 选择/创建安装位置
+
+   ```
+   // 创建文件夹
+   mkdir folderName
+   // 进入文件夹
+   cd folderName
+   ``` 
+   
+2. 下载压缩文件
+
+    ```
+    wget https://dl.gogs.io/0.11.66/gogs_0.11.66_linux_amd64.tar.gz
+    ```
+    注: 可在 [GOGS官网](https://dl.gogs.io/)选择适合的最新版本
+    
+3. 解压缩文件
+    
+    ```
+    tar xvf gogs_0.11.66_linux_amd64.tar.gz
+    ```
+    
+4. 删除压缩文件
+    
+    ```
+    rm -rf gogs_0.11.66_linux_amd64.tar.gz
+    ```
+    
+5. 运行gogs
+    
+    ```
+    ./gogs web
+    ```
+    在浏览器中输入`http://0.0.0.0:3000`进入配置页面
+    用户可配置为 `root`
+    
+6. 后台运行gogs
+
+    ```
+    nohup ./gogs web &
+    ```
+7. 重启gogs
+    
+    ```
+    // 1. 使用端口号查询进行id
+    lsof -i:端口号
+    // 2. 结束进程
+    kill -9 进程id
+    ```
+    
+    若无 `lsof` 命令, 可执行以下命令安装
+    
+    ```
+    yum install lsof
+    ```
+    
+8. 自定义配置
+    
+    使用 `app.ini` 文件自定义配置
+    
+    ```
+    /gogs/custom/conf/app.ini
+    ```
+    
+    可使用 `vi` 编辑器编辑
+    
+9. 域名端口号配置
+    
+    ```
+    DOMAIN           = abc.ink
+    HTTP_PORT        = 3000
+    ROOT_URL         = http://abc.ink:3000/
+    ```
+    注: 在域名代理商控制台进行IP解析
+
+### 使用
+使用浏览器打开下面链接
+[http://m24.ink:3000](http://m24.ink:3000)
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
