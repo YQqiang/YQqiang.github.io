@@ -24,14 +24,16 @@ categories: 开发笔记
     
 ### 功能实现
 1. 图例点击
+
     `Charts` 的 图例(`ChartLegend`)是绘制出来的， 无法精确找到手指触摸的区域范围，判断是点击了哪个图例；`SDK` 中也没提供具体的`API`。
 因此舍弃了`SDK`提供的图例功能，通过`CollectionView` 自定义 `FlowLayout`, 实现图例的点击功能。
 具体代码查看 `SGLegendCollection`, `SGLegendFlowLayout`。
 
 2. 图例显示
+
     图例显示需要: 颜色值 和 描述信息， 这些信息图表中也需要且存储在 `IChartDataSet`， 因此图例的数据源持有该数据集即可。
     
-    ```
+    ```Objective-C
     /**
     数据集: 包含了 图例颜色和图例描述; 若设置了, 点击图例会隐藏/显示 图表相关数据
     */
@@ -216,6 +218,7 @@ categories: 开发笔记
     
 ### 其他
 关于其他部分，`MarkerView`的实现 和 使用示例请参考`Example`。
+
 GitHub 地址 [SGChart](https://github.com/YQqiang/SGChart)
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
