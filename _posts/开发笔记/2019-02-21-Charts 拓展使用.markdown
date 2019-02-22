@@ -33,7 +33,7 @@ categories: 开发笔记
 
     图例显示需要: 颜色值 和 描述信息， 这些信息图表中也需要且存储在 `IChartDataSet`， 因此图例的数据源持有该数据集即可。
     
-    ```Objective-C
+    ```obj-c
     /**
     数据集: 包含了 图例颜色和图例描述; 若设置了, 点击图例会隐藏/显示 图表相关数据
     */
@@ -44,20 +44,20 @@ categories: 开发笔记
     1. 点击图例 
         清空数据集
         
-        ```
+        ```obj-c
         [model.chartDataSet clear];
         ```
         
         或 从备份数据中取回原有数据
         
-        ```
+        ```obj-c
         id<IChartDataSet> originalChartDataSet = self.origianlDataSource[indexPath.row].chartDataSet;
         model.chartDataSet = [SGLegendModel copyItem:originalChartDataSet];
         ```
         
     2. 更新图表
         
-        ```
+        ```obj-c
         [self.chartView updateChartDataSG:arr];
         [self.chartView notifyDataSetChanged];
         ```
@@ -65,7 +65,7 @@ categories: 开发笔记
 ### 更新图表
 1. `Charts` SDK 中并未提供更新图表数据 `API`, 但可以通过给 `ChartData` 添加扩展实现更新。
 
-    ```
+    ```obj-c
     extension ChartData {
         func updateSGChartData(form dss: [ChartDataSet]) {
             for dataSet1 in dss {
@@ -82,7 +82,7 @@ categories: 开发笔记
 
 2. `Charts` 提供了丰富的图表类型(`CombinedChartView`, `LineChartView`, `BarChartView`, `ScatterChartView`, `CandleStickChartView`, `BubbleChartView`)，为了满足这些图表且使代码更加简洁，因此添加了协议 `IUpdateChartDataSG`
 
-    ```
+    ```obj-c
     @objc
     public protocol IUpdateChartDataSG {
         func updateChartDataSG(_ dataSets: [ChartDataSet])
@@ -91,13 +91,13 @@ categories: 开发笔记
     
     也可以使用该协议限制参数的类型。如：
     
-    ```
+    ```obj-c
     - (void)config:(NSArray <SGLegendModel *>*)dataSource chartView:(ChartViewBase<IUpdateChartDataSG> *)chartView;
     ```
     
 3. 使以上各类图表在扩展中遵循协议，实现协议方法即可, 如下例：
     
-    ```
+    ```obj-c
     extension LineChartView: IUpdateChartDataSG {
         public func updateChartDataSG(_ dataSets: [ChartDataSet]) {
             if let chartData = lineData {
@@ -120,7 +120,7 @@ categories: 开发笔记
 4. 由于仅更新数据集，图表不会重新绘制，上述内容只能 显示/隐藏 数据集
     更新图表需要监听图例的点击，重新给图表塞数据即可。
     
-    ```
+    ```obj-c
     __weak typeof(self) weakSelf = self;
    [_chartView.legendView setDidSelectItemAtIndexPath:^(NSIndexPath *indexPath, NSArray<SGLegendModel *> *legendModels) {
        weakSelf.legendModels = legendModels;
@@ -141,7 +141,7 @@ categories: 开发笔记
 5. 分组柱状图
     在更新组合的柱状图时，会存在偏移现象，因为 `SDK` 中在绘制分组的柱状图时会计算柱状图的`x`值，因此在更新前需要恢复数据集的`x`值。
     
-    ```
+    ```obj-c
     for legendModel in legendModels {
         if !legendModel.isSelected {
             let barSet = legendModel.chartDataSet as! BarChartDataSet
@@ -157,7 +157,7 @@ categories: 开发笔记
     
     `Charts SDK` 中限制了分组的柱状图数量必须大于2，在尝试了一个柱状图进行分组时，好像也没啥大问题😄, 所以在扩展中新增了一个分组方法（对原方法的修改）。
     
-    ```
+    ```obj-c
     extension BarChartData {
         @objc open func sgGroupBars(fromX: Double, groupSpace: Double, barSpace: Double)
         {
