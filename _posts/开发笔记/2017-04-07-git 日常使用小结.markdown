@@ -138,14 +138,16 @@ categories: 开发笔记
     > [rebase 详解](http://gitbook.liuhui998.com/4_2.html)
  rebase 命令执行后, 实际上是将分支点从C移动了G, 这样分支也就具有了C到G的功能  
     
-  ![reset](http://yuqiangcoder.com/assets/postImages/ios/201704/5.png)
-  
-    * `reset` 将当前的工作目录完全回滚到指定的版本号
-    * `revert` 还原一个版本的修改, 必须提供一个具体git版本号
+    ![reset](http://yuqiangcoder.com/assets/postImages/ios/201704/5.png)
+    
+    * 作用
+        * `reset` 将当前的工作目录完全回滚到指定的版本号
+        * `revert` 还原一个版本的修改, 必须提供一个具体git版本号
+    
     * 区别
-    * `reset` 是指将当前head的内容重置, 不会留下任何痕迹
-    * `revert` 是撤销某次提交, 但是这次撤销也会作为一次提交进行保存
-
+        * `reset` 是指将当前head的内容重置, 不会留下任何痕迹
+        * `revert` 是撤销某次提交, 但是这次撤销也会作为一次提交进行保存
+    
  - ### 打标签
     * 查看tag
         * `git tag -l` 查看所有tag, -l 可以省略
@@ -157,8 +159,8 @@ categories: 开发笔记
         * `git push origin tag v1.2.4`
         * `git push origin --tags` 提交所有tag到服务器
     * 删除tag
-        * `git tag -d v1.2.4`删除本地tag
-        * `git push origin :v1.2.4`
+        * `git tag -d v1.2.4` 删除本地tag
+        * `git push origin :refs/tags/v1.2.4` 删除远程tag
 
 ## 分支管理
   - ### 新建分支 (本地)
