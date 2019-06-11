@@ -238,6 +238,42 @@ extension UIImage {
 }
 ```
 
+### 依赖
+
+libraries
+
+```
+s.libraries = 'c++', 'z', 'sqlite3'
+```
+
+frameworks
+
+```
+s.frameworks = 'UIKit', 'MapKit', 'CoreLocation', 'CoreTelephony', 'SystemConfiguration'
+```
+
+vendored_frameworks
+首先把第三方`framework`拷贝至指定文件夹，使用如下方式增加依赖
+
+```
+s.vendored_frameworks = 'xxx/Assets/Frameworks/*.framework'
+```
+
+其它`pod库`
+
+```
+s.dependency 'Masonry'
+s.dependency 'MJExtension'
+```
+
+### 配置
+
+禁用`bitcode`
+
+```
+s.pod_target_xcconfig = { 'ENABLE_BITCODE' => 'NO' }
+```
+
 ### Tag
 
 开发完成, 需要增加 `tag`
@@ -253,6 +289,16 @@ git tag 0.0.1
 
 // 推送 tag 到远端
 git push --tags
+```
+
+删除`tag`
+
+```
+删除本地 tag
+git tag -d 0.0.1
+
+删除远程 tag
+git push origin :refs/tags/0.0.1
 ```
 
 ### pod lib lint 
