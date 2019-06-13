@@ -1,0 +1,204 @@
+---
+layout: post
+title:  "Lottie 拓展使用"
+date:   2019-06-13 12:15:31 +0800
+categories: 开发笔记
+---
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201906/lottie_demo.gif)
+
+### 前言
+
+[lottie-ios](https://github.com/airbnb/lottie-ios) 是[Airbnb](https://github.com/airbnb)开源动画库[Lottie](http://airbnb.io/lottie/#/)的`iOS`版本。
+
+使用 [Adobe After Effects](https://www.adobe.com/cn/products/aftereffects.html) 制作动画并导出`json`文件，在前端解析文件，使用原生渲染生成矢量动画。
+
+* OC版本 [lottie 2.5.3](https://github.com/airbnb/lottie-ios/releases/tag/2.5.3)
+* Swift版本 [lottie 3.0.0 及以上](https://github.com/airbnb/lottie-ios/releases/tag/3.0.0)
+
+### 拓展
+
+为了方便在项目中使用，基于`Swift`版本的`Lottie`扩展了以下功能。
+
+* [x] 指定`keyPath`的显示和隐藏
+* [x] 获取指定`keyPath`的位置
+* [x] 为指定`keyPath`添加和删除点击事件
+* [x] 将指定`keyPath`的位置转换为`View`坐标系中的值
+
+### 显示和隐藏
+
+通过`keyPath.Transform.Opacity`，可设置显示和隐藏
+
+* 0 隐藏
+* 100 显示
+
+```
+@objc func show(keyPath: String) {
+   show(keyPaths: [keyPath])
+}
+
+@objc func hidden(keyPath: String) {
+   hidden(keyPaths: [keyPath])
+}
+
+@objc func configKeyPath(_ keyPaths: [String], opacity: CGFloat) {
+   keyPaths.forEach { (keyPath) in
+       let kp = AnimationKeypath(keypath: "\(keyPath).Transform.Opacity")
+       let provider = FloatValueProvider(opacity)
+       animationView.setValueProvider(provider, keypath: kp)
+   }
+}
+```
+
+### 获取位置
+
+* 通过`keyPath.Transform.Position`可获取中心点位置信息(`position`)
+* 通过`keyPath.Transform.Anchor Point`可获取锚点信息(`anchorPoint`)
+* 通过`position` 和 `anchorPoint`可计算出`rect`
+
+```
+/// 获取指定keyPath的位置
+///
+/// - Parameter keyPath: keyPath
+/// - Returns: 位置
+@objc func position(for keyPath: String) -> CGPoint {
+   let kp = AnimationKeypath(keypath: "\(keyPath).Transform.Position")
+   guard let vector = getValue(for: kp, atFrame: nil) as? Vector3D  else {
+       return CGPoint.zero
+   }
+   return CGPoint(x: vector.sizeValue.width, y: vector.sizeValue.height)
+}
+    
+/// 获取指定keyPath的锚点
+///
+/// - Parameter keyPath: keyPath
+/// - Returns: 锚点
+@objc func anchorPoint(for keyPath: String) -> CGPoint {
+   let kp = AnimationKeypath(keypath: "\(keyPath).Transform.Anchor Point")
+   guard let vector = getValue(for: kp, atFrame: nil) as? Vector3D  else {
+       return CGPoint.zero
+   }
+   return CGPoint(x: vector.sizeValue.width, y: vector.sizeValue.height)
+}
+    
+/// 获取指定keyPath的rect (锚点为中心点时可用)
+///
+/// - Parameter keyPath: keyPath
+/// - Returns: rect
+@objc func rect(for keyPath: String) -> CGRect {
+   let anchor = anchorPoint(for: keyPath)
+   let posi = position(for: keyPath)
+   let rect = CGRect(x: posi.x - anchor.x, y: posi.y - anchor.y, width: anchor.x * 2, height: anchor.y * 2)
+   return rect
+}
+```
+
+### 点击事件
+
+添加、移除指定`keyPath`的点击事件
+
+```
+/// 指定keyPath 添加点击事件
+///
+/// - Parameters:
+///   - target: 调用者
+///   - action: 事件
+///   - keyPath: keyPath
+@objc func addTarget(target: Any, action: Selector, keyPath: String) {
+   let lottieActions = actionStack.filter { (lottieAction) -> Bool in
+       return action == lottieAction.action && keyPath == lottieAction.keyPath
+   }
+   guard lottieActions.isEmpty else {
+       return
+   }
+   let rect = animationView.rect(for: keyPath)
+   let lottieAction = LottieExtraAction(keyPath: keyPath, rect: rect, target: target, action: action)
+   actionStack.append(lottieAction)
+}
+    
+/// 移除指定keyPath的点击事件
+///
+/// - Parameters:
+///   - action: 事件
+///   - keyPath: keyPath
+@objc func removeTarget(action: Selector, keyPath: String) {
+   actionStack.removeAll { (lottieAction) -> Bool in
+       return action == lottieAction.action && keyPath == lottieAction.keyPath
+   }
+}
+```
+
+实现：
+
+1. 使用`LottieExtraAction`记录事件相关信息，
+2. 在`touchesEnded`函数中获取触摸点坐标，
+3. 校验触摸点是否在`keyPath`的范围内，触发监听事件。
+
+```
+open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+   super.touchesEnded(touches, with: event)
+   guard let touch = touches.first else {
+       return
+   }
+   let point = touch.location(in: touch.view)
+   guard let convertPoint = animationView.convert(point, toLayerAt: nil) else {
+       return
+   }
+   actionStack.forEach { (lottieAction) in
+       if lottieAction.rect.contains(convertPoint) {
+           guard let action = lottieAction.action else {
+               return;
+           }
+           guard let target = lottieAction.target else {
+               return;
+           }
+           (target as AnyObject).performSelector(onMainThread: action, with: lottieAction, waitUntilDone: false)
+       }
+   }
+}
+```
+
+### 位置转换
+
+计算`view`的缩放比例和偏移量
+
+```
+func coordinateScaleAndOffset() -> (scale: CGFloat, offset: CGPoint) {
+   var scale: CGFloat = 1.0
+   var offset = CGPoint.zero
+   guard let animation = animation else { return (scale, offset) }
+   let canvasW = animation.bounds.width
+   let canvasH = animation.bounds.height
+   
+   let viewW = bounds.size.width
+   let viewH = bounds.size.height
+   
+   if (viewW / viewH > canvasW / canvasH) {
+       scale = viewH / canvasH;
+       offset = CGPoint(x: 0, y: (viewW / scale - canvasW) / 2)
+   } else {
+       scale = viewW / canvasW;
+       offset = CGPoint(x: (viewH / scale - canvasH) / 2, y: 0)
+   }
+   return (scale, offset)
+}
+```
+
+获取转换后的坐标点
+
+```
+@objc func viewCenter(for keyPath: String) -> CGPoint {
+   let animationP = position(for: keyPath)
+   let scale = coordinateScale
+   let offset = coordinateOffset
+   return CGPoint(x: scale * (animationP.x + offset.y), y: scale * (animationP.y + offset.x))
+}
+```
+
+### 源码
+GitHub 地址 [LottieExtra](https://github.com/YQqiang/LottieExtra)
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
