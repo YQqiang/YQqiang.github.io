@@ -602,6 +602,18 @@ categories: 开发笔记
 ## 静态派发 & 动态派发
 > “协议要求的方法是动态派发的，而仅定义在扩展中的方法是静态派发的。”
 
+## 迭代器协议
+> 迭代器每次产生一个序列的值，并且当遍历序列时对遍历状态进行管理。
+在 `IteratorProtocol` 协议中唯一的一个方法是`next()`，这个方法需要在每次被调用时返回序列中的下一个值。
+当序列被耗尽时，`next()` 应该返回 `nil`
+
+```
+protocol IteratorProtocol {
+    associatedtype Element
+    mutating func next() -> Element?
+}
+```
+
 待继续...
 
 ## 参考
