@@ -614,6 +614,18 @@ protocol IteratorProtocol {
 }
 ```
 
+## 序列协议
+> `Sequence`协议是集合类型结构中的基础.一个序列(`sequence`)代表的是一系列具有相同类型的值, 你可以对这些值进行迭代.
+
+```
+public protocol Sequence {
+    associatedtype Element
+    associatedtype Iterator: IteratorProtocol
+    where Iterator.Element == Element
+    // ...
+}
+```
+
 待继续...
 
 ## 参考
