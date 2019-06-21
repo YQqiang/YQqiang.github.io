@@ -607,7 +607,7 @@ categories: 开发笔记
 在 `IteratorProtocol` 协议中唯一的一个方法是`next()`，这个方法需要在每次被调用时返回序列中的下一个值。
 当序列被耗尽时，`next()` 应该返回 `nil`
 
-    ```
+    ```swift
     protocol IteratorProtocol {
         associatedtype Element
         mutating func next() -> Element?
@@ -617,7 +617,7 @@ categories: 开发笔记
 ## 序列协议
 > `Sequence`协议是集合类型结构中的基础.一个序列(`sequence`)代表的是一系列具有相同类型的值, 你可以对这些值进行迭代.
 
-    ```
+    ```swift
     public protocol Sequence {
         associatedtype Element
         associatedtype Iterator: IteratorProtocol
