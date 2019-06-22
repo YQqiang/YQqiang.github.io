@@ -626,6 +626,38 @@ public protocol Sequence {
 }
 ```
 
+## 集合协议
+> `Collection` 协议是建立在 `Sequence` 协议上的。
+
+```swift
+protocol Collection: Sequence {
+	associatedtype Element // inherited from Sequence
+	associatedtype Index: Comparable
+	associatedtype IndexDistance: SignedInteger = Int
+	associatedtype Iterator: IteratorProtocol = IndexingIterator<Self>
+	where Iterator.Element == Element
+	associatedtype SubSequence: Sequence
+	/* ... */
+	associatedtype Indices: Sequence = DefaultIndices<Self>
+	/* ... */
+	var first: Element? { get }
+	var indices: Indices { get }
+	var isEmpty: Bool { get }
+	var count: IndexDistance { get }
+	func makeIterator() -> Iterator
+	func prefix(through: Index) -> SubSequence
+	func prefix(upTo: Index) -> SubSequence
+	func suffix(from: Index) -> SubSequence
+	func distance(from: Index, to: Index) -> IndexDistance
+	func index(_: Index, offsetBy: IndexDistance) -> Index
+	func index(_: Index, offsetBy: IndexDistance, limitedBy: Index) -> Index?
+	subscript(position: Index) -> Element { get }
+	subscript(bounds: Range<Index>) -> SubSequence { get }
+}
+```
+
+
+
 待继续...
 
 ## 参考
