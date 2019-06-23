@@ -32,7 +32,7 @@ categories: 开发笔记
 * 0 隐藏
 * 100 显示
 
-```
+```swift
 @objc func show(keyPath: String) {
    show(keyPaths: [keyPath])
 }
@@ -56,7 +56,7 @@ categories: 开发笔记
 * 通过`keyPath.Transform.Anchor Point`可获取锚点信息(`anchorPoint`)
 * 通过`position` 和 `anchorPoint`可计算出`rect`
 
-```
+```swift
 /// 获取指定keyPath的位置
 ///
 /// - Parameter keyPath: keyPath
@@ -97,7 +97,7 @@ categories: 开发笔记
 
 添加、移除指定`keyPath`的点击事件
 
-```
+```swift
 /// 指定keyPath 添加点击事件
 ///
 /// - Parameters:
@@ -134,7 +134,7 @@ categories: 开发笔记
 2. 在`touchesEnded`函数中获取触摸点坐标，
 3. 校验触摸点是否在`keyPath`的范围内，触发监听事件。
 
-```
+```swift
 open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
    super.touchesEnded(touches, with: event)
    guard let touch = touches.first else {
@@ -162,7 +162,7 @@ open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 
 计算`view`的缩放比例和偏移量
 
-```
+```swift
 func coordinateScaleAndOffset() -> (scale: CGFloat, offset: CGPoint) {
    var scale: CGFloat = 1.0
    var offset = CGPoint.zero
@@ -186,7 +186,7 @@ func coordinateScaleAndOffset() -> (scale: CGFloat, offset: CGPoint) {
 
 获取转换后的坐标点
 
-```
+```swift
 @objc func viewCenter(for keyPath: String) -> CGPoint {
    let animationP = position(for: keyPath)
    let scale = coordinateScale
