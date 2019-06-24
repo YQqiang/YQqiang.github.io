@@ -628,6 +628,7 @@ public protocol Sequence {
 
 ## 集合协议
 > `Collection` 协议是建立在 `Sequence` 协议上的。
+> `Collection` 协议有六个关联类型，四个属性，七个实例方法，以及两个下标方法
 
 ```swift
 protocol Collection: Sequence {
