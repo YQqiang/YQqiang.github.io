@@ -324,9 +324,10 @@ pod repo push YQSpecs --sources=http://m24.ink:3000/yuqiang/YQSpecs,master LibDe
 
 * `YQSpecs` 为文章开头时的 `spec repo`
 * `--sources=xxx.git,master` 为 `YQSpecs` 的仓库地址
-* `LibDemo.podspec` 为制作的仓库的配置文件
+* `LibDemo.podspec` 为制作的仓库的配置文件(**当该文件在当前目录下时，可省略**)
 * `--allow-warnings` 忽略警告
 * `--verbose` 显示详细信息
+* `--swift-version=5` 指定使用的`swift`版本
 
 ### 使用 制作的 pod
 
