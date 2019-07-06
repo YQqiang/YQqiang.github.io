@@ -32,13 +32,13 @@ categories: 效率工具
 ![](http://yuqiangcoder.com/assets/postImages/ios/201907/split3.png)
 
 4. `Preference` --> `Arrangements`， 选中保存的面板布局，设置为默认的
-![](http://yuqiangcoder.com/assets/postImages/ios/201907/split14.png)
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/split4.png)
 
 5. `Preference` --> `General`，设置打开默认的面板布局
 ![](http://yuqiangcoder.com/assets/postImages/ios/201907/split5.png)
 
 6. 每次打开终端的效果如下
-![](http://yuqiangcoder.com/assets/postImages/ios/201907/split16.png)
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/split6.png)
 
 7. 可使用快捷键`command + ]` 或 `command + [` 切换
 
