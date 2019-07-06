@@ -7,7 +7,7 @@ categories: 效率工具
 
 ![](http://yuqiangcoder.com/assets/postImages/ios/201907/iTerm2.png)
 
-### iTerm2
+### 简介
 `iTerm2`是`Terminal`的替代品，也是`iTerm`的继承者。它适用于`macOS 10.12`或更新版本的`mac`电脑。丰富强大的功能是提高效率的必备工具。
 [iTerm2官网](https://www.iterm2.com/)
 
