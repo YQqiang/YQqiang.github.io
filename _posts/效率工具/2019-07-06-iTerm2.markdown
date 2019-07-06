@@ -51,7 +51,7 @@ categories: 效率工具
 2. 设置快捷键，这里设置的是`command + \`, 点击`ok`.
 ![](http://yuqiangcoder.com/assets/postImages/ios/201907/hotkey2.png)
 
-3. 需要临时使用终端时，可使用设置的快捷键`command + \`调出终端，再次使用快捷键退出专用终端
+3. 需要临时使用终端时，可使用设置的快捷键`command + \`调出终端，再次使用快捷键退出专用窗口
 ![](http://yuqiangcoder.com/assets/postImages/ios/201907/hotkey3.png)
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
