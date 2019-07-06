@@ -1,0 +1,57 @@
+---
+layout: post
+title:  "iTerm2"
+date:   2019-07-06 13:40:31 +0800
+categories: 效率工具
+---
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/iTerm2.png)
+
+### iTerm2
+`iTerm2`是`Terminal`的替代品，也是`iTerm`的继承者。它适用于`macOS 10.12`或更新版本的`mac`电脑。丰富强大的功能是提高效率的必备工具。
+[iTerm2官网](https://www.iterm2.com/)
+
+### `oh my zsh`美化
+[iTerm2 + Oh My Zsh 打造舒适终端体验](https://www.jianshu.com/p/9c3439cc3bdb)
+
+### 启用滑动翻页
+`Preference` --> `Advanced` --->`Mouse` ---> `Scroll wheel sends arrow keys when in alternate screen mode` ---> `Yes`
+
+该配置开启后，在`git log`时可使用触摸板或鼠标上下滑动查看。
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/scroll.png)
+
+### 多窗口配置
+1. 在终端页面右键，使用`Split Pane Vertically` 和 `Split Pane Horizontally` 把面板布局好
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/split1.png)
+
+2. `Window` ---> `Save Window Arrangement` 或 使用快捷键`command + shift + S` 保存排列的面板布局
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/split2.png)
+
+3. 输入该面板布局名称
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/split3.png)
+
+4. `Preference` --> `Arrangements`， 选中保存的面板布局，设置为默认的
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/split14.png)
+
+5. `Preference` --> `General`，设置打开默认的面板布局
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/split5.png)
+
+6. 每次打开终端的效果如下
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/split16.png)
+
+7. 可使用快捷键`command + ]` 或 `command + [` 切换
+
+### 专用窗口
+可配置热键`Hotkey`, 打开专用窗口（从屏幕顶部下拉出一个半透明的终端窗口）。
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/hotkey1.png)
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/hotkey2.png)
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/hotkey3.png)
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
