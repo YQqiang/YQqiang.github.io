@@ -56,7 +56,7 @@ categories: 效率工具
 ### 从文件夹打开终端
 从文件夹的位置打开终端。
 
-1. 系统偏好设置 --> 键盘 --> 快捷键 --> 服务 --> `New iTerm2 Window Here` --> 设置快捷键（此处设置的为 `cotrol + option + \`）
+1. 系统偏好设置 --> 键盘 --> 快捷键 --> 服务 --> `New iTerm2 Window Here` --> 设置快捷键（此处设置的为 `control + option + \`）
 ![](http://yuqiangcoder.com/assets/postImages/ios/201907/finder_config1.png)
 
 2. 使用：在`finder`中文件夹位置，使用快捷键打开终端，终端自动进入当前文件夹路径，无需使用`cd`命令。
