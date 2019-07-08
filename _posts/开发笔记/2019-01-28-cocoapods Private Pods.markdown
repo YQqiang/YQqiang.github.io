@@ -329,6 +329,22 @@ pod repo push YQSpecs --sources=http://m24.ink:3000/yuqiang/YQSpecs,master LibDe
 * `--verbose` 显示详细信息
 * `--swift-version=5` 指定使用的`swift`版本
 
+执行过程如下：
+
+1. Validating spec  (验证lib 版本， 系统版本)
+
+2. Analyzing dependencies （分析依赖库）
+
+3. Downloading dependencies （下载安装依赖库）
+
+4. Testing with `xcodebuild` (命令行编译)
+
+5. Updating the `YQSpecs` repo （更新远程仓库）
+
+6. Adding the spec to the `YQSpecs` repo （添加 spec）
+
+7. Pushing the `YQSpecs` repo （推送 spec）
+
 ### 使用 制作的 pod
 
 在项目的`Podfile` 文件中增加 `Source`
