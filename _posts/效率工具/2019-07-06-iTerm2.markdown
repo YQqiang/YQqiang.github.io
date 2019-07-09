@@ -63,6 +63,10 @@ categories: 效率工具
 ![](http://yuqiangcoder.com/assets/postImages/ios/201907/finder1.png)
 ![](http://yuqiangcoder.com/assets/postImages/ios/201907/finder2.png)
 
+### 快捷键
+1. `command + option + B` 历史命令记录时间轴
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/history1.png)
+
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
