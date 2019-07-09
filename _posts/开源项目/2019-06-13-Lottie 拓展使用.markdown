@@ -2,7 +2,7 @@
 layout: post
 title:  "Lottie 拓展使用"
 date:   2019-06-13 12:15:31 +0800
-categories: 开发笔记
+categories: 开源项目
 ---
 
 ![](http://yuqiangcoder.com/assets/postImages/ios/201906/lottie_demo.gif)

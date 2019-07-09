@@ -2,7 +2,7 @@
 layout: post
 title:  "Charts 拓展使用"
 date:   2019-02-21 09:32:31 +0800
-categories: 开发笔记
+categories: 开源项目
 ---
 
 ![](http://yuqiangcoder.com/assets/postImages/ios/201902/1@2x.png)
