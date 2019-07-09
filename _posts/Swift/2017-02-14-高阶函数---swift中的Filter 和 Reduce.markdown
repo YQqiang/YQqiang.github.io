@@ -2,7 +2,7 @@
 layout: post
 title:  "高阶函数---swift中的Filter 和 Reduce"
 date:   2017-02-14 10:17:31 +0800
-categories: 函数式Swift
+categories: Swift
 ---
 ![](http://yuqiangcoder.com/assets/postImages/ios/201702/8.jpg)
 

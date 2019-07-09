@@ -2,7 +2,7 @@
 layout: post
 title:  "iOS-Swift函数式编程 Core Image 封装"
 date:   2017-01-10 10:17:31 +0800
-categories: 函数式Swift
+categories: Swift
 ---
 ![](http://yuqiangcoder.com/assets/postImages/ios/201701/2.jpg)
 

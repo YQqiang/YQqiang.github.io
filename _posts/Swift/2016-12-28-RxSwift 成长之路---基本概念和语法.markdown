@@ -2,7 +2,7 @@
 layout: post
 title:  "RxSwift 成长之路---基本概念和语法"
 date:   2016-12-28 10:17:31 +0800
-categories: 函数式Swift
+categories: Swift
 ---
 > 更新时间: 2017-02-28
 [RxSwift + Moya + ObjectMapper + MVVM 的网络请求](http://yuqiangcoder.com/2017/02/23/RxSwift-+-Moya-+-ObjectMapper-+-MVVM-%E7%9A%84%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82.html)

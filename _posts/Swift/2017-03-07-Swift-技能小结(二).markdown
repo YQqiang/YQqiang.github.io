@@ -2,7 +2,7 @@
 layout: post
 title:  "Swift-技能小结(二)"
 date:   2017-03-07 10:17:31 +0800
-categories: 开发笔记
+categories: Swift
 ---
 ![](http://yuqiangcoder.com/assets/postImages/ios/201703/1.jpg)
 
