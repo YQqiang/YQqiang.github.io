@@ -287,7 +287,7 @@ git reset –hard commit_id （回退到上一个commit节点， 代码也发生
     pod repo push PrivateSpecs --sources=http://url/PrivateSpecs.git,master SGChart.podspec --allow-warnings
     ```
     
-- ###  分离 HEAD  (2018-11-17 更新)
+- ### 分离 HEAD  (2018-11-17 更新)
     > `HEAD` 是一个对当前检出记录的符号引用 —— 也就是指向你正在其基础上进行工作的提交记录。
 
     > `HEAD` 总是指向当前分支上最近一次提交记录。大多数修改提交树的 `Git`命令都是从改变`HEAD` 的指向开始的。
@@ -311,7 +311,7 @@ git reset –hard commit_id （回退到上一个commit节点， 代码也发生
     
     Git学习推荐[learngitbranching](https://learngitbranching.js.org/)
     
-- ###选择父提交记录
+- ### 选择父提交记录
 
     > 操作符 `^` 与 `~` 符一样，后面也可以跟一个数字。
     >
@@ -319,7 +319,7 @@ git reset –hard commit_id （回退到上一个commit节点， 代码也发生
     >
     > Git 默认选择合并提交的“第一个”父提交; 在操作符 `^` 后跟一个数字可以改变这一默认行为。
 
-- ###gitignore
+- ### gitignore
     [https://www.gitignore.io/](https://www.gitignore.io/)
     
     命令行使用方式
