@@ -19,6 +19,9 @@ categories: 开发笔记
 
 ![开发模式](http://yuqiangcoder.com/assets/postImages/ios/201704/2.png)
 
+## 快速入门
+![快速入门](http://yuqiangcoder.com/assets/postImages/ios/201704/git.svg)
+
 ## Git 基础命令
  - ### git 配置
     ```
