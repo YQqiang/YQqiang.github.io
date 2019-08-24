@@ -2,7 +2,7 @@
 layout: post
 title:  "Swift Protocol"
 date:   2018-11-29 15:29:31 +0800
-categories: 开发笔记
+categories: Swift
 ---
 
 ![](http://yuqiangcoder.com/assets/postImages/ios/201811/8.jpg)
