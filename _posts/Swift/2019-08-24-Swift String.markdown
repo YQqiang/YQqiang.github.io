@@ -285,6 +285,59 @@ dogString.utf16.forEach { print($0) }
     按照编码的相反步骤再加上`0x10000`，得到`0xF0000-0x10FFFF`。
     这就是UTF-16编码的第一个WORD在`0xDB80`到`0xDBFF`之间的Unicode编码范围，即平面15和平面16。
     因为Unicode标准将平面15和平面16都作为专用区，所以`0xDB80`到`0xDBFF`之间的保留码位被称作高位专用替代。
+    
+### Unicode 标量
+除了代理区（`0xDB80-0xDFFF`）外所有码点， 都是Unicode标量。
+
+标量在 Swift 字符串字面量中以 `\u{xxxx}` 来表示，其中的 `xxxx` 是十六进制的数字。
+
+比如欧元符号 `€` 在 Swift 中写作 `\u{20AC}`。
+
+Unicode 标量在 Swift 中对应的类型是 `Unicode.Scalar`，它是一个对 `UInt32` 的封装类型。
+    
+### 扩展字位簇
+从用户视角看到的一个字符，称为扩展字位簇（`extended grapheme cluster`）。
+
+用户所认为的在屏幕上显示的“单个字符”可能仍需要多个编码点组合而成。
+
+在 Swift 中，字位簇由 `Character` 类型进行表示，这个类型可以对任意数量的标量进行编码，并形成一个从用户角度来看的字符。
+
+如下图所示， 字符（`Character`）**`é`**, 由两个Unicode标量 `\u{65}` 和 `\u{301}` 组合而成，但从用户视角而言仍是一个字符。
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201908/unicodeScalars.png)
+
+```swift
+// 查看Unicode标量
+let double = "Poke\u{301}mon"
+double.unicodeScalars.forEach { print($0) }
+
+// 结果如下：
+P
+o
+k
+e
+́ 
+m
+o
+n
+
+```
+
+```swift
+// 查看UTF-16
+let double = "Poke\u{301}mon"
+double.unicodeScalars.forEach { print($0) }
+
+// 结果如下：
+80
+111
+107
+101
+769
+109
+111
+110
+```
 
 ## 附录
 1. ASCII码表
