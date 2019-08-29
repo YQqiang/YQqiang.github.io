@@ -339,6 +339,51 @@ double.unicodeScalars.forEach { print($0) }
 110
 ```
 
+### 标准等价
+上述字符 **`é`** 除了用Unicode标量 `\u{65}` 和 `\u{301}` 组合表示，还可以用一个Unicode标量 `\u{00E9}` 表示。
+
+这两种写法的显示结果相同，Unicode规范将此称作标准等价（canonically equivalent）。
+
+Swift能够正确处理这种情况
+
+```swift
+let single = "Pok\u{00E9}mon"
+let double = "Poke\u{301}mon"
+```
+
+* 显示结果一致
+
+    ```swift
+    (single, double) // (Pokémon, Pokémon)
+    ```
+
+* 字符数相等
+
+    ```swift
+    single.count // 7
+    double.count // 7
+    ```
+
+* 比较结果也相等
+
+    ```swift
+    single == double // true
+    ```
+    
+* 深入到编码单元层面就能看到差异
+
+    ```swift
+    // UTF-8
+    single.utf8.count // 8
+    double.utf8.count // 9
+    
+    // UTF-16
+    single.utf16.count // 7
+    double.utf16.count // 8
+    ```
+
+
+
 ## 附录
 1. ASCII码表
 <table log-set-param="table_view" width="99%" class="table-view log-set-param" data-sort="sortDisabled"><tbody><tr><td height="49" align="center" valign="middle"><div class="para" label-module="para">Bin</div>
