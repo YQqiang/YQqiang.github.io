@@ -403,6 +403,38 @@ doubleStr.length; // 8
 [singleStr compare:doubleStr] == NSOrderedSame; // YES
 ```
 
+## String
+### 获取Unicode名字
+将 Unicode 标量转换为它们对应的官方 Unicode 名字
+
+```swift
+extension StringTransform {
+    static let toUnicodeName = StringTransform("Any-Name")
+}
+
+extension Unicode.Scalar {
+    var unicodeName: String {
+        let name = String(self).applyingTransform(.toUnicodeName, reverse: false)!
+        let prefixPattern = "\\N{"
+        let suffixPattern = "}"
+        let prefixLength = name.hasPrefix(prefixPattern) ? prefixPattern.count : 0
+        let suffixLength = name.hasSuffix(suffixPattern) ? suffixPattern.count : 0
+        return String(name.dropFirst(prefixLength).dropLast(suffixLength))
+    }
+}
+```
+
+```swift
+let dogString = "Dog‼🐶"
+dogString.unicodeScalars.forEach { print($0.unicodeName) }
+
+// LATIN CAPITAL LETTER D
+// LATIN SMALL LETTER O
+// LATIN SMALL LETTER G
+// DOUBLE EXCLAMATION MARK
+// DOG FACE
+```
+
 ## 附录
 1. ASCII码表
 <table log-set-param="table_view" width="99%" class="table-view log-set-param" data-sort="sortDisabled"><tbody><tr><td height="49" align="center" valign="middle"><div class="para" label-module="para">Bin</div>
