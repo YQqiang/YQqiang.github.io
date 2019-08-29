@@ -397,7 +397,7 @@ doubleStr.length; // 8
 
 对 `NSString` 而言， 会在 `UTF-16` 编码单元的层面上按字面值做一次比较，而不会将不同字符组合起来的等价性纳入考虑。其他语言的大部分字符串 API 也都是这么做的。
 
-如果需要进行的标准的比较，需要使用 `compare:` 方法:
+如果需要进行标准的比较，需要使用 `compare:` 方法:
 
 ```
 [singleStr compare:doubleStr] == NSOrderedSame; // YES
