@@ -170,7 +170,7 @@ UTF-16以16位无符号整数为单位对Unicode进行编码.
 
 Unicode的编码空间从`U+0000`到`U+10FFFF`，共有`1,112,064`个码位（`code point`）可用来映射字符.
 
-Unicode的编码空间可以划分为16个平面（`plane`），每个平面包含2^16 （65,536）个码位。16个平面的码位可表示为从`U+xx0000`到`U+xxFFFF`，其中`xx`表示十六进制值从00^16 到 10^16 ，共计16个平面。第一个平面称为基本多语言平面（`Basic Multilingual Plane, BMP`），或称第零平面（`Plane 0`）。其他平面称为辅助平面（`Supplementary Planes`）。
+Unicode的编码空间可以划分为16个平面（`plane`），每个平面包含2<sup>16</sup> （65,536）个码位。16个平面的码位可表示为从`U+xx0000`到`U+xxFFFF`，其中`xx`表示十六进制值从00<sup>16</sup> 到 10<sup>16</sup> ，共计16个平面。第一个平面称为基本多语言平面（`Basic Multilingual Plane, BMP`），或称第零平面（`Plane 0`）。其他平面称为辅助平面（`Supplementary Planes`）。
 
 基本多语言平面内，从`U+D800`到`U+DFFF`之间的码位区块是永久保留不映射到Unicode字符。UTF-16就利用保留下来的`0xD800-0xDFFF`区块的码位来对辅助平面的字符的码位进行编码。
 
