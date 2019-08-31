@@ -438,6 +438,86 @@ dogString.unicodeScalars.forEach { print($0.unicodeName) }
 // DOG FACE
 ```
 
+### 字符串和集合
+> `String` 是 `Character` 值的集合。
+
+在 `Swift 2` 和 `Swift 3` 中 `String` 本身并非 `Collection`。
+
+因为在处理字符串某些边界情况下不满足集合的一般算法；
+
+例：
+
+```swift
+let flagLetterC = "🇨"
+let flagLetterN = "🇳"
+
+let flag = flagLetterC + flagLetterN // 🇨🇳
+flag.count // 1
+flag.count == flagLetterC.count + flagLetterN.count // false
+```
+
+所以由字符组成的集合被移动到了 `characters` 属性里，它和 `unicodeScalars`，`utf8` 以及 `utf16` 等其他集合视图类似，是一种字符串的表现形式。
+
+但是这个改动增加了学习难度且降低了易用性。
+
+所以在 `Swift 4` 里，`String` 又成为了 `Collection`。`characters` 视图依然存在，但是仅仅是为了代码的前向兼容。
+
+### BidirectionalCollection
+String 虽然是集合，但是不支持随机访问。
+
+就算知道给定字符串中第 `n` 个字符的位置，也并不会对计算这个字符之前有多少个 `Unicode` 标量有任何帮助。
+
+所以，`String` 只实现了 `BidirectionalCollection`。你可以从字符串的头或者尾开始，向后或者向前移动，代码会察看毗邻字符的组合，跳过正确的字节数。不管怎样，你每次只能迭代一个字符。
+
+当你在书写一些字符串处理的代码时，需要将这个性能影响时刻牢记在心。
+
+例：生成一个包含所有前缀子字符串的数组
+
+时间复杂度为 O(n<sup>2</sup>)版本
+
+```swift
+extension String {
+var allPrefixes1: [Substring] {
+        return (0...self.count).map(self.prefix)
+    }
+}
+
+let hello = "Hello"
+hello.allPrefixes1 // ["", "H", "He", "Hel", "Hell", "Hello"]
+```
+
+时间复杂度为 O(n)版本
+
+```swift
+extension String {
+var allPrefixes2: [Substring] {
+        return [""] + self.indices.map { index in self[...index] }
+    }
+}
+
+hello.allPrefixes2 // ["", "H", "He", "Hel", "Hell", "Hello"]
+```
+
+### 字符串索引
+Swift 不允许使用整数值对字符串进行下标操作。
+
+因为整数的下标访问无法在常数时间内完成，而且查找第 `n` 个 `Character` 的操作也必须要对它之前的所有字节进行检查。
+
+> `String.Index` 是 `String` 和它的视图所使用的索引类型，它本质上是一个存储了从字符串开头的字节偏移量的不透明值。如果你想计算第 `n` 个字符所对应的索引，你依然从字符串的开头或结尾开始，并花费 `O(n)` 的时间。但是一旦你拥有了有效的索引，就可以通过索引下标以 `O(1)` 的时间对字符串进行访问了。至关重要的是，通过一个已有索引来寻找下一个索引也是很快的，因为你可以从这个已有索引的字节偏移量开始进行查找，而不需要从头开始。正是由于这个原因，按顺序 (前向或者后向) 对字符串中的字符进行迭代是一个高效操作。
+
+### 子字符串
+> 和所有集合类型一样，`String` 有一个特定的 `SubSequence` 类型，它就是 `Substring`。`Substring` 和 `ArraySlice` 很相似：**它是一个以不同起始和结束索引的对原字符串的切片**。**子字符串和原字符串共享文本存储**，这带来的巨大的好处，它让对字符串切片成为了非常高效的操作。
+
+### StringProtocol
+> `Substring` 和 `String` 的接口几乎完全一样。这是通过一个叫做 `StringProtocol` 的通用协议来达到的，`String` 和 `Substring` 都遵守这个协议。
+> 因为几乎所有的字符串 `API` 都被定义在 `StringProtocol` 上，对于 `Substring`，你完全可以假装将它看作就是一个 `String`，并完成各项操作。
+> 不过，在某些时候，你还是需要将子字符串转回 `String` 实例；和所有的切片一样，子字符串也只能用于短期的存储，这可以避免在操作过程中发生昂贵的复制。
+> 当这个操作结束，你想将结果保存起来，或是传递给下一个子系统，这时你应该通过初始化方法从 `Substring` 创建一个新的 `String`
+
+```swift
+String(subString)
+```
+
 ## 附录
 <details>
     <summary>ASCII码表</summary>
