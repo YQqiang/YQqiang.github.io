@@ -5,6 +5,9 @@ date:   2019-08-24 15:29:31 +0800
 categories: Swift
 ---
 
+![](http://yuqiangcoder.com/assets/postImages/ios/201908/keyboard.svg)
+该图片由<a href="https://pixabay.com/zh/users/OpenClipart-Vectors-30363/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1293306">OpenClipart-Vectors</a>在<a href="https://pixabay.com/zh/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1293306">Pixabay</a>上发布
+
 ## 编码
 ### ASCII
 > `ASCII` ((`American Standard Code for Information Interchang`): 美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统，主要用于显示现代英语和其他西欧语言。
