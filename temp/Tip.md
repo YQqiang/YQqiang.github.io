@@ -22,6 +22,14 @@ categories: 开发笔记
 }
 ```
 
+### stackView 设置边距
+
+```
+// 设置 stackView 边距
+self.stackView.layoutMarginsRelativeArrangement = YES;
+self.stackView.layoutMargins = UIEdgeInsetsMake(0, 16, 0, 16);
+```
+
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
