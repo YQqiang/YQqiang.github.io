@@ -361,6 +361,15 @@ target 'LibDemo_Example' do
 end
 ```
 
+### Tip
+1. 根据 `podspec` 生成 `CHECKSUMS`
+
+    ```ruby
+    pod ipc spec xxx.podspec | openssl sha1
+    
+    // 例输出结果：4636a257060f6f1b4e143a143028b61a2b462d0d
+    ```
+
 ### 参考文章 
 
 [Private Pods](https://guides.cocoapods.org/making/private-cocoapods.html)
