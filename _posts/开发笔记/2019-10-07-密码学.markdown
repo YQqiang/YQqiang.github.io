@@ -51,7 +51,7 @@ categories: 开发笔记
 柯克霍夫准则：
 系统的保密性不依赖于对加密体制或算法的保密，而依赖于对秘钥的保密。
 
-![](http://yuqiangcoder.com/assets/postImages/ios/201910/cipher.mindnode)
+![](http://yuqiangcoder.com/assets/postImages/ios/201910/cipher.png)
 
 ## 对称加密
 
