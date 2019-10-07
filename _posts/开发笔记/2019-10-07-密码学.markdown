@@ -1,0 +1,91 @@
+---
+layout: post
+title:  "密码学"
+date:   2019-10-07 14:11:31 +0800
+categories: 开发笔记
+---
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201910/header.jpg)
+该图片由<a href="https://pixabay.com/zh/users/FotoArt-Treu-796002/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4165613">Michael Treu</a>在<a href="https://pixabay.com/zh/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4165613">Pixabay</a>上发布
+
+## 概述
+
+密码发展进程：
+
+1. 古典密码算法
+    利用代替技术，置换技术
+2. 对称加密算法
+    包括流密码和分组密码 如： RC4、DES和AES
+3. 非对称加密算法
+    包括RSA、背包密码、椭圆曲线等
+    
+目前在数据通信中使用最普遍的算法有DES算法、AES算法、RSA算法和ECC算法等。
+
+密码学是研究密码系统或通信安全的一门科学，它包含两个分支
+
+1. 密码编码学
+    * 机密性
+    * 认证
+2. 密码分析学
+    * 破译加密消息
+    * 伪造消息
+
+密码学的目标：
+
+1. 机密性
+2. 数据完整性
+3. 认证和不可否认性
+
+按所用秘钥数分类：
+
+1. 单秘钥密码（对称、秘密钥、私钥、传统密码）
+    * 优点：运行速度快，具有可靠的保密强度
+    * 不足：不便秘钥交换和管理
+
+2. 双钥密码（非对称、公钥密码）
+    * 优点：便于秘钥交换和管理，还可用于消息认证（数字签名）
+    * 不足：运行速度缓慢，其安全性所依赖的数学难题的复杂性一般都未能证明
+
+3. 无密码密码（如单向，散列，随机化）
+
+柯克霍夫准则：
+系统的保密性不依赖于对加密体制或算法的保密，而依赖于对秘钥的保密。
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201910/cipher.mindnode)
+
+## 对称加密
+
+传统密码、常规密码、私钥密码、单钥密码；
+发送方和接收方共享同一个共同的秘钥。
+
+基本成分：
+
+1. 明文（plaintext）：信息的原始形式，一般是信息的基本单元（字符，数字，符号等）的有限排列
+2. 密文（ciphertext）：明文经过加密以后的结果形式
+3. 加密变换（encryption）：从明文到密文的变换过程
+4. 解密变换（decryption）：从密文还原成明文的过程
+5. 秘钥（key）：用于加解密变换的关键信息，视其用于加解密而分别称为加密秘钥和解密秘钥
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201910/legacy_cipher_mode.png)
+
+对称密码保证安全的两个必备条件：
+
+1. 机密算法必须是足够强的
+2. 只有发送者和接收者知道秘钥
+
+#### DES
+#### AES
+
+## 非对称加密
+
+#### RSA
+
+## Hash
+#### MD5
+#### SHA1
+#### SHA256
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
