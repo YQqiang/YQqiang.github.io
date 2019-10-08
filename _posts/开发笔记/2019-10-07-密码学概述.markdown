@@ -8,6 +8,8 @@ categories: 开发笔记
 ![](http://yuqiangcoder.com/assets/postImages/ios/201910/header.jpg)
 该图片由<a href="https://pixabay.com/zh/users/FotoArt-Treu-796002/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4165613">Michael Treu</a>在<a href="https://pixabay.com/zh/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4165613">Pixabay</a>上发布
 
+[toc]
+
 ## 概述
 
 密码发展进程：
@@ -242,6 +244,9 @@ SHA系列
 | 输出长度 | 任意长度 | 任意长度 | <= 2<sup>64</sup> |
 | 分组大小 | 512bits | 512bits | 512bits |
 | 迭代次数 | 48（3次） | 64（4次）  | 80（4次） |
+
+## 模拟加密通信过程
+
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
