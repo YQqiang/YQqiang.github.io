@@ -171,9 +171,7 @@ NIST规定候选算法必须满足下面的要求：
 
 散列函数是以公开函数，通常记为`H`，用于将任意长的消息`M`映射为较短的、固定长度的一个值作为认证符，记为`H(M)`，经常称函数值`H(M)`为**散列值**、**哈希值**、**杂凑值**、**杂凑码**、**消息摘要**等等。
 
-<div align=center>
 <img src="http://yuqiangcoder.com/assets/postImages/ios/201910/hash_mode.png">
-</div>
 
 从密码角度看，散列函数也可以看作是一种**单向密码体制**，即它从一个明文到密文是不可逆映射，只有加密过程，不能解密。
 
@@ -228,7 +226,6 @@ MD5算法的输入可以是任意长度的消息`x`，对输入消息按`512位`
 `SHA-1`算法的输入是长度小于2<sup>64</sup>的任意消息`x`，输出`160位`的散列值。
 
 SHA系列
-<div align=center>
 
 | SHA | 分组大小（bit） | 输出摘要（bit） |
 | :-: | :-: | :-: |
@@ -237,10 +234,7 @@ SHA系列
 | SHA384 | 1024 | 284 |
 | SHA512 | 1024 | 512 |
 
-</div>
-
 算法比较
-<div align=center>
 
 | 算法特性 | MD4 | MD5 | SHA-1 |
 | :-: | :-: | :-: | :-: |
@@ -248,8 +242,6 @@ SHA系列
 | 输出长度 | 任意长度 | 任意长度 | <= 2<sup>64</sup> |
 | 分组大小 | 512bits | 512bits | 512bits |
 | 迭代次数 | 48（3次） | 64（4次）  | 80（4次） |
-
-</div>
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
