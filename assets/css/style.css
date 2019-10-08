@@ -352,7 +352,7 @@ a {
   -moz-transition: border-color .35s;
   -ms-transition: border-color .35s;
   -o-transition: border-color .35s;
-  transition: border-color .35s; 
+  transition: border-color .35s;
   display: none;
 }
 
@@ -566,14 +566,18 @@ iframe {
     color: #2eb695; }
 
 .post__toc-h1 {
+  margin-left: 0px;
   font-size: 1em;
   list-style: none; }
 
 .post__toc-h2 {
+  margin-left: 12px;
   font-size: .95em; }
+  .post__toc-h2 + .post__toc-h1 {
+    padding-top: .25em; }
 
 .post__toc-h3 {
-  margin-left: 12px;
+  margin-left: 24px;
   font-size: .9em; }
   .post__toc-h3 + .post__toc-h2 {
     padding-top: .25em; }
