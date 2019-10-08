@@ -332,6 +332,8 @@ MAC的特性：
 
 ## 模拟加密通信过程
 
+![](http://yuqiangcoder.com/assets/postImages/ios/201910/communication.png)
+
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
