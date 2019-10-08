@@ -8,8 +8,6 @@ categories: 开发笔记
 ![](http://yuqiangcoder.com/assets/postImages/ios/201910/header.jpg)
 该图片由<a href="https://pixabay.com/zh/users/FotoArt-Treu-796002/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4165613">Michael Treu</a>在<a href="https://pixabay.com/zh/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4165613">Pixabay</a>上发布
 
-[toc]
-
 ## 概述
 
 密码发展进程：
