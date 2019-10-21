@@ -37,6 +37,39 @@ self.stackView.layoutMargins = UIEdgeInsetsMake(0, 16, 0, 16);
     * 使用 `copy` 修饰，会把字符串内容拷贝（深拷贝）；更改源字符串时，属性值**不会改变**。
     * 使用 `strong` 修饰，只是引用拷贝（浅拷贝）；更改源字符串时，属性值**也会改变**。
 
+### UISearchBar in UINavigationBar
+
+```
+self.navigationItem.titleView = searchBar;
+```
+
+在`iOS13`系统，当导航栏中放入搜索框时，导航栏高度会由 `44` 增加到 `56`.
+
+
+可以通过把`searchBar`包一层`UIview`解决
+
+```
+UIView *wrapView = [[UIView alloc] initWithFrame:self.frame];
+[wrapView addSubview:searchBar];
+self.navigationItem.titleView = wrapView;
+```
+
+但在`iOS11`系统，`wrapView`的宽度为`0`，可通过自定义`WrapView`，重写`intrinsicContentSize`方法解决
+
+```
+@interface WrapNavTitleView : UIView
+
+@end
+
+@implementation WrapNavTitleView
+
+- (CGSize)intrinsicContentSize {
+    return UILayoutFittingExpandedSize;
+}
+
+@end
+```
+
 
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
