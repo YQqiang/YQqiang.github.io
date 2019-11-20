@@ -6,6 +6,7 @@ categories: 开发笔记
 ---
 
 ![](http://yuqiangcoder.com/assets/postImages/ios/201911/pay.jpg)
+
 Image by <a href="https://pixabay.com/users/mohamed_hassan-5229782/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3082813">mohamed Hassan</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3082813">Pixabay</a>
 
 ## 需求
@@ -220,6 +221,43 @@ s.static_framework = true
 
 ### Universal Links
 
+1. 需要有一个支持`https`的域名
+
+2. 新建文件 `apple-app-site-association`
+    
+    文件格式如下：
+    
+    ```json
+    {
+        "applinks": {
+            "apps": [],
+            "details": [
+                {
+                    "appID": "9JA89QQLNQ.com.apple.wwdc",
+                    "paths": [ "/wwdc/news/", "/videos/wwdc/2015/*"]
+                },
+                {
+                    "appID": "ABCD1234.com.apple.wwdc",
+                    "paths": [ "*" ]
+                }
+            ]
+        }
+    }
+    ```
+    
+    * appId: <team identifier>.<bundle identifier>
+    
+    * paths: 支持的url路径
+    
+3. 把 `apple-app-site-association` 上传到域名对应的服务器根目录中 或 `.well-known` 子目录中
+
+4. 在工程中添加域名 以`applinks:`为前缀
+
+    ![](http://yuqiangcoder.com/assets/postImages/ios/201911/applinks.png)
+    
+[Support Universal Links](https://developer.apple.com/library/archive/documentation/General/Conceptual/AppSearch/UniversalLinks.html#//apple_ref/doc/uid/TP40016308-CH12-SW1)
+
+[Allowing Apps and Websites to Link to Your Content](https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content?language=objc)
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
