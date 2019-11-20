@@ -19,7 +19,7 @@ cocoapods私有库教程可参考之前的文章[Cocoapods Private Pods](http://
 
 初步依赖关系：
 
-![](http://yuqiangcoder.com/assets/postImages/ios/201911/pay1.jpg)
+<img src="http://yuqiangcoder.com/assets/postImages/ios/201911/pay1.png" width="660"/>
 
 1. 创建 Lib
     
@@ -135,7 +135,7 @@ duplicate symbol '_OBJC_METACLASS_$_UTDIDPersistentFile' in:
 
 更改后的依赖关系：    
 
-![](http://yuqiangcoder.com/assets/postImages/ios/201911/pay1.jpg)
+<img src="http://yuqiangcoder.com/assets/postImages/ios/201911/pay2.png" width="660"/>
 
 ### 在 GitHub上 发布 AlipaySDK_Dependency_UTDID
 
