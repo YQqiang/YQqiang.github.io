@@ -46,74 +46,58 @@ cocoapods私有库教程可参考之前的文章[Cocoapods Private Pods](http://
     pod repo push 私有库名称 --sources=私有库URL,master --allow-warnings --verbose
     ```
     
-## 艰难历程
-
 上述流程是在理想的情况下进行的，而实际开发中却并不顺利。
+    
+## 支付宝相关问题解决方案
 
-1. 静态库
-    
-    因为微信SDK使用了静态库(`libWeChatSDK.a`)， 在推送 podspec 时会出现错误
-    
-    错误信息如下：
-    
-    ```
-    ERROR | [iOS] unknown: Encountered an unknown error (The 'Pods-App' target has transitive dependencies that include statically linked binaries: (/private/var/folders/yd/m1j1pblx2kj64rpyd701tt3c0000gn/T/CocoaPods-Lint-20191120-68548-jjtzwd-SGPay/Pods/WechatOpenSDK/WeChatSDK1.8.6.1/libWeChatSDK.a)
-    ```
-    
-    解决：
-    
-    在 SGPay.podspec 文件中 设置使用静态库
-    
-    ```
-    s.static_framework = true
-    ```
-    
-2. UTDID
+![](http://yuqiangcoder.com/assets/postImages/ios/201911/alipay_logo.png)
 
-    当 `SGPay.podspec` 发布完成后，在主工程引用，编译，运行,
+### UTDID 冲突
+
+当 `SGPay.podspec` 发布完成后，在主工程引用，编译，运行,
     
-    由于 
+由于 
     
-    主工程依赖了 阿里推送库 `AlicloudPush`， 
+主工程依赖了 阿里推送库 `AlicloudPush`， 
     
-    `AlicloudPush` 又依赖了 `AlicloudUTDID`, 
+`AlicloudPush` 又依赖了 `AlicloudUTDID`, 
     
-    `AlipaySDK-iOS` 又引入了 `AlicloudUTDID` 源码
+`AlipaySDK-iOS` 又引入了 `AlicloudUTDID` 源码
     
-    最终导致`UTDID` 重复，编译报错
+最终导致`UTDID` 重复，编译报错
     
-    错误信息如下：
+错误信息如下：
     
-    ```
-    ...
-    /Users/path/Pods/AlipaySDK-iOS/AlipaySDK.framework/AlipaySDK
-    /Users/path/Pods/AlicloudUTDID/utdid/UTDID.framework/UTDID(UTDIDKeychainItemWrapper.o)
+```
+...
+/Users/path/Pods/AlipaySDK-iOS/AlipaySDK.framework/AlipaySDK
+/Users/path/Pods/AlicloudUTDID/utdid/UTDID.framework/UTDID(UTDIDKeychainItemWrapper.o)
 duplicate symbol '_OBJC_CLASS_$_UTDIDPersistentConf' in:
-    /Users/path/Pods/AlipaySDK-iOS/AlipaySDK.framework/AlipaySDK
-    /Users/path/Pods/AlicloudUTDID/utdid/UTDID.framework/UTDID(UTDIDPersistentConf.o)
+/Users/path/Pods/AlipaySDK-iOS/AlipaySDK.framework/AlipaySDK
+/Users/path/Pods/AlicloudUTDID/utdid/UTDID.framework/UTDID(UTDIDPersistentConf.o)
 duplicate symbol '_OBJC_METACLASS_$_UTDIDPersistentConf' in:
-    /Users/path/Pods/AlipaySDK-iOS/AlipaySDK.framework/AlipaySDK
-    /Users/path/Pods/AlicloudUTDID/utdid/UTDID.framework/UTDID(UTDIDPersistentConf.o)
+/Users/path/Pods/AlipaySDK-iOS/AlipaySDK.framework/AlipaySDK
+/Users/path/Pods/AlicloudUTDID/utdid/UTDID.framework/UTDID(UTDIDPersistentConf.o)
 duplicate symbol '_OBJC_CLASS_$_UTDIDPersistentFile' in:
-    /Users/path/Pods/AlipaySDK-iOS/AlipaySDK.framework/AlipaySDK
-    /Users/path/Pods/AlicloudUTDID/utdid/UTDID.framework/UTDID(UTDIDPersistentFile.o)
+/Users/path/Pods/AlipaySDK-iOS/AlipaySDK.framework/AlipaySDK
+/Users/path/Pods/AlicloudUTDID/utdid/UTDID.framework/UTDID(UTDIDPersistentFile.o)
 duplicate symbol '_OBJC_METACLASS_$_UTDIDPersistentFile' in:
-    /Users/path/Pods/AlipaySDK-iOS/AlipaySDK.framework/AlipaySDK
-    /Users/path/Pods/AlicloudUTDID/utdid/UTDID.framework/UTDID(UTDIDPersistentFile.o)
-    ...
-    ```
+/Users/path/Pods/AlipaySDK-iOS/AlipaySDK.framework/AlipaySDK
+/Users/path/Pods/AlicloudUTDID/utdid/UTDID.framework/UTDID(UTDIDPersistentFile.o)
+...
+```
     
-    解决：
+解决：
     
-    使用阿里官方提供的不带有UTDID版本的`AlipaySDK-iOS` SDK.
+使用阿里官方提供的不带有UTDID版本的`AlipaySDK-iOS` SDK.
     
-    [App支付客户端DEMO&SDK](https://docs.open.alipay.com/54/104509)
+[App支付客户端DEMO&SDK](https://docs.open.alipay.com/54/104509)
 
-## AlipaySDK_Dependency_UTDID
+### AlipaySDK_Dependency_UTDID
 
-阿里官方只提供了不带UTDID版本的SDK， 并没有提供不带有UTDID版本SDK的 cocoapods库
+阿里官方只提供了不带`UTDID`版本的`SDK`， 并没有提供不带有`UTDID`版本`SDK`的 `cocoapods`库
 
-难道要我们放弃支付宝支付SDK的cocoapods引入，把 SDK 拖进工程嘛？？？
+难道要我们放弃支付宝支付`SDK`的`cocoapods`引入，把 `SDK` 拖进工程嘛？？？
 
 不！！！
 
@@ -153,19 +137,86 @@ duplicate symbol '_OBJC_METACLASS_$_UTDIDPersistentFile' in:
 
 ![](http://yuqiangcoder.com/assets/postImages/ios/201911/pay1.jpg)
 
-## 支付宝支付
+### 在 GitHub上 发布 AlipaySDK_Dependency_UTDID
 
-![](http://yuqiangcoder.com/assets/postImages/ios/201911/alipay_logo.png)
+上述的lib均在私有库，如果有小伙伴遇到和我一样的问题，岂不是要再填一遍坑，何不把 `AlipaySDK_Dependency_UTDID` 发布到 `GitHub`
 
-### UTDID
+1. 使用命令
+    
+    ```
+    pod trunk push --allow-warnings --verbose
+    ```
+    
+    由于 `AlipaySDK_Dependency_UTDID` 依赖了 `AlicloudUTDID`,
+    
+    `AlicloudUTDID` 是阿里发布在自己的`Specs`仓库的, [aliyun-specs](https://github.com/aliyun/aliyun-specs)
+    
+    导致无法直接发布在 `cocoapods` 公共仓库,
+    
+    发布时报错信息如下：
+    
+    ```
+    AlipaySDK_Dependency_UTDID (0.0.1)
+    - WARN  | description: The description is equal to the summary.
+    - ERROR | [iOS] unknown: Encountered an unknown error (Unable to find a specification for `AlicloudUTDID` depended upon by `AlipaySDK_Dependency_UTDID`
+    ```
+    
+    难道就不难为其他小伙伴排忧解难了嘛？？？
+    
+    不！！！
+    
+2. 在 `GitHub` 新建公开的 `specs` 仓库，用于存储 `AlipaySDK_Dependency_UTDID` 的 `spec` 文件
 
-### AliCloudPush
+    仓库地址：[yq-aliyun-specs](https://github.com/YQqiang/yq-aliyun-specs)
+    
+    把 `AlipaySDK_Dependency_UTDID` 的 `spec` 文件 推送到这个仓库
+    
+    ```
+    pod repo push yq-aliyun-specs --sources=https://github.com/YQqiang/yq-aliyun-specs.git,master --allow-warnings --verbose
+    ```
+    
+3. 使用
 
-### AlipaySDK
+    * 在Podfile中增加`source`
+        
+        ```
+        # CocoaPods 仓库
+        source 'https://github.com/CocoaPods/Specs.git'
+        
+        # 阿里云 spec 仓库
+        source 'https://github.com/aliyun/aliyun-specs.git'
+        
+        # AlipaySDK_Dependency_UTDID 的 spec 仓库
+        source 'https://github.com/YQqiang/yq-aliyun-specs.git'
+        ```
+    
+    * 在Podfile中添加依赖库
 
-## 微信支付
+        ```
+        pod 'AlipaySDK_Dependency_UTDID'
+        ```
+
+## 微信相关问题解决方案
 
 ![](http://yuqiangcoder.com/assets/postImages/ios/201911/wxpay_logo.png)
+
+### 静态库
+    
+因为微信SDK使用了静态库(`libWeChatSDK.a`)， 在推送 podspec 时会出现错误
+    
+错误信息如下：
+    
+```
+ERROR | [iOS] unknown: Encountered an unknown error (The 'Pods-App' target has transitive dependencies that include statically linked binaries: (/private/var/folders/yd/m1j1pblx2kj64rpyd701tt3c0000gn/T/CocoaPods-Lint-20191120-68548-jjtzwd-SGPay/Pods/WechatOpenSDK/WeChatSDK1.8.6.1/libWeChatSDK.a)
+```
+    
+解决：
+    
+在 SGPay.podspec 文件中 设置使用静态库
+    
+```
+s.static_framework = true
+```
 
 ### Universal Links
 
