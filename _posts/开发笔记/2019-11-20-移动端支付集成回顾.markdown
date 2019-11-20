@@ -19,7 +19,7 @@ cocoapods私有库教程可参考之前的文章[Cocoapods Private Pods](http://
 
 初步依赖关系：
 
-<img src="http://yuqiangcoder.com/assets/postImages/ios/201911/pay1.png" width="660"/>
+![](http://yuqiangcoder.com/assets/postImages/ios/201911/pay1.png)
 
 1. 创建 Lib
     
@@ -50,7 +50,7 @@ cocoapods私有库教程可参考之前的文章[Cocoapods Private Pods](http://
     
 ## 支付宝相关问题解决方案
 
-![](http://yuqiangcoder.com/assets/postImages/ios/201911/alipay_logo.png)
+<img src="http://yuqiangcoder.com/assets/postImages/ios/201911/alipay_logo.png" width="660"/>
 
 ### UTDID 冲突
 
@@ -135,7 +135,7 @@ duplicate symbol '_OBJC_METACLASS_$_UTDIDPersistentFile' in:
 
 更改后的依赖关系：    
 
-<img src="http://yuqiangcoder.com/assets/postImages/ios/201911/pay2.png" width="660"/>
+![](http://yuqiangcoder.com/assets/postImages/ios/201911/pay2.png)
 
 ### 在 GitHub上 发布 AlipaySDK_Dependency_UTDID
 
@@ -198,7 +198,7 @@ duplicate symbol '_OBJC_METACLASS_$_UTDIDPersistentFile' in:
 
 ## 微信相关问题解决方案
 
-![](http://yuqiangcoder.com/assets/postImages/ios/201911/wxpay_logo.png)
+<img src="http://yuqiangcoder.com/assets/postImages/ios/201911/wxpay_logo.png" width="660"/>
 
 ### 静态库
     
