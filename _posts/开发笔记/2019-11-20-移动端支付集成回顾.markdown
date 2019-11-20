@@ -1,0 +1,176 @@
+---
+layout: post
+title:  "移动端支付集成回顾"
+date:   2019-11-20 14:11:31 +0800
+categories: 开发笔记
+---
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201911/pay.jpg)
+Image by <a href="https://pixabay.com/users/mohamed_hassan-5229782/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3082813">mohamed Hassan</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3082813">Pixabay</a>
+
+## 需求
+最近接到集成移动支付功能的业务，需要支持支付宝和微信两类主流的移动支付平台。
+
+该业务需要移植到其它项目， 基于组件化的考虑，决定使用 `cocoapods` 私有库功能 制作一个 `SGPay` 的 `lib`，把支付宝支付和微信支付封装在 `SGPay` 中，在需要使用支付功能的工程中使用 `Podfile` 引用。
+
+cocoapods私有库教程可参考之前的文章[Cocoapods Private Pods](http://yuqiangcoder.com/2019/01/28/cocoapods-Private-Pods.html)
+
+## SGPay
+
+初步依赖关系：
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201911/pay1.jpg)
+
+1. 创建 Lib
+    
+    在终端执行下面命令
+    
+    ```
+    pod lib create SGPay
+    ```
+
+2. 添加依赖库
+    
+    打开工程，在 `SGPay.podspec` 中添加支付宝和微信的SDK
+    
+    ```
+    s.dependency 'AlipaySDK-iOS'
+    s.dependency 'WechatOpenSDK'
+    ```
+    
+3. 支付功能及接口的代码编写
+
+4. 推送 `podspec` 文件
+
+    ```
+    pod repo push 私有库名称 --sources=私有库URL,master --allow-warnings --verbose
+    ```
+    
+## 艰难历程
+
+上述流程是在理想的情况下进行的，而实际开发中却并不顺利。
+
+1. 静态库
+    
+    因为微信SDK使用了静态库(`libWeChatSDK.a`)， 在推送 podspec 时会出现错误
+    
+    错误信息如下：
+    
+    ```
+    ERROR | [iOS] unknown: Encountered an unknown error (The 'Pods-App' target has transitive dependencies that include statically linked binaries: (/private/var/folders/yd/m1j1pblx2kj64rpyd701tt3c0000gn/T/CocoaPods-Lint-20191120-68548-jjtzwd-SGPay/Pods/WechatOpenSDK/WeChatSDK1.8.6.1/libWeChatSDK.a)
+    ```
+    
+    解决：
+    
+    在 SGPay.podspec 文件中 设置使用静态库
+    
+    ```
+    s.static_framework = true
+    ```
+    
+2. UTDID
+
+    当 `SGPay.podspec` 发布完成后，在主工程引用，编译，运行,
+    
+    由于 
+    
+    主工程依赖了 阿里推送库 `AlicloudPush`， 
+    
+    `AlicloudPush` 又依赖了 `AlicloudUTDID`, 
+    
+    `AlipaySDK-iOS` 又引入了 `AlicloudUTDID` 源码
+    
+    最终导致`UTDID` 重复，编译报错
+    
+    错误信息如下：
+    
+    ```
+    ...
+    /Users/path/Pods/AlipaySDK-iOS/AlipaySDK.framework/AlipaySDK
+    /Users/path/Pods/AlicloudUTDID/utdid/UTDID.framework/UTDID(UTDIDKeychainItemWrapper.o)
+duplicate symbol '_OBJC_CLASS_$_UTDIDPersistentConf' in:
+    /Users/path/Pods/AlipaySDK-iOS/AlipaySDK.framework/AlipaySDK
+    /Users/path/Pods/AlicloudUTDID/utdid/UTDID.framework/UTDID(UTDIDPersistentConf.o)
+duplicate symbol '_OBJC_METACLASS_$_UTDIDPersistentConf' in:
+    /Users/path/Pods/AlipaySDK-iOS/AlipaySDK.framework/AlipaySDK
+    /Users/path/Pods/AlicloudUTDID/utdid/UTDID.framework/UTDID(UTDIDPersistentConf.o)
+duplicate symbol '_OBJC_CLASS_$_UTDIDPersistentFile' in:
+    /Users/path/Pods/AlipaySDK-iOS/AlipaySDK.framework/AlipaySDK
+    /Users/path/Pods/AlicloudUTDID/utdid/UTDID.framework/UTDID(UTDIDPersistentFile.o)
+duplicate symbol '_OBJC_METACLASS_$_UTDIDPersistentFile' in:
+    /Users/path/Pods/AlipaySDK-iOS/AlipaySDK.framework/AlipaySDK
+    /Users/path/Pods/AlicloudUTDID/utdid/UTDID.framework/UTDID(UTDIDPersistentFile.o)
+    ...
+    ```
+    
+    解决：
+    
+    使用阿里官方提供的不带有UTDID版本的`AlipaySDK-iOS` SDK.
+    
+    [App支付客户端DEMO&SDK](https://docs.open.alipay.com/54/104509)
+
+## AlipaySDK_Dependency_UTDID
+
+阿里官方只提供了不带UTDID版本的SDK， 并没有提供不带有UTDID版本SDK的 cocoapods库
+
+难道要我们放弃支付宝支付SDK的cocoapods引入，把 SDK 拖进工程嘛？？？
+
+不！！！
+
+1. 新建 `AlipaySDK_Dependency_UTDID` lib，在该lib中引入 不包含UTDID版本的支付宝支付SDK
+
+2. `AlipaySDK_Dependency_UTDID.podspec` 中依赖 `AlicloudUTDID`
+    
+    ```
+    s.dependency 'AlicloudUTDID'
+    ```
+    
+3. `AlipaySDK_Dependency_UTDID.podspec` 中依赖 `framework`
+
+    ```
+    s.resources = 'AlipaySDK_Dependency_UTDID/Assets/Resources/*.{xml,db,bundle,json,ttf,p12,der,xib}'
+  
+    s.libraries = 'c++', 'z'
+  
+    s.frameworks = 'QuartzCore', 'CoreText', 'CoreGraphics', 'CoreTelephony', 'SystemConfiguration', 'UIKit', 'Foundation', 'CFNetwork', 'CoreMotion', 'WebKit'
+
+    s.vendored_frameworks = 'AlipaySDK_Dependency_UTDID/Assets/Frameworks/*.framework'
+    ```
+
+4. 在 SGPay.podspec 中把依赖的 `AlipaySDK-iOS` 更换为 `AlipaySDK_Dependency_UTDID`
+
+    ```
+    s.dependency 'AlipaySDK_Dependency_UTDID'
+    ``
+    
+5. 在主工程中引入 `SGPay`
+    
+    ```
+    pod 'SGPay'
+    ```
+
+更改后的依赖关系：    
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201911/pay1.jpg)
+
+## 支付宝支付
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201911/alipay_logo.png)
+
+### UTDID
+
+### AliCloudPush
+
+### AlipaySDK
+
+## 微信支付
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201911/wxpay_logo.png)
+
+### Universal Links
+
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
