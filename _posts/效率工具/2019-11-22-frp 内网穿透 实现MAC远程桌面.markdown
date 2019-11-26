@@ -1,0 +1,185 @@
+---
+layout: post
+title:  "frp 内网穿透 实现MAC远程桌面"
+date:   2019-11-22 13:40:31 +0800
+categories: 效率工具
+---
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/iTerm2.png)
+
+## 起因
+
+<br>
+
+2019-10-xx，我在公司加(hua)班(shui)，媳妇从家里发来消息
+
+<br>
+
+媳妇：家里电脑怎么登陆不了谷歌邮箱？
+
+<br>
+
+*(因为在国庆期间，`vps`被封，现在已经从`Shadowsocks`转到`V2Ray`，家里电脑未能及时配置梯子)*
+
+<br>
+
+我：翻墙软件更改了，我把客户端软件发给你，你安装后配置下
+
+<br>
+
+媳妇：好麻烦呀，你能不能远程操作？
+
+<br>
+
+我：呃。。。这个。。。不能。。。
+
+<br>
+
+媳妇：<img src="http://yuqiangcoder.com/assets/postImages/ios/201911/frp_face1.png"/>
+
+<br>
+
+## 解决
+
+<br>
+
+因为家里的电脑和公司的电脑处于不同的局域网，无法直接使用VNC进行屏幕共享，
+
+<br>
+
+所以需要内网穿透，使家里的电脑能够被外网访问。
+
+<br>
+
+> [frp](https://github.com/fatedier/frp) 是一个可用于内网穿透的高性能的反向代理应用，支持 `tcp`, `udp` 协议，为 `http` 和 `https` 应用协议提供了额外的能力，且尝试性支持了点对点穿透。
+
+准备工作：
+
+* 可访问的公网IP（IP_public）
+* 处于家庭局域网的电脑（MAC_home）
+* 处于公司局域网的电脑（MAC_company）
+
+## frps 服务端 （ubuntu-16.04-x86_64）
+
+1. 确定frp版本
+    
+    github [releases](https://github.com/fatedier/frp/releases) 页面可查看支持的版本，我使用的是 [frp_0.29.1_linux_amd64.tar.gz](https://github.com/fatedier/frp/releases/download/v0.29.1/frp_0.29.1_linux_amd64.tar.gz)
+    
+2. 下载安装
+    
+    ```
+    mkdir frp
+    
+    cd frp
+    
+    wget https://github.com/fatedier/frp/releases/download/v0.29.1/frp_0.29.1_linux_amd64.tar.gz
+    
+    tar -zxvf frp_0.29.1_linux_amd64.tar.gz
+    
+    cd frp_0.29.1_linux_amd64.tar.gz
+    ```
+
+2. 配置 frps.ini
+    
+    ```
+    [common]
+    bind_port = 7000
+    ```
+    
+3. 启动 frps
+
+    ```
+    ./frps -c ./frps.ini
+    ```
+    
+4. 配置后台运行
+    
+    * 安装 supervisor
+    
+        ```
+        sudo apt-get install supervisor
+        ```
+    
+    * 配置 frp.conf
+        
+        ```
+        vi /etc/supervisor/conf.d/frp.conf
+        ```
+        
+    * frp.conf 内容
+        
+        ```
+        [program:frp]
+        command = /root/frp/frp_0.29.1_darwin_amd64/frps -c /root/frp/frp_0.29.1_darwin_amd64/frps.ini
+        
+        autostart = True
+        autorestart = True
+        ```
+        
+    * supervisorctl 启动 
+        
+        ```
+        supervisorctl update
+        ```
+        
+    * supervisorctl 查看状态
+
+        ```
+        supervisorctl status
+        ```
+
+## frpc 客户端 （MacOS Mojave）
+
+1. 确定frp版本
+    
+    MAC 需要使用 `darwin_amd64` 结尾的版本，我使用的是 [frp_0.29.1_darwin_amd64.tar.gz](https://github.com/fatedier/frp/releases/download/v0.29.1/frp_0.29.1_darwin_amd64.tar.gz)
+    
+2. 下载安装
+    
+    ```
+    mkdir frp
+    
+    cd frp
+    
+    wget https://github.com/fatedier/frp/releases/download/v0.29.1/frp_0.29.1_darwin_amd64.tar.gz
+    
+    tar -zxvf frp_0.29.1_darwin_amd64.tar.gz
+    
+    cd frp_0.29.1_darwin_amd64.tar.gz
+    ```
+
+2. 配置 frpc.ini
+    
+    `server_addr` 配置为可访问的公网IP
+    `server_port` 和服务端(`frps.ini`)的 `bind_port` 一致
+    
+    `local_port` 为 `VNC` 的默认端口号 `5900`
+    
+    `remote_port` 为屏幕共享时所输入的IP地址的端口号
+    
+    ```
+    [common]
+    server_addr = xx.xx.xx.xx
+    server_port = 7000
+    
+    [vnc]
+    type = tcp
+    local_ip = 127.0.0.1
+    local_port = 5900
+    remote_port = 35900
+    use_encryption = true
+    use_compression = true
+    ```
+    
+3. 启动 frps
+
+    ```
+    ./frps -c ./frps.ini
+    ```
+    
+## 测试连接
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
