@@ -173,15 +173,15 @@ categories: 效率工具
 
     例如： `vnc://182.185.42.38:35900`
     
-    ![](http://yuqiangcoder.com/assets/postImages/ios/201911/vnc_test1)
+    ![](http://yuqiangcoder.com/assets/postImages/ios/201911/vnc_test1.png)
 
 3. 输入用户名和密码进行连接即可
 
-    ![](http://yuqiangcoder.com/assets/postImages/ios/201911/vnc_test2)
+    ![](http://yuqiangcoder.com/assets/postImages/ios/201911/vnc_test2.png)
 
 4. 连接成功
 
-    ![](http://yuqiangcoder.com/assets/postImages/ios/201911/vnc_test3)
+    ![](http://yuqiangcoder.com/assets/postImages/ios/201911/vnc_test3.png)
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
