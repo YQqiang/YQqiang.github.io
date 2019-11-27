@@ -5,13 +5,13 @@ date:   2019-11-22 13:40:31 +0800
 categories: 效率工具
 ---
 
-![](http://yuqiangcoder.com/assets/postImages/ios/201907/iTerm2.png)
+![](http://yuqiangcoder.com/assets/postImages/ios/201911/frp.png)
 
 ## 起因
 
 <br>
 
-2019-10-xx，我在公司加(hua)班(shui)，媳妇从家里发来消息
+2019-10月的某天，我在公司加(hua)班(shui)，媳妇从家里发来消息
 
 <br>
 
@@ -39,7 +39,15 @@ categories: 效率工具
 
 <br>
 
-## 解决
+媳妇：<img src="http://yuqiangcoder.com/assets/postImages/ios/201911/frp_face2.png"/>
+
+<br>
+
+我：。。。。。。
+
+<br>
+
+## 准备
 
 <br>
 
@@ -55,11 +63,17 @@ categories: 效率工具
 
 准备工作：
 
-* 可访问的公网IP（IP_public）
-* 处于家庭局域网的电脑（MAC_home）
-* 处于公司局域网的电脑（MAC_company）
+* 可访问的公网 IP
+* 处于家庭局域网的 Mac
+* 处于公司局域网的 Mac
 
 ## frps 服务端 （ubuntu-16.04-x86_64）
+
+<br>
+
+在具有公网 IP 的服务器上搭建服务端
+
+<br>
 
 1. 确定frp版本
     
@@ -130,6 +144,12 @@ categories: 效率工具
 
 ## frpc 客户端 （MacOS Mojave）
 
+<br>
+
+在处于家庭局域网的 Mac 上搭建客户端
+
+<br>
+
 1. 确定frp版本
     
     MAC 需要使用 `darwin_amd64` 结尾的版本，我使用的是 [frp_0.29.1_darwin_amd64.tar.gz](https://github.com/fatedier/frp/releases/download/v0.29.1/frp_0.29.1_darwin_amd64.tar.gz)
@@ -178,6 +198,43 @@ categories: 效率工具
     ```
     
 ## 测试连接
+
+<br>
+
+使用处于公司局域网的 Mac 测试连接
+
+<br>
+
+使用快捷键 `command + k` 唤出连接服务器页面
+
+<br>
+
+输入 公网 IP 和 `remote_port` 指定的端口号  
+
+<br>
+
+例如： `vnc://182.185.42.38:35900`
+
+<br>
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201911/vnc_test1)
+
+<br>
+
+输入用户名和密码进行连接即可
+
+<br>
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201911/vnc_test2)
+
+<br>
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201911/vnc_test3)
+
+<br>
+
+
+
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
