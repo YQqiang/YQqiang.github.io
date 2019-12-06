@@ -13,7 +13,8 @@ categories: 开源项目
 但是依旧无法完全满足现有项目的需求，因此扩展了部分简单内容。
 
 ### 问题
-* [ ] 根据点击的图例，动态显示图表内容 类似[百度Echarts图例功能](https://www.echartsjs.com/gallery/editor.html?c=doc-example/getting-started)
+* [x] 根据点击的图例，动态显示图表内容 类似[百度Echarts图例功能](https://www.echartsjs.com/gallery/editor.html?c=doc-example/getting-started)
+* [x] 根据X轴坐标数量计算柱状图宽度
 
 ### 完成后的功能演示
 1. 折线图示例
@@ -215,6 +216,41 @@ categories: 开源项目
         }
     }
     ```
+    
+### 柱状图宽度
+`Charts SDK` 开放的接口 `barWidth` 是一个比例值，比较抽象
+
+增加 方法根据柱状图显示宽度和柱状图之间的间距及`x`轴坐标数量，计算最优的 比例值
+
+方法如下：
+
+```objc
+/// 通过像素点的柱状图宽度,计算Charts柱状图最优宽度的占比
+/// @param maxBarWidth 柱状图最大宽度,单位pt, 总宽度超过视图宽度时 失效
+/// @param minBarSpace 柱状图之间的最小间距,单位pt,总宽度超过视图宽度时 有效
+/// @param xAxisCount x轴坐标数量
+- (CGFloat)optimalBarWidthRatioWithMaxBarWidth:(CGFloat)maxBarWidth minBarSpace:(CGFloat)minBarSpace xAxisCount:(NSInteger)xAxisCount {
+    CGFloat width = CGRectGetWidth(self.bounds);
+    CGFloat result = maxBarWidth * xAxisCount / width;
+    CGFloat maxResult = maxBarWidth / (minBarSpace + maxBarWidth);
+    if (result >= 1.0 || result >= maxResult) {
+        result = maxResult;
+    }
+    return result;
+}
+```
+
+统一项目中的柱状图显示效果，柱状图宽度为32pt，间距为16pt
+
+```objc
+/// 通过像素点的柱状图宽度,计算Charts柱状图最优宽度的占比
+/// 柱状图最大宽度为 32.0 pt
+/// 柱状图之间最小间距为 16.0 pt
+/// @param xAxisCount x轴坐标数量
+- (CGFloat)optimalBarWidthRatioWithXAxisCount:(NSInteger)xAxisCount {
+    return [self optimalBarWidthRatioWithMaxBarWidth:32.0 minBarSpace:16.0 xAxisCount:xAxisCount];
+}
+```
     
 ### 其他
 关于其他部分，`MarkerView`的实现 和 使用示例请参考`Example`。
