@@ -12,6 +12,8 @@ categories: 开发笔记
 <iframe src="http://yuqiangcoder.com/assets/postImages/ios/201912/unix.pdf" style="width:100%;height:100%;border:none;margin-top:10px;">
 </iframe>
 
+<embed src="http://yuqiangcoder.com/assets/postImages/ios/201912/unix.pdf"></embed>
+
 # 链接
 [https://www.levenez.com/unix/](https://www.levenez.com/unix/)
 
