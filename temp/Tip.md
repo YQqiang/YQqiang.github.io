@@ -70,6 +70,36 @@ self.navigationItem.titleView = wrapView;
 @end
 ```
 
+### 命令行语法格式
+
+> 命令 <必选参数1|必选参数2> [-option {必选参数1|必选参数2|必选参数3}] [可选参数…] {(默认参数)|参数|参数}
+
+符号含义如下：
+
+* 尖括号< >：必选参数，实际使用时应将其替换为所需要的参数
+
+* 大括号{ }：必选参数，内部使用，包含此处允许使用的参数
+
+* 方括号[ ]：可选参数，在命令中根据需要加以取舍
+
+* 小括号( )：指明参数的默认值，只用于{ }中
+
+* 竖线|：用于分隔多个互斥参数，含义为“或”，使用时只能选择一个。
+
+* 省略号…：任意多个参数
+
+例：
+
+```
+git pull [options] [<repository> [<refspec>…]]
+
+git push [--all | --mirror | --tags] [--follow-tags] [--atomic] [-n | --dry-run] [--receive-pack=<git-receive-pack>]
+       [--repo=<repository>] [-f | --force] [-d | --delete] [--prune] [-v | --verbose]
+       [-u | --set-upstream] [--push-option=<string>]
+       [--[no-]signed|--sign=(true|false|if-asked)]
+       [--force-with-lease[=<refname>[:<expect>]]]
+       [--no-verify] [<repository> [<refspec>…]]
+```
 
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
