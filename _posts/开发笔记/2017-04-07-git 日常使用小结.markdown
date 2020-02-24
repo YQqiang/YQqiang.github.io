@@ -331,6 +331,13 @@ git reset –hard commit_id （回退到上一个commit节点， 代码也发生
     curl https://www.gitignore.io/api/xcode,macos,swift,cocoapods,objective-c > .gitignore
     ```
     
+- ### 浅克隆
+
+    仓库太大无法克隆时，可使用浅克隆
+    
+    ```
+    git clone --depth 1 xxxxxxxxxxxxxx
+    ```
     
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
