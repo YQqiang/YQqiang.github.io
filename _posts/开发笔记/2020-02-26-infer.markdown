@@ -1,0 +1,209 @@
+---
+layout: post
+title:  "infer"
+date:   2020-02-26 14:11:31 +0800
+categories: 开发笔记
+---
+
+# infer
+
+## 介绍
+
+> Infer 是一个静态程序分析工具,可以对 Java、C 和 Objective-C 程序进行分析，此工具是用 OCaml 写成的。
+Infer 最早部署在 Facebook 内部，用于发布移动应用之前对每一行代码进行分析，目前 Facebook 使用此工具分析所开发的 Android、iOS 应用,包括 Facebook Messenger、Instagram 和其他一些应用。 Infer 不仅仅用于移动应用程序的分析，还可以分析 C、Java 等不是 Android 系统的代码。 目前 Infer 着重于发现一些诸如空指针的访问、资源和内存的泄露等导致手机程序崩溃或性能严重下降的问题。
+
+> Infer 源自 2013 年收购的一家初创企业 Monoidics。Monoidics 本身就是根据最近的学术研究成果，特别是在 separation logic 和 bi-abduction。在 Facebook 内部，Infer 进行持续的迭代开发，并根据从开发者收集的反馈进行相应的调整。开源之后我们将继续开发 Infer，已造福其他使用者，并且我们可以与社区的其他开发者已开发出更好的程序检验技术为目标而为之奋斗。
+
+## 工作机制
+
+`Infer` 运行时，分为两个主要阶段
+
+1. 捕获阶段 (`capture`)
+    `Infer` 捕获编译命令，将文件翻译成 `Infer` 内部的中间语言。
+    这种翻译和编译类似，`Infer` 从编译过程获取信息，并进行翻译。
+    
+    `Infer` 把中间文件存储在结果文件夹中，一般来说，这个文件夹会在运行 `infer` 的目录下创建，命名是 `infer-out/`。当然，你也可以通过 `-o` 选项来自定义文件夹名字
+    
+2. 分析阶段 (`analyze`)
+    在分析阶段，`Infer` 分析 `infer-out/` 下的所有文件。分析时，会单独分析每个方法和函数。
+    
+## 安装
+
+推荐使用 `Homebrew` 安装
+
+```
+brew install infer
+```
+
+## 相关命令
+
+使用 `infer --help` 获取帮助文档
+
+1. infer capture
+    捕获源码，翻译为 `infer` 内部的中间语言，存储在 result文件夹
+    
+    使用 `infer capture --help` 获取帮助文档
+    
+2. infer analyze
+    分析转换后的结果并生成报告
+    
+    使用 `infer analyze --help` 获取帮助文档
+    
+3. infer compile
+    截取编译命令和 `capture` 类似，但是只执行编译命令，不会翻译源文件； 用于配置编译系统或者调试
+    
+    使用 `infer compile --help` 获取帮助文档
+    
+4. infer report
+    在 `result`目录中读取，转换和输出 `.specs`文件。
+    
+    使用 `infer report --help` 获取帮助文档
+    
+5. infer reportdiff
+    比较 两份 `infer` 报告
+    
+    使用 `infer reportdiff --help` 获取帮助文档
+    
+6. infer run
+    相当于执行了 `infer capture` 和 `infer analyze`. `run` 也可以省略
+    
+    使用 `infer run --help` 获取帮助文档
+    
+## 相关参数
+
+1. `--skip-analysis-in-path` 指定跳过分析的文件路径
+2. `--results-dir` 或 `-o` 指定文件输出路径
+    
+
+# xcodebuild
+
+iOS 编译，构建包，清缓存等操作的命令行工具
+
+## 相关命令
+
+使用 `xcodebuild --help` 获取帮助文档
+
+1. `xcodebuild` 编译
+
+2. `xcodebuild archive` 构建包
+
+3. `xcodebuild clean` 清缓存
+
+## 相关参数
+
+1. `-workspace` 指定工作空间
+
+2. `-scheme` 指定 scheme
+
+3. `-configuration` 相关配置
+
+4. `-UseModernBuildSystem` 配置编译系统
+
+5. `-sdk` 指定编译的SDK
+
+6. `-arch` 配置生成的二进制指令集
+
+# xcpretty
+
+`xcodebuild` 的输出结果可读性太差，通过 `xcpretty` 可以格式化输出结果
+
+## 安装
+
+```
+gem install xcpretty
+```
+
+## 使用
+
+把 `xcodebuild` 的输出结果通过管道传给 `xcpretty` 即可
+
+```
+xcodebuild -workspace ...... | xcpretty
+```
+
+# 组合使用
+
+通过以上工具的组合，可以对 `iOS` 项目进行静态代码分析
+
+示例：
+
+```
+xcodebuild -workspace ${infer_run_project_path}/${infer_run_scheme_name}.xcworkspace -scheme ${infer_run_scheme_name} -configuration Debug -UseModernBuildSystem=NO -sdk iphoneos
+    
+LD=/usr/bin/true infer --skip-analysis-in-path Pods --no-xcpretty -o ${infer_run_out_path} -- xcodebuild -workspace ${infer_run_project_path}/${infer_run_scheme_name}.xcworkspace -scheme ${infer_run_scheme_name} -configuration Debug -UseModernBuildSystem=NO -sdk iphoneos | xcpretty
+```
+
+# infer.sh
+
+为了方便使用，编写了一小段脚本[infer.sh](https://github.com/YQqiang/infer)
+
+## 脚本逻辑
+
+脚本逻辑如下：
+
+1. 获取两个分支间的文件差异；
+
+2. 在源分支上分析输出`bug`报告；
+
+3. 在目标分支上分析输出`bug`报告；
+
+4. 对比两份报告，输出已修复的bug报告和新引入的`bug`报告
+
+## 脚本使用
+
+### 基础用法
+
+1. 把 `infer.sh` 文件放在 `projectname.xcworkspace` 的同级目录；
+2. 运行脚本 `./infer.sh`
+
+### 高级用法
+
+1. 对比分支间存在差异的文件
+    
+    ```
+    ./infer.sh -s source_branch -t target_branch
+    ```
+    
+2. 若当前分支为 `target_branch` 分支
+
+    ```
+    ./infer.sh -s source_branch
+    ```
+    
+3. 若当前分支为 `source_branch` 分支
+
+    ```
+    ./infer.sh -t target_branch
+    ```
+    
+4. 指定 xcworkspace 项目名称
+    
+    ```
+    ./infer.sh -p project_name
+    ```
+    
+5. 删除infer的输出结果
+    
+    ```
+    ./infer.sh -d
+    ```
+
+6. 查看参数选项
+    
+    ```
+    ./infer.sh -h
+    ```
+
+# 参考链接
+
+[fbinfer](https://fbinfer.com/docs/getting-started.html)
+
+[infer 中文](https://infer.liaohuqiu.net/docs/hello-world.html)
+
+[infer-issues-1198](https://github.com/facebook/infer/issues/1198)
+
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
