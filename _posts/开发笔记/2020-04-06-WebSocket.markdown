@@ -56,19 +56,20 @@ categories: 开发笔记
 
 ![](http://yuqiangcoder.com/assets/postImages/ios/202004/websocket+http.png)
 
-* websocket 是一个持久化的协议；HTTP 是非持久化协议；
-* 在HTTP中，声明周期通过Request界定，一个 Request 对应一个 Response，且这个 Response是被动的，不能主动发起。
-* websocket借用了HTTP协议来完成一部分握手🤝，
+* `websocket` 是独立的、创建在 `TCP` 上的协议;
+* `websocket` 是一个持久化的协议；`HTTP` 是非持久化协议；
+* 在 `HTTP` 中，声明周期通过 `Request` 界定，一个 `Request` 对应一个 `Response`，且这个 `Response` 是被动的，不能主动发起;
+* `websocket` 借用了 `HTTP` 协议来完成一部分握手🤝.
 
 ### 实时通讯
 * 轮询
-    * 浏览器每隔一段时间向服务器发出 HTTP 请求，然后服务器返回最新的数据给客户端。
-    * 缺点： 浏览器需要不断的向服务器发出请求，然而 HTTP 请求与回复可能会包含较长的头部，其中真正有效的数据可能只是很小的一部分，所以这样会消耗很多带宽资源。
+    * 浏览器每隔一段时间向服务器发出 `HTTP` 请求，然后服务器返回最新的数据给客户端。
+    * 缺点： 浏览器需要不断的向服务器发出请求，然而 `HTTP` 请求与回复可能会包含较长的头部，其中真正有效的数据可能只是很小的一部分，所以这样会消耗很多带宽资源。
 * websocket
     * 能更好的节省服务器资源和带宽，并且能够更实时地进行通讯
 
 ### 统一资源标识符（URI）
-websocket使用ws或wss的统一资源标志符（URI）。其中wss表示使用了TLS的websocket。
+`websocket` 使用 `ws` 或 `wss` 的统一资源标志符（URI）。其中 `wss` 表示使用了 `TLS` 的  `websocket`。
 
 ```
 ws://example.com/wsapi
@@ -76,25 +77,104 @@ wss://secure.example.com/wsapi
 ```
 
 ### 默认端口
-* websocket与HTTP和HTTPS使用相同的TCP端口
-* websocket协议使用80端口；
-* 运行在 TLS 之上时，默认使用443端口。
+* `websocket` 与 `HTTP` 和 `HTTPS` 使用相同的 `TCP` 端口
+* `websocket` 协议使用 `80` 端口；
+* 运行在 `TLS` 之上时，默认使用 `443` 端口。
+
+### websocket 示例
+
+客户端请求：
+
+```
+GET /chat HTTP/1.1
+Host: server.example.com
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==
+Origin: http://example.com
+Sec-WebSocket-Protocol: chat, superchat
+Sec-WebSocket-Version: 13
+```
+
+服务器回应：
+
+```
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo=
+Sec-WebSocket-Protocol: chat
+```
+
+字段说明：
+
+* `Connection` 必须设置 `Upgrade`，表示客户端希望连接升级。
+* `Upgrade` 字段必须设置 `Websocket`，表示希望升级到 `Websocket` 协议。
+* `Sec-WebSocket-Key` 是随机的字符串，服务器端会用这些数据来构造出一个 `SHA-1` 的信息摘要。把 `Sec-WebSocket-Key` 加上一个特殊字符串 `258EAFA5-E914-47DA-95CA-C5AB0DC85B11`，然后计算 `SHA-1` 摘要，之后进行 `Base64` 编码，将结果做为 `Sec-WebSocket-Accept` 头的值，返回给客户端。如此操作，可以尽量避免普通 `HTTP` 请求被误认为`Websocket` 协议。
+* `Sec-WebSocket-Version` 表示支持的 `Websocket` 版本。RFC6455要求使用的版本是13，之前草案的版本均应当弃用。
+* `Origin` 字段是可选的，通常用来表示在浏览器中发起此 `Websocket` 连接所在的页面，类似于`Referer`。但是，与 `Referer` 不同的是，`Origin` 只包含了协议和主机名称。
+* 其他一些定义在 `HTTP` 协议中的字段，如 `Cookie` 等，也可以在 `Websocket` 中使用。
 
 ## SocketRocket
+[SocketRocket](https://github.com/facebook/SocketRocket) 是 facebook 推出的在 iOS 中使用 `WebSocket` 的库。
 
+### 接口预览
 
+```objective-c
+@interface SRWebSocket : NSObject
+
+// Make it with this
+- (instancetype)initWithURLRequest:(NSURLRequest *)request;
+
+// Set this before opening
+@property (nonatomic, weak) id <SRWebSocketDelegate> delegate;
+
+// Open with this
+- (void)open;
+
+// Close it with this
+- (void)close;
+
+// Send a Data
+- (void)sendData:(nullable NSData *)data error:(NSError **)error;
+
+// Send a UTF8 String
+- (void)sendString:(NSString *)string error:(NSError **)error;
+
+@end
+```
+
+### 代理回调
+
+```objective-c
+@protocol SRWebSocketDelegate <NSObject>
+
+@optional
+
+- (void)webSocketDidOpen:(SRWebSocket *)webSocket;
+
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithString:(NSString *)string;
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveMessageWithData:(NSData *)data;
+
+- (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error;
+- (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(nullable NSString *)reason wasClean:(BOOL)wasClean;
+
+@end
+```
 
 ## 使用
 
-
+为了方便现有项目使用，在[SocketRocket](https://github.com/facebook/SocketRocket)基础上做了 [简单封装](https://github.com/YQqiang/WebSocket)
 
 ## 参考链接
 
 [维基百科-WebSocket](https://zh.wikipedia.org/wiki/WebSocket)
-[知乎](https://www.zhihu.com/question/20215561)
 
+[知乎-WebSocket](https://www.zhihu.com/question/20215561)
 
+[菜鸟教程-websocket](https://www.runoob.com/html/html5-websocket.html)
 
+[GitHub-SocketRocket](https://github.com/facebook/SocketRocket)
 
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
