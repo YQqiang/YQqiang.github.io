@@ -16,6 +16,64 @@ title: 逆行云
 ----
 余强, 一名虔诚的代码搬运工, iOS开发的小学生...
 
+## 技能列表
+----
+### 开发平台
+* iOS
+* Mac OS
+
+### 开发语言
+* Objective-C
+* Swift
+* SwiftUI
+* Combine
+* Shell
+
+### 代码检测
+* Infer
+
+### 内网穿透
+* VPS
+* Frp
+
+### 支付
+* Ali Pay
+* Wechat Pay
+
+### 图表
+* Charts
+
+### 动画
+* Lottie
+
+### 字体库
+* IconFont
+
+### 加解密
+* SQLCipher
+* RSA
+
+### 物联网
+* Wi-Fi
+* BLE
+* Modbus
+
+### 长连接
+* WebSocket
+* MQTT
+
+### 国际化
+* Localizable
+
+### 组件化
+* Cocoapods
+* private pod
+
+### 代码管理
+* Git
+* GitLab
+* GOGS
+
 ## 博客模板
 ----
 博客模板来源于[在Github上搭建Jekyll博客和创建主题](http://liuyanwei.jumppo.com/2014/02/12/how-to-deploy-a-blog-on-github-by-jekyll.html)
