@@ -57,6 +57,11 @@ title: 逆行云
 * Wi-Fi
 * BLE
 * Modbus
+* ESP32-Ethernet-Kit
+* smartconfig
+* softAP
+* mDNS
+* BluFi
 
 ### 长连接
 * WebSocket
