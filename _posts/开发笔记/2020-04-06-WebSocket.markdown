@@ -166,6 +166,9 @@ Sec-WebSocket-Protocol: chat
 
 为了方便现有项目使用，在[SocketRocket](https://github.com/facebook/SocketRocket)基础上做了 [简单封装](https://github.com/YQqiang/WebSocket)
 
+| ![](https://github.com/YQqiang/WebSocket/blob/master/connect.PNG) | ![](https://github.com/YQqiang/WebSocket/blob/master/sendmessage.PNG) |
+| --- | --- |
+
 ## 参考链接
 
 [维基百科-WebSocket](https://zh.wikipedia.org/wiki/WebSocket)
