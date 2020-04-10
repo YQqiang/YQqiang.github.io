@@ -11,7 +11,9 @@ categories: 开发笔记
 
 ## 计算机网络体系结构
 
-![](http://yuqiangcoder.com/assets/postImages/ios/202004/OSI.png)
+<center class="half">
+    <img src="http://yuqiangcoder.com/assets/postImages/ios/202004/OSI.png"/>
+</center>
 
 * 应用层
     * 任务： 通过应用进程间的交互来完成特定网络应用；
@@ -54,7 +56,9 @@ categories: 开发笔记
 
 ### 对比 HTTP 协议
 
-![](http://yuqiangcoder.com/assets/postImages/ios/202004/websocket+http.png)
+<center class="half">
+    <img src="http://yuqiangcoder.com/assets/postImages/ios/202004/websocket+http.png"/>
+</center>
 
 * `websocket` 是独立的、创建在 `TCP` 上的协议;
 * `websocket` 是一个持久化的协议；`HTTP` 是非持久化协议；
