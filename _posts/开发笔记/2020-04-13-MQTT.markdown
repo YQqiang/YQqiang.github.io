@@ -1,0 +1,100 @@
+---
+layout: post
+title:  "MQTT"
+date:   2020-04-13 14:11:31 +0800
+categories: 开发笔记
+---
+
+![](http://yuqiangcoder.com/assets/postImages/ios/202004/web.jpg)
+
+该图片由<a href="https://pixabay.com/zh/users/Pexels-2286921/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1868997">Pexels</a>在<a href="https://pixabay.com/zh/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1868997">Pixabay</a>上发布
+
+
+## MQTT-Client-Framework
+
+
+### 接口预览
+
+
+### 代理回调
+
+
+## 封装使用
+基于[MQTT-Client-Framework](https://github.com/novastone-media/MQTT-Client-Framework)封装了一套链式语法调用的 `API`, 方便易用。[点击查看源码](https://github.com/YQqiang/SGMQTT)
+
+* Config
+
+```Objective-C
+SGMQTTManage.shared
+.host(@"demo.abc.com")
+.port(1883)
+.auth(YES)
+.user(@"user")
+.pass(@"123");
+```
+
+* Connect
+
+```Objective-C
+SGMQTTManage.shared
+.connect(^(NSError *error) {
+    [self showMessage:[NSString stringWithFormat:@"MQTT-连接-%@", !error ? @"成功" : error]];
+});
+```
+
+* Disconnect
+
+```Objective-C
+SGMQTTManage.shared
+.disConnect(^(NSError *error) {
+    [self showMessage:[NSString stringWithFormat:@"MQTT-断开-%@", !error ? @"成功" : error]];
+});
+```
+* Subscribe
+
+```Objective-C
+SGMQTTManage.shared
+.subscribe([self currentTopic], MQTTQosLevelExactlyOnce, ^(NSError *error, NSArray<NSNumber *> *gQoss) {
+    [self showMessage:[NSString stringWithFormat:@"MQTT-订阅-%@", !error ? @"成功" : error]];
+}, ^(MQTTSessionManager * _Nonnull sessionManager, NSData * _Nonnull data, NSString * _Nonnull topic, BOOL retained) {
+    [self showMessage:[NSString stringWithFormat:@"MQTT-Data-%@; topic-%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], topic]];
+});
+```
+* Unsubscribe
+
+```Objective-C
+SGMQTTManage.shared
+.unsubscribe([self currentTopic], ^(NSError *error) {
+    [self showMessage:[NSString stringWithFormat:@"MQTT-取消订阅-%@", !error ? @"成功" : error]];
+});
+```
+* PublishData
+
+```Objective-C
+SGMQTTManage.shared
+.publishData(data, [self currentTopic], NO, MQTTQosLevelExactlyOnce, ^(NSError *error) {
+    [self showMessage:[NSString stringWithFormat:@"MQTT-发送-%@", !error ? @"成功" : error]];
+});
+```
+* State
+
+```Objective-C
+SGMQTTManage.shared
+.addChangeState(@"test", ^(MQTTSessionManager * _Nonnull sessionManager, MQTTSessionManagerState newState) {
+    [self showMessage:[NSString stringWithFormat:@"MQTT-state=%@", @(newState)]];
+});
+```
+
+## 参考链接
+
+[wikipedia-MQTT](https://zh.wikipedia.org/wiki/MQTT)
+
+[菜鸟教程-MQTT](https://www.runoob.com/w3cnote/mqtt-intro.html)
+
+[GitHub-MQTT-Client-Framework](https://github.com/novastone-media/MQTT-Client-Framework)
+
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
