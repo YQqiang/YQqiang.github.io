@@ -101,6 +101,32 @@ git push [--all | --mirror | --tags] [--follow-tags] [--atomic] [-n | --dry-run]
        [--no-verify] [<repository> [<refspec>…]]
 ```
 
+### URL安全的Base64编码
+
+[wikipedia-Base64](https://zh.wikipedia.org/wiki/Base64)
+
+> `Base64` 编码可用于在 `HTTP` 环境下传递较长的标识信息。例如，在Java持久化系统Hibernate中，就采用了 `Base64` 来将一个较长的唯一标识符（一般为 `128-bit` 的 `UUID` ）编码为一个字符串，用作 `HTTP` 表单和 `HTTP GET URL` 中的参数。在其他应用程序中，也常常需要把二进制数据编码为适合放在 `URL`（包括隐藏表单域）中的形式。此时，采用 `Base64` 编码不仅比较简短，同时也具有不可读性，即所编码的数据不会被人用肉眼所直接看到。
+
+> 然而，标准的 `Base64` 并不适合直接放在 `URL` 里传输，因为 `URL` 编码器会把标准 `Base64`中的 `/` 和 `+` 字符变为形如 `%XX` 的形式，而这些 `%` 号在存入数据库时还需要再进行转换，因为 `ANSI SQL` 中已将 `%` 号用作通配符。
+
+> 为解决此问题，可采用一种用于 `URL` 的改进 `Base64` 编码，它不在末尾填充=号，并将标准 `Base64` 中的 `+` 和 `/` 分别改成了 `-` 和 `_` ，这样就免去了在 `URL` 编解码和数据库存储时所要作的转换，避免了编码信息长度在此过程中的增加，并统一了数据库、表单等处对象标识符的格式。
+
+```Objective-C
++ (NSString *)base64URLSafeEncode:(NSData *)data {
+    data = [data base64EncodedDataWithOptions:0];
+    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    str = [str stringByReplacingOccurrencesOfString:@"+" withString:@"-"];
+    str = [str stringByReplacingOccurrencesOfString:@"/" withString:@"_"];
+    return str;
+}
+
++ (NSData *)base64URLSafeDecode:(NSString *)str {
+    str = [str stringByReplacingOccurrencesOfString:@"-" withString:@"+"];
+    str = [str stringByReplacingOccurrencesOfString:@"_" withString:@"/"];
+    NSData *data = [[NSData alloc] initWithBase64EncodedString:str options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    return data;
+}
+```
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
