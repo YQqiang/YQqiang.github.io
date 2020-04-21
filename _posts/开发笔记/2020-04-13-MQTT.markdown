@@ -46,6 +46,10 @@ categories: 开发笔记
 ## 封装使用
 基于[MQTT-Client-Framework](https://github.com/novastone-media/MQTT-Client-Framework)封装了一套链式语法调用的 `API`, 方便易用。[点击查看源码](https://github.com/YQqiang/SGMQTT)
 
+<center class="half">
+    <img src="http://yuqiangcoder.com/assets/postImages/ios/202004/MQTT1.PNG"/><img src="http://yuqiangcoder.com/assets/postImages/ios/202004/MQTT2.PNG"/>
+</center>
+
 * Config
 
 ```Objective-C
