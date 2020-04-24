@@ -68,7 +68,7 @@ categories: 效率工具
 ![](http://yuqiangcoder.com/assets/postImages/ios/201907/history1.png)
 
 ### Status Bar
-[iTerm2](https://www.iterm2.com/downloads.html) 在 3.3.2 版本中支持 Status Bar 配置
+[iTerm2](https://www.iterm2.com/downloads.html) 在 3.3.3 版本中支持 Status Bar 配置
 
 ![](http://yuqiangcoder.com/assets/postImages/ios/201907/iterm2_statusbar1.png)
 
