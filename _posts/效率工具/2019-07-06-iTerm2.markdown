@@ -67,6 +67,17 @@ categories: 效率工具
 1. `command + option + B` 历史命令记录时间轴
 ![](http://yuqiangcoder.com/assets/postImages/ios/201907/history1.png)
 
+### Status Bar
+[iTerm2](https://www.iterm2.com/downloads.html) 在 3.3.2 版本中支持 Status Bar 配置
+
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/iterm2_statusbar1.png)
+
+1. `Preference` --> `Profiles` --->`Session` ---> `Status bar enabled`
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/iterm2_statusbar2.png)
+
+2. Config Status Bar
+![](http://yuqiangcoder.com/assets/postImages/ios/201907/iterm2_statusbar3.png)
+
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
