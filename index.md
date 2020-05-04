@@ -16,7 +16,7 @@ title: 逆行云
 ----
 余强, 一名虔诚的代码搬运工, iOS开发的小学生...
 
-## 技能列表
+## 技能关键字
 ----
 ### 开发平台
 * iOS
@@ -33,6 +33,13 @@ title: 逆行云
 * RunLoop
 * Runtime
 * LLVM
+    * LLVM Core
+    * CLang
+    * LLDB
+    * libC++
+    * Compile-rt
+    * MLIR
+    * LLD
 
 ### 代码检测
 * Infer
@@ -83,6 +90,9 @@ title: 逆行云
 * Git
 * GitLab
 * GOGS
+
+### 持续集成
+* Jenkins
 
 ## 博客模板
 ----
