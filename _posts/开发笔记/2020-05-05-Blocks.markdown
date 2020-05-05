@@ -245,9 +245,269 @@ void (^blk)(void) = ^ {
 
 虽然赋值给截获的自动变量 array 的操作会产生编译错误，但使用截获的值却不会有任何问题。
 
-## Blocks 实现
+## Blocks 的实现
 ### Block 的实质
+
+Block 语法看上去好像很特别，但它实际上是作为极普通的 C 语言源代码来处理的。
+通过支持 Block 的编译器，含有 Block 语法的源代码转换为一般 C 语言编译器能够处理的源代码，并作为极为普通的 C 语言源代码被编译。
+
+clang（LLVM 编译器）具有转换为我们可读源代码的功能。
+通过 `-rewrite-objc` 选项就能将含有 Block 语法的源代码变换为 C++ 的源代码。
+
+说是 C++，其实也仅是使用了 struct 结构，其本质是 C 语言源代码。
+
+```C
+clang -rewrite-objc 源代码文件名
+```
+
+待转换的 Block 源代码：
+
+```Objective-C
+int main(int argc, const char * argv[]) {
+    void (^blk)(void) = ^{ printf("Block\n"); };
+    
+    blk();
+    
+    return 0;
+}
+```
+
+转换后的代码（部分）：
+
+```C++
+struct __block_impl {
+  void *isa;
+  int Flags;
+  int Reserved;
+  void *FuncPtr;
+};
+
+struct __main_block_impl_0 {
+  struct __block_impl impl;
+  struct __main_block_desc_0* Desc;
+  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0) {
+    impl.isa = &_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp;
+    Desc = desc;
+  }
+};
+
+static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
+ printf("Block\n"); }
+
+static struct __main_block_desc_0 {
+  size_t reserved;
+  size_t Block_size;
+} __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0)};
+
+int main(int argc, const char * argv[]) {
+    void (*blk)(void) = ((void (*)())&__main_block_impl_0((void *)__main_block_func_0, &__main_block_desc_0_DATA));
+
+    ((void (*)(__block_impl *))((__block_impl *)blk)->FuncPtr)((__block_impl *)blk);
+
+    return 0;
+}
+```
+
+**所谓 Block 就是 Objective-C 对象**
+
+### 截获自动变量值
+
+待转换的 Block 源代码：
+
+```C
+int main(int argc, const char * argv[]) {
+    int dmy = 256;
+    int val = 10;
+    
+    const char *fmt = "val = %d\n";
+    
+    void (^blk)(void) = ^ { printf(fmt, val); } ;
+    
+    blk();
+    return 0;
+}
+```
+
+转换后的代码：
+
+```C++
+struct __main_block_impl_0 {
+  struct __block_impl impl;
+  struct __main_block_desc_0* Desc;
+  const char *fmt;
+  int val;
+  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, const char *_fmt, int _val, int flags=0) : fmt(_fmt), val(_val) {
+    impl.isa = &_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp;
+    Desc = desc;
+  }
+};
+static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
+  const char *fmt = __cself->fmt; // bound by copy
+  int val = __cself->val; // bound by copy
+ printf(fmt, val); }
+
+static struct __main_block_desc_0 {
+  size_t reserved;
+  size_t Block_size;
+} __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0)};
+int main(int argc, const char * argv[]) {
+    int dmy = 256;
+    int val = 10;
+
+    const char *fmt = "val = %d\n";
+
+    void (*blk)(void) = ((void (*)())&__main_block_impl_0((void *)__main_block_func_0, &__main_block_desc_0_DATA, fmt, val)) ;
+
+    ((void (*)(__block_impl *))((__block_impl *)blk)->FuncPtr)((__block_impl *)blk);
+    return 0;
+}
+```
+
+**所谓 “截获自动变量值” 意味着在执行 Block 语法时， Block 语法表达式所使用的自动变量值被保存到 Block 的结构体实例（即 Block 自身）中**
+
+### __block 说明符
+
+__block 存储域类说明符 （__block storage-class-specifier）
+
+C 语言中有以下存储域类说明符：
+
+* typedef
+* extern
+* static
+* auto
+* register
+
+`__block` 说明符类似于 `static`、`auto` 和 `register` 说明符，它们用于指定将变量值设置到哪个存储域中。
+例如： `auto` 表示作为自动变量存储在栈中，
+      `static` 表示作为静态变量存储在数据区中。
+
+待转换的 Block 源代码：
+
+```C
+int main(int argc, const char * argv[]) {
+    __block int val = 0;
+        
+    void (^blk)(void) = ^{ val = 1; };
+        
+    blk();
+        
+    printf("val = %d\n", val);
+    return 0;
+}
+```
+
+转换后的代码：
+
+```C++
+struct __Block_byref_val_0 {
+  void *__isa;
+__Block_byref_val_0 *__forwarding;
+ int __flags;
+ int __size;
+ int val;
+};
+
+struct __main_block_impl_0 {
+  struct __block_impl impl;
+  struct __main_block_desc_0* Desc;
+  __Block_byref_val_0 *val; // by ref
+  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, __Block_byref_val_0 *_val, int flags=0) : val(_val->__forwarding) {
+    impl.isa = &_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp;
+    Desc = desc;
+  }
+};
+static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
+  __Block_byref_val_0 *val = __cself->val; // bound by ref
+ (val->__forwarding->val) = 1; }
+static void __main_block_copy_0(struct __main_block_impl_0*dst, struct __main_block_impl_0*src) {_Block_object_assign((void*)&dst->val, (void*)src->val, 8/*BLOCK_FIELD_IS_BYREF*/);}
+
+static void __main_block_dispose_0(struct __main_block_impl_0*src) {_Block_object_dispose((void*)src->val, 8/*BLOCK_FIELD_IS_BYREF*/);}
+
+static struct __main_block_desc_0 {
+  size_t reserved;
+  size_t Block_size;
+  void (*copy)(struct __main_block_impl_0*, struct __main_block_impl_0*);
+  void (*dispose)(struct __main_block_impl_0*);
+} __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0), __main_block_copy_0, __main_block_dispose_0};
+int main(int argc, const char * argv[]) {
+    __attribute__((__blocks__(byref))) __Block_byref_val_0 val = {(void*)0,(__Block_byref_val_0 *)&val, 0, sizeof(__Block_byref_val_0), 0};
+
+    void (*blk)(void) = ((void (*)())&__main_block_impl_0((void *)__main_block_func_0, &__main_block_desc_0_DATA, (__Block_byref_val_0 *)&val, 570425344));
+
+    ((void (*)(__block_impl *))((__block_impl *)blk)->FuncPtr)((__block_impl *)blk);
+
+    printf("val = %d\n", (val.__forwarding->val));
+    return 0;
+}
+```
+
+`__block` 变量也同 `Block` 一样变成 `__Block_byref_val_0` 结构体类型的自动变量，即栈上生成的 `__Block_byref_val_0` 结构体实例。
+
 ### Block 存储域
+
+* Block 转换为 Block 的结构体类型的自动变量
+* __block 变量转换为 __block 变量的结构体类型的自动变量
+
+所谓结构体类型的自动变量，即栈上生成的该结构体的实例。
+
+| 名称 | 实质 |
+| --- | --- |
+| Block | 栈上 Block 的结构体实例 |
+| __block 变量 | 栈上 __block 变量的结构体实例 |
+
+`Block` 也是 `Objective-C` 的对象。将 `Block` 当作 `Objective-C` 对象来看时，该 `Block` 的类为 `_NSConcreteStakBlock`。
+
+| 类 | 设置对象的存储域 |
+| --- | --- |
+| _NSConcreteStakBlock | 栈 |
+| _NSConcreteGlobalBlock | 程序的数据区域（.data 区） |
+| _NSConcreteMallocBlock | 堆 |
+
+应用程序的内存分配：
+
+```
+ ------------------
+|                  |
+|    （程序区域）    |
+|	   .text       |
+|                  |
+|------------------|
+|                  |
+|	 （数据区域）    |
+|	   .data       |
+|                  |
+|------------------|
+|                  |
+|	   （堆）       | 
+|                  |
+|------------------|
+|                  |
+|	   （栈）       | 
+|                  |
+ ------------------
+```
+
+在记述全局变量的地方使用 Block 语法时，生成的 Block 为 `_NSConcreteGlobalBlock` 类对象。
+因为在使用全局变量的地方不能使用自动变量，所以不存在对自动变量进行截获。由此，Block 用结构体实例的内容不依赖与执行时的状态，所以在整个程序中只需一个实例。
+因此将 Block 用结构体实例设置在与全局变量相同的数据区域中即可。
+
+**只要 Block 不截获自动变量，就可以将 Block 用结构体实例设置在程序的数据区域**
+
+配置在全局变量上的 Block， 从变量作用域外也可以通过指针安全地使用。
+但设置在栈上的 Block， 如果其所属的变量作用域结束，该 Block 就被废弃。
+由于 __block 变量也配置在栈上，同样地，如果其所属的变量作用域结束，则该 __block 变量也会被放弃。
+
+**Blocks 提供了将 Block 和 __block 变量从栈上复制到堆上的方法来解决这个问题**
+
+将配置在栈上的 Block 复制到堆上，这样即使 Block 语法记述的变量作用域结束，堆上的 Block 还可以继续存在。
+
+
 ### Block 循环引用
 
 
