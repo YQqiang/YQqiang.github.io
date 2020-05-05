@@ -1,0 +1,258 @@
+---
+layout: post
+title:  "Blocks"
+date:   2020-05-05 14:11:31 +0800
+categories: 开发笔记
+---
+
+![](http://yuqiangcoder.com/assets/postImages/ios/202005/Objective-C_book.jpg)
+
+## 什么是Blocks
+`Block` 是 `C` 语言的扩充功能：带有自动变量的匿名函数。
+
+* 自动变量： 局部变量
+* 匿名函数： 不带有名称的函数
+
+`C` 语言的标准库中不允许存在这样的函数。
+
+函数调用方式
+
+* 使用函数名称调用函数
+* 使用函数指针调用函数
+
+```C
+// 函数声明
+int func(int count);
+
+// 使用函数名称调用函数
+int result = func(10);
+
+// 使用函数指针调用函数
+int (*funcptr)(int) = &func;
+int result = (*funcptr)(10);
+```
+
+* `&` 取地址
+* `*` 取值
+
+C 语言的函数中可能使用的变量：
+
+* 自动变量（局部变量）
+* 函数的参数
+* 静态变量（静态局部变量）
+* 静态全局变量
+* 全局变量
+
+其中，在函数的多次调用之间能够传递值的变量有：
+
+* 静态变量（静态局部变量）
+* 静态全局变量
+* 全局变量
+
+C++ 和 Objective-C 使用类可以保持变量值且能够多次持有该变量自身。
+
+但是声明和实现 C++ 和 Objective-C 的类增加了代码长度，这事就需要使用 Blocks了；
+Blocks 提供了类似由 c++ 和 Objective-C 类生成实例或对象来保持变量值的方法。
+
+## Blocks 模式
+### Block 语法
+
+完整形式的 `Block` 语法与一般的 C 语言函数定义相比，仅有两点不同：
+
+* 没有函数名
+* 带有 `^`
+
+C 语言函数定义如下：
+
+`返回值类型` `函数名称` `参数列表` `表达式`
+
+Block 语法格式如下：
+
+`^` `返回值类型` `参数列表` `表达式`
+
+省略返回值后的格式如下：
+
+`^` `参数列表` `表达式`
+
+同时省略返回值和参数列表的格式如下：
+
+`^` `表达式`
+
+### Block 类型变量
+
+在定义 C 语言函数时，可以将所定义的函数的地址赋值给函数指针类型变量中：
+
+```C
+int func(int count) {
+    return count + 1;
+}
+
+int (*funcptr)(int) = &func;
+```
+
+这样一来，函数 `func` 的地址就能赋值给函数指针类型变量 `funcptr` 中了。
+
+同样的，在 Block 语法下，可将 Block 语法赋值给声明为 Block 类型的变量中。
+
+```Objective-C
+int (^blk)(int);
+```
+
+声明 Block 类型变量仅仅是将声明函数指针类型变量的 `*` 变为 `^`。
+
+Block 类型的变量的用途：
+
+* 自动变量
+* 函数参数
+* 静态变量
+* 静态全局变量
+* 全局变量
+
+使用 Block 语法将 Block 赋值为 Block 类型变量示例如下：
+
+```Objective-C
+int (^blk)(int) = ^(int count) { return count + 1; };
+```
+
+因为与通常的变量相同，所以可以由 Block 类型变量向 Block 类型变量赋值：
+
+```Objective-C
+int (^blk1)(int) = blk;
+
+int (^blk2)(int);
+blk2 = blk;
+```
+
+在函数参数中使用 Block 类型变量向函数传递 Block：
+
+```Objective-C
+void func(int (^blk)(int)) {
+}
+```
+
+将 Block 作为函数的返回值：
+
+```Objective-C
+int (^func())(int) {
+    return ^(int count) { return count + 1; };
+}
+```
+
+由上可知，在函数参数和返回值中使用的 Block 类型变量时，记述方式极为复杂。
+这时，可以像使用函数指针类型时那样，使用 typedef 来解决该问题：
+
+```Objective-C
+typedef int (^blk_t)(int);
+
+// 作为函数参数
+void func1(blk_t blk) {
+}
+
+// 作为函数返回值
+blk_t func2() {
+    return ^(int count) { return count + 1; };
+}
+```
+
+### 截获自动变量值
+“带有自动变量值”在 Blocks 中表现为“截获自动变量值”。
+
+```Objective-C
+void autoGetValueForBlock() {
+    
+    int dmy = 256;
+    int val = 10;
+    
+    const char *fmt = "val = %d\n";
+    
+    void (^blk)(void) = ^ { printf(fmt, val); } ;
+    
+    val = 2;
+    
+    fmt = "These values were changed. val = %d\n";
+    
+    blk();
+}
+```
+
+Block 语法的表达式使用的它之前声明的自动变量 `fmt` 和 `val`。
+Blocks 中，Block 表达式所使用的自动变量的值，即保存该自动变量的瞬间值。
+因为 Block 表达式保持了自动变量的值，所以在执行 Block 语法后，即使改写 Block 中使用的自动变量的值也不会影响执行时自动变量的值。
+
+执行结果：
+
+```Objective-C
+val = 10
+```
+
+### __block 说明符
+
+自动变量值截获只能保存执行 Block 语法瞬间的值。
+保存后就不能改写该值。
+
+尝试改写截获的自动变量的值：
+
+```Objective-C
+int val = 0;
+    
+void (^blk)(void) = ^{ val = 1; };
+    
+blk();
+    
+printf("val = %d\n", val);
+```
+
+该代码会产生编译错误：
+
+```Objective-C
+Variable is not assignable (missing __block type specifier)
+```
+
+若想在 Block 语法的表达式中将值赋给在 Block 语法外声明的自动变量， 需要在该自动变量上附加 `__block` 说明符。
+
+```Objective-C
+__block int val = 0;
+    
+void (^blk)(void) = ^{ val = 1; };
+    
+blk();
+    
+printf("val = %d\n", val);
+```
+
+执行结果：
+
+```Objective-C
+val = 1
+```
+
+### 截获的自动变量
+
+将值赋值给 Block 中截获的自动变量，会产生编译错误；
+
+对于截获的 Objective-C 对象，调用变更对象的方法不会产生编译错误。
+
+```Objective-C
+NSMutableArray *array = [[NSMutableArray alloc] init];
+   
+void (^blk)(void) = ^ {
+  id obj = [[NSObject alloc] init];
+  [array addObject:obj];
+};
+```
+
+该代码中截获的变量值为 NSMutableArray 类的对象。如果用 C 语言来描述，即是截获 NSMutableArray 类对象用的结构体实例指针。
+
+虽然赋值给截获的自动变量 array 的操作会产生编译错误，但使用截获的值却不会有任何问题。
+
+## Blocks 实现
+### Block 的实质
+### Block 存储域
+### Block 循环引用
+
+
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
+
