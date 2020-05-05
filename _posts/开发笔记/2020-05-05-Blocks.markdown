@@ -507,6 +507,7 @@ int main(int argc, const char * argv[]) {
 
 将配置在栈上的 Block 复制到堆上，这样即使 Block 语法记述的变量作用域结束，堆上的 Block 还可以继续存在。
 
+![](http://yuqiangcoder.com/assets/postImages/ios/202005/block_stack_copy_heap.png)
 
 ### Block 循环引用
 
