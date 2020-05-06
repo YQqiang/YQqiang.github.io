@@ -573,6 +573,15 @@ Block 类调用 copy 所产生的效果：
 | 栈 | 从栈复制到堆并被 Block 持有 |
 | 堆 | 被 Block 持有 |
 
+在多个 Block 中使用 __block 变量时，因为最先会将所有的 Block 配置在栈上，所以 __block 变量也会配置在栈上。
+在任何一个 Block 从栈复制到堆时，__block 变量也会一并从栈复制到堆并被该 Block 所持有。
+当剩下的 Block 从栈复制到堆时，被复制的 Block 持有 __block 变量，并增加 __block 变量的引用计数。
+
+通过 `__forwarding` 可以实现不论在 Block 语法中、 Block 语法外使用 __block 变量，还是 __block 变量配置在栈上或堆上，都可以顺利访问同一个 __block 变量。
+
+<center class="half">
+    <img src="http://yuqiangcoder.com/assets/postImages/ios/202005/__block_copy.png.png"/>
+</center>
 
 ### Block 循环引用
 
