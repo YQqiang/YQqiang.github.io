@@ -463,7 +463,7 @@ static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
  通过成员变量 `__forwarding` 访问成员变量 `val`。
 
 <center class="half">
-    <img src="http://yuqiangcoder.com/assets/postImages/ios/202005/__block__forwarding.png"/>
+    <img src="http://yuqiangcoder.com/assets/postImages/ios/202005/block_var_forwarding.png"/>
 </center>
 
 ### Block 存储域
@@ -580,7 +580,7 @@ Block 类调用 copy 所产生的效果：
 通过 `__forwarding` 可以实现不论在 Block 语法中、 Block 语法外使用 __block 变量，还是 __block 变量配置在栈上或堆上，都可以顺利访问同一个 __block 变量。
 
 <center class="half">
-    <img src="http://yuqiangcoder.com/assets/postImages/ios/202005/__block_copy.png"/>
+    <img src="http://yuqiangcoder.com/assets/postImages/ios/202005/block_var_copy.png"/>
 </center>
 
 ### Block 循环引用
