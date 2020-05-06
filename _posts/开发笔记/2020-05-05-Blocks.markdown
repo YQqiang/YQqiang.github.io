@@ -511,6 +511,54 @@ int main(int argc, const char * argv[]) {
 
 ![](http://yuqiangcoder.com/assets/postImages/ios/202005/block_stack_copy_heap.png)
 
+复制到堆上的 Block 将 `_NSConcreteMallocBlock` 类对象写入 Block 用结构体实例的成员变量 `isa`。
+
+```
+imp.isa = &_NSConcreteMallocBlock;
+```
+
+**而 `__block` 变量用结构体成员变量 `__forwarding` 可以实现 无论 `__block` 变量配置在栈上还是堆上时都能够正确地访问 `__block` 变量。**
+
+当 ARC 有效时，大多数情况下编译器会恰当的进行判断，自动生成将 Block 从栈上复制到堆上的代码。
+在此之外的情况下，我们可以使用 `copy实例方法`，手动将 Block 从栈上复制到堆上。
+
+```Objective-C
+- (id)getBlockArray {
+    int val = 10;
+    return [[NSArray alloc] initWithObjects:
+            [^{NSLog(@"blk0:%d", val);} copy],
+            [^{NSLog(@"blk1:%d", val);} copy],nil];
+}
+```
+
+对于 Block 语法可直接调用 `copy` 方法， 当然对于 Block 类型变量也可以调用 `copy` 方法：
+
+```Objective-C
+void (^blk)(void) = ^{ printf("Block\n"); };
+    
+blk = [blk copy];
+```
+
+Block 类调用 copy 所产生的效果：
+
+| Block 的类 | 副本源的配置存储域 | 复制效果 |
+| --- | --- | --- |
+| _NSConcreteStakBlock | 栈 | 从栈复制到堆 |
+| _NSConcreteGlobalBlock | 程序的数据区域 | 生么也不做 |
+| _NSConcreteMallocBlock | 堆 | 引用计数增加 |
+
+**多次调用 `copy` 方法也不会存在问题**
+
+### __block 变量存储域
+
+使用 __block 变量的 Block 从栈复制到堆上时， __block 变量也会受到影响。
+
+| __block 变量的配置存储域 | Block 从栈复制到堆时的影响 |
+| --- | --- |
+| 栈 | 从栈复制到堆并被 Block 持有 |
+| 堆 | 被 Block 持有 |
+
+
 ### Block 循环引用
 
 
