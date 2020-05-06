@@ -451,6 +451,21 @@ int main(int argc, const char * argv[]) {
 
 `__block` 变量也同 `Block` 一样变成 `__Block_byref_val_0` 结构体类型的自动变量，即栈上生成的 `__Block_byref_val_0` 结构体实例。
 
+`__block` 变量赋值原理：
+
+```Objective-C
+static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
+  __Block_byref_val_0 *val = __cself->val; // bound by ref
+ (val->__forwarding->val) = 1; }
+```
+
+ `__Block_byref_val_0` 结构体实例变量 `__forwarding` 持有指向该实例自身的指针。
+ 通过成员变量 `__forwarding` 访问成员变量 `val`。
+
+<center class="half">
+    <img src="http://yuqiangcoder.com/assets/postImages/ios/202005/__block__forwarding.png"/>
+</center>
+
 ### Block 存储域
 
 * Block 转换为 Block 的结构体类型的自动变量
