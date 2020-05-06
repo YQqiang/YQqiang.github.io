@@ -580,7 +580,7 @@ Block 类调用 copy 所产生的效果：
 通过 `__forwarding` 可以实现不论在 Block 语法中、 Block 语法外使用 __block 变量，还是 __block 变量配置在栈上或堆上，都可以顺利访问同一个 __block 变量。
 
 <center class="half">
-    <img src="http://yuqiangcoder.com/assets/postImages/ios/202005/__block_copy.png.png"/>
+    <img src="http://yuqiangcoder.com/assets/postImages/ios/202005/__block_copy.png"/>
 </center>
 
 ### Block 循环引用
