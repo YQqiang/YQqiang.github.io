@@ -585,6 +585,102 @@ Block 类调用 copy 所产生的效果：
     <img src="http://yuqiangcoder.com/assets/postImages/ios/202005/block_var_copy.png"/>
 </center>
 
+### 截获对象
+
+为了在附有 `__strong` 和 `__weak` 修饰符的变量，也可以恰当的进行初始化和废弃。为此需要在 `__main_block_desc_0` 结构体中增加成员变量 `copy` 和 `dispose`，以及作为指针赋值给该成员变量的 `__main_block_copy_0` 和 `__main_block_dispose_0` 函数。
+
+待转换的 Block 源代码：
+
+```C
+blk_t blk;
+    
+{
+   NSMutableArray *array = [[NSMutableArray alloc] init];
+   blk = [^(id obj) {
+       [array addObject:obj];
+       NSLog(@"array count = %zd", [array count]);
+   } copy];
+}
+    
+blk([[NSObject alloc] init]);
+blk([[NSObject alloc] init]);
+blk([[NSObject alloc] init]);
+```
+
+转换后的代码：
+
+```C++
+struct __main_block_impl_0 {
+  struct __block_impl impl;
+  struct __main_block_desc_0* Desc;
+  NSMutableArray *array;
+  __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, NSMutableArray *_array, int flags=0) : array(_array) {
+    impl.isa = &_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp;
+    Desc = desc;
+  }
+};
+static void __main_block_func_0(struct __main_block_impl_0 *__cself, id obj) {
+  NSMutableArray *array = __cself->array; // bound by copy
+
+            ((void (*)(id, SEL, ObjectType _Nonnull))(void *)objc_msgSend)((id)array, sel_registerName("addObject:"), (id)obj);
+            NSLog((NSString *)&__NSConstantStringImpl__var_folders_yd_m1j1pblx2kj64rpyd701tt3c0000gn_T_main_85c1bf_mi_0, ((NSUInteger (*)(id, SEL))(void *)objc_msgSend)((id)array, sel_registerName("count")));
+        }
+static void __main_block_copy_0(struct __main_block_impl_0*dst, struct __main_block_impl_0*src) {_Block_object_assign((void*)&dst->array, (void*)src->array, 3/*BLOCK_FIELD_IS_OBJECT*/);}
+
+static void __main_block_dispose_0(struct __main_block_impl_0*src) {_Block_object_dispose((void*)src->array, 3/*BLOCK_FIELD_IS_OBJECT*/);}
+
+static struct __main_block_desc_0 {
+  size_t reserved;
+  size_t Block_size;
+  void (*copy)(struct __main_block_impl_0*, struct __main_block_impl_0*);
+  void (*dispose)(struct __main_block_impl_0*);
+} __main_block_desc_0_DATA = 
+{ 
+   0, 
+   sizeof(struct __main_block_impl_0), 
+   __main_block_copy_0, 
+   __main_block_dispose_0
+};
+```
+
+`__main_block_copy_0` 函数使用 `_Block_object_assign` 函数将该对象类型对象赋值给 Block 用结构体的成员变量 array 中并持有该对象。
+
+`_Block_object_assign` 函数调用相当于 `retain` 实例方法的函数，将对象赋值在对象类型的结构体成员变量中。
+
+```C++
+static void __main_block_copy_0(struct __main_block_impl_0*dst, struct __main_block_impl_0*src) {
+   _Block_object_assign((void*)&dst->array, (void*)src->array, 3/*BLOCK_FIELD_IS_OBJECT*/);
+}
+```
+
+`__main_block_dispose_0` 函数使用 `_Block_object_dispose` 函数，释放赋值在 Block 用结构体成员变量 array 中的对象。
+
+`_Block_object_dispose` 函数调用相当于 release 实例方法的函数，释放赋值在对象类型的结构体成员变量中的对象。
+
+```C++
+static void __main_block_dispose_0(struct __main_block_impl_0*src) {
+   _Block_object_dispose((void*)src->array, 3/*BLOCK_FIELD_IS_OBJECT*/);
+}
+```
+
+`copy` 函数 和 `dispose` 函数调用时机：
+
+
+| 函数 | 调用时机 |
+| --- | --- |
+| copy 函数 | 栈上的 Block 复制到堆时 |
+| dispose 函数 | 堆上的 Block 被废弃时 |
+
+栈上的 Block 复制到堆上的情况：
+
+* 调用 Block 的 `copy` 实例方法时；
+* Block 作为函数返回值返回时；
+* 将 Block 赋值给附有 `__strong` 修饰符 `id` 类型的类或 Block 类型成员变量时；
+* 在方法名中含有 `usingBlock` 的 `Cocoa` 框架方法或 `Grand Central Dispatch` 的 `API` 中传递 Block 时。
+
+
 ### Block 循环引用
 
 
