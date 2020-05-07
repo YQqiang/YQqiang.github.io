@@ -524,7 +524,9 @@ static void __main_block_func_0(struct __main_block_impl_0 *__cself) {
 
 将配置在栈上的 Block 复制到堆上，这样即使 Block 语法记述的变量作用域结束，堆上的 Block 还可以继续存在。
 
-![](http://yuqiangcoder.com/assets/postImages/ios/202005/block_stack_copy_heap.png)
+<center class="half">
+    <img src="http://yuqiangcoder.com/assets/postImages/ios/202005/block_stack_copy_heap.png"/>
+</center>
 
 复制到堆上的 Block 将 `_NSConcreteMallocBlock` 类对象写入 Block 用结构体实例的成员变量 `isa`。
 
