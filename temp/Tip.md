@@ -128,6 +128,28 @@ git push [--all | --mirror | --tags] [--follow-tags] [--atomic] [-n | --dry-run]
 }
 ```
 
+### NSInvocation
+
+使用 `NSInvocation` 获取对象类型的返回值时，使用默认的 `__strong` 修饰符修饰变量会引发崩溃；
+
+解决方案：可使用 `__weak` 或 `__autoreleasing` 修饰符修饰变量。
+
+```Objective-C
+SEL selector = NSSelectorFromString(@"collectionView");
+if ([self.pageContentView respondsToSelector:selector]) {
+   NSMethodSignature *signature = [self.pageContentView methodSignatureForSelector:selector];
+   NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+   [invocation setSelector:selector];
+   [invocation setTarget:self.pageContentView];
+   UICollectionView __autoreleasing *collection;
+   [invocation invoke];
+   [invocation getReturnValue:&collection];
+   if (collection) {
+       collection.allowsSelection = NO;
+   }
+}
+```
+
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
