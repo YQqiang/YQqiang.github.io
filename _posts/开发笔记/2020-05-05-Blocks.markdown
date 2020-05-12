@@ -680,8 +680,47 @@ static void __main_block_dispose_0(struct __main_block_impl_0*src) {
 * 将 Block 赋值给附有 `__strong` 修饰符 `id` 类型的类或 Block 类型成员变量时；
 * 在方法名中含有 `usingBlock` 的 `Cocoa` 框架方法或 `Grand Central Dispatch` 的 `API` 中传递 Block 时。
 
-
 ### Block 循环引用
+
+在 Block 中使用附有 __strong 修饰符的对象类型自动变量，当 Block 从栈复制到堆时，该对象为 Block 所持有。这样容易引起循环引用。
+
+```Objective-C
+typedef void(^blk_t)(void);
+
+@interface MyObject : NSObject {
+    blk_t blk_;
+}
+
+@end
+
+@implementation MyObject
+
+- (instancetype)init {
+    self = [super init];
+    
+    blk_ = ^{ NSLog(@"self = %@", self); };
+    
+    return self;
+}
+
+- (void)dealloc {
+    NSLog(@"dealloc");
+}
+
+@end
+
+int main(int argc, const char * argv[]) {
+     
+    id o = [[MyObject alloc] init];
+    
+    NSLog(@"%@", o);
+    
+    return 0;
+}
+```
+
+`MyObject` 类对象的 Block 类型成员变量 `blk_` 持有赋值为 Block 的强引用。`init` 实例方法中执行的 Block 语法使用附有 `__strong` 修饰符的 `id` 类型变量 `self`。并且由于 Block 语法赋值在了成员变量 `blk_`，因此通过 Block 语法生成在栈上的 Block 此时右栈复制到堆，并持有所使用的的 self。
+`self` 持有 Block，Block 持有 `self`，因此造成循环引用。
 
 
 
