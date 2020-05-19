@@ -150,6 +150,23 @@ if ([self.pageContentView respondsToSelector:selector]) {
 }
 ```
 
+### popToViewController
+
+用 `popToViewController` 返回到指定控制器时，在当前控制器的 `viewWillAppear` 方法中无法获取 `self.navigationController` 为 `nil` 
+
+解决方案: 更改为 使用 `popViewControllerAnimated`
+
+```Objective-C
+NSMutableArray *viewControllers = [self.navigationController.viewControllers mutableCopy];
+NSInteger indexCount = viewControllers.count;
+if (indexCount > 2 && [viewControllers[indexCount - 2] isKindOfClass:NSClassFromString(@"DemoViewController")]) {
+    [viewControllers removeObjectAtIndex:indexCount - 2];
+    self.navigationController.viewControllers = [viewControllers copy];
+}
+[self.navigationController popViewControllerAnimated:YES];
+```
+
+
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
