@@ -2,7 +2,7 @@
 layout: post
 title:  "MQTT"
 date:   2020-04-13 14:11:31 +0800
-categories: 开发笔记
+categories: 开源项目
 ---
 
 ![](http://yuqiangcoder.com/assets/postImages/ios/202004/MQTT.svg)
