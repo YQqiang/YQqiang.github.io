@@ -166,6 +166,12 @@ if (indexCount > 2 && [viewControllers[indexCount - 2] isKindOfClass:NSClassFrom
 [self.navigationController popViewControllerAnimated:YES];
 ```
 
+### NSProxy
+`NSObject` 和 `NSProxy` 都是 `Foundation` 框架中的基类，并且都实现了 `<NSObject>` 这个接口。
+
+通过继承自 `NSObject` 的代理类是不会自动转发 `respondsToSelector:` 和 `isKindOfClass:` 这两个方法的, 而继承自 `NSProxy` 的代理类却是可以的。
+
+`NSObject` 的所有 `Category` 中定义的方法也无法完成转发。
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
