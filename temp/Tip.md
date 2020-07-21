@@ -173,6 +173,10 @@ if (indexCount > 2 && [viewControllers[indexCount - 2] isKindOfClass:NSClassFrom
 
 `NSObject` 的所有 `Category` 中定义的方法也无法完成转发。
 
+
+### MAC 密码位数限制去除
+macOS Mojave 10.14 以后就要求密码至少要设置四位数，在终端使用 `pwpolicy -clearaccountpolicies` 命令可去除此限制
+
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
