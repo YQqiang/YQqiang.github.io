@@ -177,6 +177,11 @@ if (indexCount > 2 && [viewControllers[indexCount - 2] isKindOfClass:NSClassFrom
 ### MAC 密码位数限制去除
 macOS Mojave 10.14 以后就要求密码至少要设置四位数，在终端使用 `pwpolicy -clearaccountpolicies` 命令可去除此限制
 
+### IaaS, PaaS, SaaS
+IaaS：基础设施服务，Infrastructure-as-a-service
+PaaS：平台服务，Platform-as-a-service
+SaaS：软件服务，Software-as-a-service
+
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
