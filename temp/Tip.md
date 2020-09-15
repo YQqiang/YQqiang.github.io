@@ -177,7 +177,7 @@ if (indexCount > 2 && [viewControllers[indexCount - 2] isKindOfClass:NSClassFrom
 ### MAC 密码位数限制去除
 macOS Mojave 10.14 以后就要求密码至少要设置四位数，在终端使用 `pwpolicy -clearaccountpolicies` 命令可去除此限制
 
-```accountpolicies.plist
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
