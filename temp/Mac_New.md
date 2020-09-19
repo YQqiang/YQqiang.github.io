@@ -82,5 +82,10 @@ git clone https://github.com/fcamblor/oh-my-zsh-agnoster-fcamblor.git
 cd oh-my-zsh-agnoster-fcamblor/
 ./install
 ```
+拷贝完成后，执行命令打开zshrc配置文件，将ZSH_THEME后面的字段改为agnoster。
+
+```
+vi ~/.zshrc
+```
 
 # 软件配置
