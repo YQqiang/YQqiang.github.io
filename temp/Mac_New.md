@@ -26,5 +26,33 @@ pwpolicy -clearaccountpolicies
 ```
 
 # 工具配置
+## 浏览器
+### Chrome
+
+## 梯子
+### V2Ray
+### Proxifier
+
+## 终端
+### iTerm
+官网下载即可：https://www.iterm2.com/
+切换 zsh
+
+```
+chsh -s /bin/zsh
+```
+### Oh my zsh
+curl 安装
+
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+
+### PowerLine
+
+```
+sudo easy_install pip
+pip install powerline-status --user
+```
 
 # 软件配置
