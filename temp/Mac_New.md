@@ -88,4 +88,24 @@ cd oh-my-zsh-agnoster-fcamblor/
 vi ~/.zshrc
 ```
 
+### 高亮插件
+
+```
+cd ~/.oh-my-zsh/custom/plugins/
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+```
+编辑 `.zshrc` 文件
+
+```
+vi ~/.zshrc
+plugins=(
+         git
+         zsh-syntax-highlighting
+        )
+```
+使更改生效
+```
+source ~/.zshrc
+```
+
 # 软件配置
