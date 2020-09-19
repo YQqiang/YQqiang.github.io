@@ -59,7 +59,7 @@ sudo easy_install pip
 pip install powerline-status --user
 ```
 
-### PowerFonts
+### PowerFonts 字体
 
 ```
 git clone https://github.com/powerline/fonts.git --depth=1
@@ -67,7 +67,7 @@ cd fonts
 ./install.sh
 ```
 
-### Altercation
+### altercation 配色
 双击 `Solarized Dark.itermcolors` 和 `Solarized Light.itermcolors` 即可安装明暗两种配色
 ```
 git clone https://github.com/altercation/solarized
@@ -75,5 +75,12 @@ cd solarized/iterm2-colors-solarized/
 open .
 ```
 
+### agnoster 主题
+
+```
+git clone https://github.com/fcamblor/oh-my-zsh-agnoster-fcamblor.git
+cd oh-my-zsh-agnoster-fcamblor/
+./install
+```
 
 # 软件配置
