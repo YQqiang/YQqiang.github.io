@@ -67,4 +67,13 @@ cd fonts
 ./install.sh
 ```
 
+### Altercation
+双击 `Solarized Dark.itermcolors` 和 `Solarized Light.itermcolors` 即可安装明暗两种配色
+```
+git clone https://github.com/altercation/solarized
+cd solarized/iterm2-colors-solarized/
+open .
+```
+
+
 # 软件配置
