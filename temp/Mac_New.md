@@ -1,3 +1,5 @@
+[Toc]
+
 # 系统配置
 ## 触摸板
 * 滚动方向自然
@@ -35,7 +37,10 @@ pwpolicy -clearaccountpolicies
 
 ## 梯子
 ### V2Ray
+https://github.com/Cenmrev/V2RayX
+
 ### Proxifier
+https://xclient.info/s/proxifier.html
 
 ## 终端
 ### iTerm
