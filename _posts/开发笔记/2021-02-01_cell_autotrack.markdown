@@ -12,3 +12,7 @@ categories: 开发笔记
 
 实践篇：
 待发布。。。
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
