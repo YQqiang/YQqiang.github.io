@@ -11,7 +11,7 @@ categories: 开发笔记
 [七步实现列表点击事件的采集](https://mp.weixin.qq.com/s/aK8rN7NQ0N53yZ0YdvsbLg)
 
 实践篇：
-待发布。。。
+[又翻车了？列表点击事件采集那些你不知道的坑！](https://mp.weixin.qq.com/s/Oq5l9lBzCh3BUilqprwwXg)
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
