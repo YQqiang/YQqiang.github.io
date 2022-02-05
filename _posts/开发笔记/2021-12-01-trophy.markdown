@@ -6,7 +6,7 @@ categories: 开发笔记
 ---
 
 <center class="half">
-    <img src="http://yuqiangcoder.com/assets/postImages/ios/202112/trophy.HEIC"/><img src="http://yuqiangcoder.com/assets/postImages/ios/202112/community.JPG"/>
+    <img src="http://yuqiangcoder.com/assets/postImages/ios/202112/trophy.png"/><img src="http://yuqiangcoder.com/assets/postImages/ios/202112/community.JPG"/>
 </center>
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
