@@ -1,0 +1,159 @@
+---
+layout: post
+title:  "逆向（APP 调试）"
+date:   2022-03-11 09:00:31 +0800
+categories: 开发笔记
+---
+
+<center class="half">
+    <img src="http://yuqiangcoder.com/assets/postImages/ios/202203/JailBreak.jpg"/>
+</center>
+
+# 准备
+* 硬件
+  * 一台 Mac 设备
+  * 一台越狱设备（可使用爱思助手一键越狱）
+* 软件
+  * [frida-ios-dump](https://github.com/AloneMonkey/frida-ios-dump)
+  * [MonkeyDev](https://github.com/AloneMonkey/MonkeyDev)
+  * [LookinServer](https://github.com/QMUI/LookinServer)
+
+# 调试过程
+
+## Debug View
+
+### 安装
+
+在越狱手机上可以调试任意 App 的界面，比较常用的是 reveal：https://revealapp.com/download/
+
+但是这是一款收费软件，而且在配置时有点复杂。所以这里推荐另外一款界面调试工具：https://lookin.work/，不仅免费，而且开源， 而且零配置，下载安装即可使用。
+
+- 下载安装 Mac App：https://lookin.work/
+- 在越狱手机上通过越狱商店安装插件：LookinLoader
+
+### 使用
+
+在越狱手机上通过 「设置」找到 「LookinLoader」，开启要调试的 App
+
+| 步骤 | 步骤一                                                       | 步骤二                                                       | 步骤三                                                       | 步骤四                                                       | 步骤五                                                       | 步骤六                                                       |
+| :--- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| 描述 | 找到 LookinLoader                                            | 开启要调试的 App                                             | 开启要调试的 App                                             | 启动要调试的 App                                             | 在 Mac 上打开 Lookin                                         | 点击后即可调试                                               |
+| 截图 | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/lookin1.PNG"/> | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/lookin2.PNG"/> | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/lookin3.PNG"/> | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/lookin4.jpeg"/> | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/lookin5.png"/> | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/lookin6.png"/> |
+
+如果没有电脑，如何调试？`Lookin` 可以单独在手机设备中运行，只需要在启动的 `App` 中摇一摇即可。
+
+| 步骤 | 步骤一                                                       | 步骤二                                                       |
+| :--- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| 描述 | 在启动的 `App` 中摇一摇                                      | 开启后即可调试                                               |
+| 截图 | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/lookin7.PNG"/> | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/lookin8.PNG"/><img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/lookin9.PNG"/> |
+
+除了可以调试页面，`Lookin` 还提供了方法监听和调用的功能
+
+| 功能 | 方法监听                                                     | 方法调用                                                     |
+| :--- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| 截图 | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/lookin10.png"/><img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/lookin11.png"/> | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/lookin12.png"/> |
+
+### 砸壳
+
+上述调试 `App` 页面时，只需要安装到手机上即可，如果我们需要对 `App` 的代码进行分析，那么就需要对 `App` 先进性砸壳。
+
+在越狱设备上使用 `frida-ios-dump` 进行砸壳，具体可参考 https://www.cnblogs.com/paperpen/p/14845675.html
+
+下面进行步骤简述：
+
+获取 `App` 列表
+
+```
+yuqiang@macbook-pro-3 $ frida-``ps` `-U
+```
+
+<img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/dump1.png"/>
+
+
+
+下面以某 `App` 为例进行砸壳（`xxx` 为要砸壳的应用名称）
+
+```
+yuqiang@macbook-pro-3 $ python3 dump.py -H 127.0.0.1 -p 2222 -u root -P alpine xxx -o ../frida-apps/xxx
+```
+
+如果出现 ` [Errno None] Unable to connect to port 2222 on 127.0.0.1 ` 错误，我们使用爱思助手打开 `ssh` 通道即可。
+
+执行上述命令后会将砸壳的 `IPA` 放在上级目录的 `frida-apps` 文件夹下。
+
+> 由于 `frida` 的脱壳原理是把运行时的数据按照一定格式导出，并重新打包成 `IPA` 文件，所以在执行脱壳命令时需要保证 `App` 在前台运行
+
+### 集成 IPA
+
+这步需要提前装好 `MonkeyDev`，具体可参考：[https://github.com/AloneMonkey/MonkeyDev/wiki/%E5%AE%89%E8%A3%85](https://github.com/AloneMonkey/MonkeyDev/wiki/安装)
+
+| 步骤 | 步骤 1                                                       | 步骤 2                                                       | 步骤 3                                                       |
+| :--- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| 描述 | 新建 `Xcode` 项目，选择 `MonkeyApp` （模板页面翻到最下面）   | 填写项目名称及目标 `App`                                     | 将脱壳的 `IPA` 文件放到 `TargetApp` 目录下，并引入到工程     |
+| 截图 | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/dump2.png"/> | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/dump3.png"/> | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/dump4.png"/> |
+
+此时可以在真机上运行该项目，即可调试 `App`
+
+<img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/dump5.png"/>
+
+如果出现如下这种错误，可能是因为和其他通过 `MonkeyDev` 实现的插件冲突，可禁用其他插件再尝试下。
+
+<img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/dump7.png"/>
+
+如果再次运行出现如下错误，可先清空再次运行。
+
+<img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/dump8.png"/>
+
+## 一些技巧
+
+### 修改 scheme
+
+许多 `App` 的有些功能是通过 `scheme` 唤起 `App` 来作为入口的，如果要调试这些功能，我们就需要修改 `scheme`。
+
+`MonkeyDev` 会解析 `ipa` 里的 `info.plist` 文件，而 `scheme` 又是保存在 `info.plist` 里的，所以我们可以先解压 `ipa` 获取 `info.plist` 文件，添加我们的 `scheme`，然后再重新压缩成 `ipa`。
+
+### dump 头文件
+
+通过 `MonkeyDev` 可以在运行过程中 `dump` 头文件
+
+| 操作 | 配置 dump 头文件                                             | 头文件                                                       |
+| :--- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| 截图 | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/dump9.png"/> | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/dump10.png"/> |
+
+### 符号化
+
+`MonkeyDev` 集成了恢复符号表功能，只需要在 `buildsettings` 配置启动即可。
+
+| 操作 | 配置开启符号化                                               | 符号化前                                                     | 符号化后                                                     |
+| :--- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| 截图 | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/dump11.png"/> | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/dump12.png"/> | <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/dump13.png"/> |
+
+### 修改 BundleID
+
+如果客户使用 `mPaaS` 或者 `firebase` 等库，这些库的网络请求会校验 `BundleID`，所以如果不修改 `BundleID` 的话，这些库无法正常使用。
+
+可通过下述方式在运行过程中修改获取的 `BundleID`：
+
+```
+%hook NSBundle
+ 
+- (NSDictionary<NSString *, id> *)infoDictionary {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary: %orig()];
+    dic[@"CFBundleIdentifier"] = @"xx.xx.xx";
+    return [dic copy];
+}
+ 
+- (id)objectForInfoDictionaryKey:(NSString *)key {
+    if ([key isEqualToString:@"CFBundleIdentifier"]) {
+        return @"xx.xx.xx";
+    }
+    return %orig();
+}
+ 
+%end
+```
+
+
+[jekyll-docs]: https://jekyllrb.com/docs/home
+[jekyll-gh]:   https://github.com/jekyll/jekyll
+[jekyll-talk]: https://talk.jekyllrb.com/
