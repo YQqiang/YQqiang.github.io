@@ -55,7 +55,7 @@ categories: 开发笔记
 
 ### 砸壳
 
-上述调试 `App` 页面时，只需要安装到手机上即可，如果我们需要对 `App` 的代码进行分析，那么就需要对 `App` 先进性砸壳。
+上述调试 `App` 页面时，只需要安装到手机上即可，如果我们需要对 `App` 的代码进行分析，那么就需要对 `App` 先进行砸壳。
 
 在越狱设备上使用 `frida-ios-dump` 进行砸壳，具体可参考 https://www.cnblogs.com/paperpen/p/14845675.html
 
@@ -64,7 +64,7 @@ categories: 开发笔记
 获取 `App` 列表
 
 ```
-yuqiang@macbook-pro-3 $ frida-``ps` `-U
+yuqiang@macbook-pro-3 $ frida-ps -U
 ```
 
 <img height=200 src="http://yuqiangcoder.com/assets/postImages/ios/202203/dump1.png"/>
