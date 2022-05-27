@@ -20,9 +20,11 @@ categories: Swift
 |:-:|:-:|:-:|
 | V| ViewController|负责View|
 | VM| ViewModel|负责业务逻辑|
+
+
 * `ViewModel` 负责网络请求和数据解析, 可以再抽出一层网络请求层`APIService`层; 
 * `ViewModel`负责把数据解析为对应的`Model`;
-*  `ViewController`从`ViewModel`中读取数据;
+* `ViewController`从`ViewModel`中读取数据;
 * `ViewController` 和 `Model` 之间是不接触的, 相当于`ViewModel`是它们之间的桥梁.
 
 ---
@@ -128,7 +130,7 @@ class VideoModel: Mappable {
         videos <- map["videos"]
     }
 }
- ```
+```
 
   ```
   class Video: Mappable {
@@ -302,29 +304,20 @@ let disposeBag = DisposeBag()
 > 自己写的博客, 内容略显粗浅, 大家可以看下面列出的博客.   
 
 * RxSwift
-[RxSwift 中的 Observable 详解 （翻译一）](http://www.jianshu.com/p/348bbb20b435)
-
-[RxSwift 中的 Subject 详解 （翻译二）](http://www.jianshu.com/p/07266f30ce5f)
-
-[RxSwift 上手详解 —— 入门篇（翻译三）](http://www.jianshu.com/p/1a8531894562)
-
-[RxSwift 中的 Units——一个富有哲学意味的概念（翻译四）](http://www.jianshu.com/p/bd8eb2f6d407)
-
-[【iOS开发】RxSwift入坑解读-你所需要知道的各种概念](http://www.codertian.com/2016/11/27/RxSwift-ru-keng-ji-read-document/#more)
-
-[【iOS开发】RxSwift入坑解读-那些难以理解的细节](http://www.codertian.com/2016/12/01/RxSwift-ru-keng-ji-learn-the-difficulty/#more)
-
-[【iOS开发】RxSwift实战教程-核心用法](http://www.codertian.com/2016/12/10/RxSwift-shi-zhan-jie-du-base-demo/#more)
+  [RxSwift 中的 Observable 详解 （翻译一）](http://www.jianshu.com/p/348bbb20b435)
+  [RxSwift 中的 Subject 详解 （翻译二）](http://www.jianshu.com/p/07266f30ce5f)
+  [RxSwift 上手详解 —— 入门篇（翻译三）](http://www.jianshu.com/p/1a8531894562)
+  [RxSwift 中的 Units——一个富有哲学意味的概念（翻译四）](http://www.jianshu.com/p/bd8eb2f6d407)
+  [【iOS开发】RxSwift入坑解读-你所需要知道的各种概念](http://www.codertian.com/2016/11/27/RxSwift-ru-keng-ji-read-document/#more)
+  [【iOS开发】RxSwift入坑解读-那些难以理解的细节](http://www.codertian.com/2016/12/01/RxSwift-ru-keng-ji-learn-the-difficulty/#more)
+  [【iOS开发】RxSwift实战教程-核心用法](http://www.codertian.com/2016/12/10/RxSwift-shi-zhan-jie-du-base-demo/#more)
 
 * Moya 网络请求
-[如何写出最简洁优雅的网络封装 Moya + RxSwift](http://www.jianshu.com/p/c1494681400b)
-
-[【iOS开发】Moya入坑记-用法解读篇](http://www.codertian.com/2017/01/21/iOS-moya-ru-keng-usage/#more)
-
-[【iOS开发】使用RxSwift+Moya进行优雅的网络请求](http://www.codertian.com/2017/02/04/iOS-Moya-RxSwift-better-networking/#more)
+  [如何写出最简洁优雅的网络封装 Moya + RxSwift](http://www.jianshu.com/p/c1494681400b)
+  [【iOS开发】Moya入坑记-用法解读篇](http://www.codertian.com/2017/01/21/iOS-moya-ru-keng-usage/#more)
+  [【iOS开发】使用RxSwift+Moya进行优雅的网络请求](http://www.codertian.com/2017/02/04/iOS-Moya-RxSwift-better-networking/#more)
 
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
-
 
