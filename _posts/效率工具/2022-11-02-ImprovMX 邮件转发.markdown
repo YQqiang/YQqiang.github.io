@@ -5,7 +5,7 @@ date:   2022-11-02 19:18:31 +0800
 categories: 效率工具
 ---
 
-![](http://yuqiangcoder.com/assets/postImages/ios/202211/improvmx.png)
+![](http://yuqiangcoder.com/assets/postImages/ios/202211/email.png)
 
 # 背景
 
@@ -16,8 +16,24 @@ categories: 效率工具
 
 # ImprovMx
 通过 [ImprovMx](https://improvmx.com/) 可以实现无限邮件转发，前提是你需要有一个域名。
+整体操作比较简洁，进入官网后，输入域名和目标邮箱即可进入下一步配置，无需注册账号
+![](http://yuqiangcoder.com/assets/postImages/ios/202211/improvmx.png)
 
-TODO: 待补充
+有了域名后，需要配置 DNS 解析
+![](http://yuqiangcoder.com/assets/postImages/ios/202211/improvmx2.png)
+
+  * MX 是 Mail Exchanger 的缩写即邮件交换记录，它指向一个邮件服务器，用于电子邮件系统发邮件时根据收信人的地址后缀来定位邮件服务器
+  * SPF 是 Sender Policy Framework 的缩写，一种以IP地址认证电子邮件发件人身份的技术，目的是允许 improvMX 替你发送电子邮件
+  * DNS 记录解析有延时，可以稍后回来验证，此时可去配置需要转发的邮箱地址
+
+配置邮件转发也非常简单，只需要输入要转发的邮箱地址和目标邮箱即可
+![](http://yuqiangcoder.com/assets/postImages/ios/202211/improvmx3.png)
+  * 可以使用 `*` 匹配所有邮箱地址，也可以输入具体的地址
+  * 可以转发到任意邮箱（测试转发到 QQ 邮箱和公司邮箱，均能够正常接收，不过公司邮箱接收有点延时）
+  * 可以点击 `ADD` 新增一条转发记录
+  * 可以点击 `TEST` 测试转发是否有效
+
+如果你还想使用域名邮箱进行发送邮件，可以通过这个[教程](https://improvmx.com/guides/send-emails-using-gmail/)来配置。
 
 # 参考
 https://chengyong.im/use-improvmx-domain-mail.html
