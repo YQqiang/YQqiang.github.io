@@ -1,0 +1,83 @@
+---
+layout: post
+title:  "nuoshell"
+date:   2022-11-04 09:57:31 +0800
+categories: 效率工具
+---
+
+![](http://yuqiangcoder.com/assets/postImages/ios/202211/nuoshell.png)
+
+# nuoshell
+[nuoshell](https://www.nuoshell.com/) 是一款专门为 `Mac OSX` 系统打造的，集多功能于一身的 `SSH` 客户端工具。
+直接进入官网下载即可
+
+# 界面
+|   主页面   |   添加服务器   |   SSH 连接   |
+| ---- | ---- | ---- |
+|   ![](http://yuqiangcoder.com/assets/postImages/ios/202211/nuoshellpage1.png)   |   ![](http://yuqiangcoder.com/assets/postImages/ios/202211/nuoshellpage2.png)   |   ![](http://yuqiangcoder.com/assets/postImages/ios/202211/nuoshellpage3.png)   |
+
+# RZ/SZ
+选择这款 `SSH` 客户端的主要原因是支持 `RZ/SZ` 功能，可以非常方便的进行上传和下载。
+
+## RZ
+rz 命令（Receive ZMODEM），使用 ZMODEM 协议，将本地文件批量上传到远程 Linux/Unix 服务器，注意不能上传文件夹。
+
+命令格式
+
+```
+rz [OPTIONS]
+```
+
+选项说明
+
+```
+-+, --append
+  将文件内容追加到已存在的同名文件
+-a, --ascii
+  以文本方式传输
+-b, --binary
+  以二进制方式传输，推荐使用
+--delay-startup N
+  等待 N 秒
+-e, --escape
+  对所有控制字符转义，建议使用
+-E, --rename
+  已存在同名文件则重命名新上传的文件，以点和数字作为后缀
+-p, --protect
+  对 ZMODEM 协议有效，如果目标文件已存在则跳过
+-q, --quiet
+  安静执行，不输出提示信息
+-v, --verbose
+  输出传输过程中的提示信息
+-y, --overwrite
+  存在同名文件则替换
+-X, --xmodem
+  使用 XMODEM 协议
+--ymodem
+  使用 YMODEM 协议
+-Z, --zmodem
+  使用 ZMODEM 协议
+--version
+  显示版本信息
+--h, --help
+  显示帮助信息
+```
+
+## SZ
+sz 命令（Send ZMODEM）通过 ZMODEM 协议，可将多个文件从远程服务器下载到本地。注意不能下载文件夹，如果下载文件夹，请先打包再下载。
+
+命令格式
+
+```
+sz [OPTIONS] FILES
+```
+
+选项说明
+
+```
+命令选项基本与 rz 相同，请参考上文 rz 的命令选项或者运行命令 sz -h 查看。
+```
+
+# 参考链接
+https://www.nuoshell.com/
+https://www.linuxprobe.com/linux-rz.html
