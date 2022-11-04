@@ -80,5 +80,6 @@ sz [OPTIONS] FILES
 ```
 
 # 参考链接
-https://www.nuoshell.com/
-https://www.linuxprobe.com/linux-rz.html
+
+* https://www.nuoshell.com/
+* https://www.linuxprobe.com/linux-rz.html
