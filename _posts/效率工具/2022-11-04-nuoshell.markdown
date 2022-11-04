@@ -12,9 +12,10 @@ categories: 效率工具
 直接进入官网下载即可
 
 # 界面
-|   主页面   |   添加服务器   |   SSH 连接   |
+
+| 主页面 | 添加服务器 | SSH 连接 |
 | ---- | ---- | ---- |
-|   ![](http://yuqiangcoder.com/assets/postImages/ios/202211/nuoshellpage1.png)   |   ![](http://yuqiangcoder.com/assets/postImages/ios/202211/nuoshellpage2.png)   |   ![](http://yuqiangcoder.com/assets/postImages/ios/202211/nuoshellpage3.png)   |
+|![](http://yuqiangcoder.com/assets/postImages/ios/202211/nuoshellpage1.png)|![](http://yuqiangcoder.com/assets/postImages/ios/202211/nuoshellpage2.png)|![](http://yuqiangcoder.com/assets/postImages/ios/202211/nuoshellpage3.png)|
 
 # RZ/SZ
 选择这款 `SSH` 客户端的主要原因是支持 `RZ/SZ` 功能，可以非常方便的进行上传和下载。
