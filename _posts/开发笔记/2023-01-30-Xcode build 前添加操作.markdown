@@ -6,14 +6,14 @@ categories: 开发笔记
 ---
 
 <center class="half">
-    <img src="http://yuqiangcoder.com/assets/postImages/ios/202301/xcode-build-header.png"/>
+    <img src="{{site.url}}/assets/postImages/ios/202301/xcode-build-header.png"/>
 </center>
 
 # 背景
 
-在通过 MonkeyDev [创建 MonkeyApp 工程调](https://github.com/AloneMonkey/MonkeyDev/wiki/%E9%9D%9E%E8%B6%8A%E7%8B%B1App%E9%9B%86%E6%88%90)试时，重复编译会报 `Executable Not Found` 的提示：
+在通过 MonkeyDev [创建 MonkeyApp 工程](https://github.com/AloneMonkey/MonkeyDev/wiki/%E9%9D%9E%E8%B6%8A%E7%8B%B1App%E9%9B%86%E6%88%90)调试时，重复编译会报 `Executable Not Found` 的提示：
 <center class="half">
-    <img src="http://yuqiangcoder.com/assets/postImages/ios/202301/ExecutableNotFound.png"/>
+    <img src="{{site.url}}/assets/postImages/ios/202301/ExecutableNotFound.png"/>
 </center>
 
 通过 `⌘ ⇧ K` 操作清空缓存后可正常编译运行，虽然只多了一步操作，但长时间调试还是非常影响效率的，因此我们的目的就很明确了：通过脚本在 Xcode build 前自动清空缓存。
@@ -33,7 +33,7 @@ categories: 开发笔记
 我们知道，在 Xcode IDE 中有个 `Build Phases` 菜单用来配置构建阶段，而且可以添加自定义脚本：
 
 <center class="half">
-    <img src="http://yuqiangcoder.com/assets/postImages/ios/202301/add-script.png"/>
+    <img src="{{site.url}}/assets/postImages/ios/202301/add-script.png"/>
 </center>
 
 目前还不确定该阶段执行脚本是否可行，先挖个坑在这，稍后来填，继续下一步：编写脚本。
@@ -83,13 +83,13 @@ rm -rf $DIR
 在 Xcode Build Phases 中添加上述脚本，编译调试：
 
 <center class="half">
-    <img src="http://yuqiangcoder.com/assets/postImages/ios/202301/debug-script.png"/>
+    <img src="{{site.url}}/assets/postImages/ios/202301/debug-script.png"/>
 </center>
 
 哦吼，编译报错：
 
 <center class="half">
-    <img src="http://yuqiangcoder.com/assets/postImages/ios/202301/debug-error.png"/>
+    <img src="{{site.url}}/assets/postImages/ios/202301/debug-error.png"/>
 </center>
 
 提示说访问这个路径下的数据库失败了，仔细看下路径，这不就是我们删除的目录吗
@@ -106,21 +106,21 @@ error: accessing build database "/Users/admin/Library/Developer/Xcode/DerivedDat
 在 `Compile Sources` 前执行脚本，(将脚本拖拽到前面)
 
 <center class="half">
-    <img src="http://yuqiangcoder.com/assets/postImages/ios/202301/order-sort.png"/>
+    <img src="{{site.url}}/assets/postImages/ios/202301/order-sort.png"/>
 </center>
 
 编译调试，依然报错，还是没有达到我们的预期。
 
-通过[这篇文章](https://matheusvds.medium.com/clean-specific-folder-before-building-in-xcode-221ec6e0e004)的提示，可以在 `Scheme -> Build -> Pre-actions` 中配置脚本来实现 build 前的操作
+通过[这篇文章](https://matheusvds.medium.com/clean-specific-folder-before-building-in-xcode-221ec6e0e004)的提示，可以在 `Scheme -> Build -> Pre-actions` 中配置脚本来实现 build 前添加操作：
 
 <center class="half">
-    <img src="http://yuqiangcoder.com/assets/postImages/ios/202301/result-script.png"/>
+    <img src="{{site.url}}/assets/postImages/ios/202301/result-script.png"/>
 </center>
 
 具体步骤如下：
 
 1. 通过 `⌘ ⇧ <` 打开 `Edit Scheme` 面板
-2. 选中 Build -> Pre-actions
+2. 选中 `Build -> Pre-actions`
 3. 点击 `+` 添加 `New Run Script Action`
 4. 填入脚本内容
 
