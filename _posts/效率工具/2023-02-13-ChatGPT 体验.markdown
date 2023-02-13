@@ -40,3 +40,9 @@ ChatGPT（全名：Chat Generative Pre-trained Transformer）是由 OpenAI 开�
 </center>
 
 不错，以后可以多水几篇博客了，毕竟不用自己写。
+
+# Chrome 插件
+最后再推荐一款 [Chrome ChatGPT 扩展](https://github.com/wong2/chatgpt-google-extension)，这样在 Chrome 中搜索时就可以显示 ChatGPT 的内容了，效率++
+<center class="half">
+    <img src="{{site.url}}/assets/postImages/ios/202302/chrome-chatgpt.png"/>
+</center>
