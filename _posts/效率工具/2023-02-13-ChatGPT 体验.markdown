@@ -1,0 +1,42 @@
+---
+layout: post
+title:  "ChatGPT 体验"
+date:   2023-02-13 09:57:31 +0800
+categories: 效率工具
+---
+
+<center class="half">
+    <img src="{{site.url}}/assets/postImages/ios/202302/ai-header.jpg"/>
+</center>
+该图片由<a href="https://pixabay.com/zh/users/geralt-9301/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3706562">Gerd Altmann</a>在<a href="https://pixabay.com/zh//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3706562">Pixabay</a>上发布
+
+# ChatGPT
+ChatGPT（全名：Chat Generative Pre-trained Transformer）是由 OpenAI 开发的一个人工智能聊天机器人程序，于 2022 年 11 月推出。刚推出时，我只是感觉又多了一款「人工智障」产品而已，不过最近报道称 ChatGPT 已通过谷歌 L3 的面试，这使我产生了极大的好奇心，于是赶紧注册体验了下。
+
+# 面向 ChatGPT 编程
+通过体验，ChatGPT 的确很智能，不仅可以联系上下文还可以根据自己的需求进行调教，比如我让其充当一个 Swift 开发工程师，我向其询问问题。
+
+首先我要求其充当一个 Swift 开发工程师：
+<center class="half">
+    <img src="{{site.url}}/assets/postImages/ios/202302/Swift-dev.png"/>
+</center>
+
+然后我让其实现了如下所述的加密需求：
+1. 随机生成 16 个字符的字符串 randomString 
+2. 将 randomString 通过 MD5 算法得到 md5String 
+3. 使用 RSA 算法加密 md5String
+
+在 ChatGPT 思考片刻后，给了如下回答：
+<center class="half">
+    <img src="{{site.url}}/assets/postImages/ios/202302/anw-encrypt.png"/>
+</center>
+
+嗯，挺好，以后遇到不会写的代码片段不用使用搜索引擎检索了，直接让 ChatGPT 编写就完了；彻底从「面向 Stack Overflow 编程」转到 「面向 ChatGPT 编程」了🤨
+
+# ChatGPT 写博客
+既然 ChatGPT 能帮我写代码，那顺便帮我把博客也写了吧🙂
+<center class="half">
+    <img src="{{site.url}}/assets/postImages/ios/202302/ChatGPT-blog.png"/>
+</center>
+
+不错，以后可以多水几篇博客了，毕竟不用自己写。
