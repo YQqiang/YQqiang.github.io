@@ -1,9 +1,26 @@
 {
     "applinks": {
         "apps": [],
-        "details": [{
-            "appID": "A66VW3YX93.com.ifltek.city.lgpark",
-            "paths": ["/lgpark/*"]
-            }]
+        "details": [
+            {
+                "appID": "A66VW3YX93.com.ifltek.city.lgpark",
+                "paths": [
+                    "/lgpark/*"
+                ]
+            },
+            {
+                "appID": "L7Z4MSL6HT.com.ahjkjt.charger",
+                "paths": [
+                    "/anjkjt/*"
+                ]
+            },
+            {
+                "appID": "M7KTFVLU27.com.ahjkjt.charger",
+                "paths": [
+                    "/apple-app-site-association/*",
+                    "/ahjkjt/*"
+                ]
+            }
+        ]
     }
 }
